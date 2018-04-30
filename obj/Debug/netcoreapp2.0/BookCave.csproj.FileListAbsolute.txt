@@ -1,0 +1,10 @@
+/Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/bin/Debug/netcoreapp2.0/BookCave.deps.json
+/Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/bin/Debug/netcoreapp2.0/BookCave.runtimeconfig.json
+/Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/bin/Debug/netcoreapp2.0/BookCave.runtimeconfig.dev.json
+/Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/bin/Debug/netcoreapp2.0/BookCave.dll
+/Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/bin/Debug/netcoreapp2.0/BookCave.pdb
+/Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.csproj.CoreCompileInputs.cache
+/Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.AssemblyInfoInputs.cache
+/Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.AssemblyInfo.cs
+/Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.dll
+/Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.pdb
