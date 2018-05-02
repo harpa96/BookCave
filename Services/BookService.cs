@@ -1,20 +1,20 @@
 using System.Collections.Generic;
 using BookCave.Models.ViewModels;
-using BookCave.Repositories;
+
 
 namespace BookCave.Services
 {
     public class BookService
     {
-        private BookRepo _bookRepo;
-
-        public BookService()
-        {
-            _bookRepo = new BookRepo();
-        }
         public List<BookListViewModel> GetAllBooks()
         {
-            var books = _bookRepo.GetAllBooks();
+            var books = new List<BookListViewModel>
+            {
+                new BookListViewModel { Id=1, Name="Lord Of The Rings"},
+                new BookListViewModel { Id=1, Name="Gisla saga surssonar"},
+                new BookListViewModel { Id=1, Name="Jolasnjor"},
+                new BookListViewModel { Id=1, Name="Siggi og Gisli"},
+            };
             return books;
         }
 

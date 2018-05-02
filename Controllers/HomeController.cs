@@ -22,5 +22,20 @@ namespace BookCave.RecordStore.HomeController
             var books = _bookService.GetAllBooks();
             return View(books);
         }
+
+        public IActionResult Donate()
+        {
+            return View();
+        }
+
+        public IActionResult SpecialOrd() 
+        {
+            return View();
+        }
+
+        public IActionResult About() 
+        {
+            return View();
+        }
     }
 }

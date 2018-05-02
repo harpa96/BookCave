@@ -16,32 +16,68 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
+
 <body>
+    
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        
+        <div class="container">      
+            <div>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a>
+                <input type="text" name="search-bar" placeholder="Leitaðu að bók..."/>
+                <input type="submit" value="Leita"/>
+                <a asp-area="" asp-controller="Home" asp-action="Index">Karfa<img src="images/cart.png" alt="cart"/></a>
+                <a asp-area="" asp-controller="Home" asp-action="SpecialOrd">Innskrá</a>
+            </div>
+            <br/>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a>
+                </button>  
             </div>
+            
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li>
+                        <select>
+                            <option value="" disabled selected hidden>Efnisflokkar</option>
+                            <option>Metsölulistinn</option>
+                            <option>Klassískar</option>
+                            <option>Íslenskar</option>
+                            <option>Erlendar</option>
+                            <option>Námsbækur</option>
+                            <option>Drama</option>
+                            <option>Spenna</option>
+                            <option>Gaman</option>
+                            <option>Rómantík</option>
+                            <option>Ævintýri</option>
+                            <option>Barna</option>
+                        </select>
+                    </li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="SpecialOrd">Sérpantanir</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Donate">Ég vil styrkja!</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">Um okkur</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    
+   <br/>
+   <br/>
+   <br/>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2018 - BookCave</p>
+            <p>contactus&commat;bookcave.is</p>
+            <p>sími: 581-2345</p>
+            <p>kennitala: 210196-3079</p>
+            <p>Fylgdu okkur!</p>
+            <!--<p>&copy; 2018 - BookCave</p>-->
         </footer>
     </div>
 

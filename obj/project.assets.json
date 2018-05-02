@@ -12535,23 +12535,23 @@
     ]
   },
   "packageFolders": {
-    "/Users/harpahreinsdottir/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\Vigdis\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/BookCave.csproj",
+      "projectUniqueName": "C:\\Users\\Vigdis\\Documents\\Skoli\\Vor 2018\\verklegt2\\BookCave\\BookCave.csproj",
       "projectName": "BookCave",
-      "projectPath": "/Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/BookCave.csproj",
-      "packagesPath": "/Users/harpahreinsdottir/.nuget/packages/",
-      "outputPath": "/Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/obj/",
+      "projectPath": "C:\\Users\\Vigdis\\Documents\\Skoli\\Vor 2018\\verklegt2\\BookCave\\BookCave.csproj",
+      "packagesPath": "C:\\Users\\Vigdis\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Vigdis\\Documents\\Skoli\\Vor 2018\\verklegt2\\BookCave\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/harpahreinsdottir/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Vigdis\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
