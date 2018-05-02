@@ -1,5 +1,24 @@
-img 
+img
 {
-    height : 10%;
-    width : 10%;
+    width: 30px;
+    height: 30px;
 }
+
+.navbar 
+{
+    background-color: pink;
+}
+
+footer p
+{
+    display: inline;
+    margin-right: 30px;
+}
+
+
+
+li.dropdown
+{
+    display: inline-block;
+}
+

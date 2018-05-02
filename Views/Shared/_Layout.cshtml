@@ -4,10 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BookCave</title>
+    
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/styles.css">
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -26,8 +28,8 @@
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a>
                 <input type="text" name="search-bar" placeholder="Leitaðu að bók..."/>
                 <input type="submit" value="Leita"/>
-                <a asp-area="" asp-controller="Home" asp-action="Index">Karfa<img src="images/cart.png" alt="cart"/></a>
-                <a asp-area="" asp-controller="Home" asp-action="SpecialOrd">Innskrá</a>
+                <a asp-area="" asp-controller="Home" asp-action="Cart"><img src="~/images/cart.png" alt="cart"/></a>
+                <a asp-area="" asp-controller="Home" asp-action="Login"><img src="~/images/user.png" alt="user"/></a>
             </div>
             <br/>
             <div class="navbar-header">
@@ -41,25 +43,16 @@
             
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <select>
-                            <option value="" disabled selected hidden>Efnisflokkar</option>
-                            <option>Metsölulistinn</option>
-                            <option>Klassískar</option>
-                            <option>Íslenskar</option>
-                            <option>Erlendar</option>
-                            <option>Námsbækur</option>
-                            <option>Drama</option>
-                            <option>Spenna</option>
-                            <option>Gaman</option>
-                            <option>Rómantík</option>
-                            <option>Ævintýri</option>
-                            <option>Barna</option>
-                        </select>
+                    <li class="dropdown">
+                        <a class="cat-btn">Efnisflokkar</a>
+                        <div class="drop-cate">
+                            <a asp-controller="Book" asp-action="Category">Metsölulistinn</a>
+                            <a asp-controller="Book" asp-action="Category">Klassískar</a>
+                        </div>
                     </li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="SpecialOrd">Sérpantanir</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Donate">Ég vil styrkja!</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">Um okkur</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="SpecialOrd" class="navopt">Sérpantanir</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Donate" class="navopt">Ég vil styrkja!</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About" class="navopt">Um okkur</a></li>
                 </ul>
             </div>
         </div>

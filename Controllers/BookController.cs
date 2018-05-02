@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -9,11 +9,11 @@ using BookCave.Services;
 
 namespace BookCave.RecordStore.HomeController
 {
-    public class HomeController : Controller
+    public class BookController : Controller
     {
         private BookService _bookService;
 
-        public HomeController()
+        public BookController()
         {
             _bookService = new BookService();
         }
@@ -22,30 +22,12 @@ namespace BookCave.RecordStore.HomeController
             var books = _bookService.GetAllBooks();
             return View(books);
         }
-        
-        public IActionResult Cart()
+
+
+        public IActionResult Category()
         {
             return View();
         }
 
-        public IActionResult Donate()
-        {
-            return View();
-        }
-
-        public IActionResult SpecialOrd() 
-        {
-            return View();
-        }
-
-        public IActionResult About() 
-        {
-            return View();
-        }
-
-        public IActionResult Login() 
-        {
-            return View();
-        }
     }
 }
