@@ -21,7 +21,7 @@
 
 <body>
     
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top header-color">
         
         <div class="container">      
             <div class="navbar-header">
@@ -50,6 +50,7 @@
                 <li><a asp-controller="Home" asp-action="SpecialOrd">Sérpöntun</a></li>
                 <li><a asp-controller="Home" asp-action="Donate">Ég vil styrkja!</a></li>
                 <li><a asp-controller="Home" asp-action="About">Um Okkur</a></li>
+                <div class="header-right">
                 <form class="navbar-form navbar-left" action="/action_page.php">
                     <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search">
@@ -62,6 +63,7 @@
                 </form>
                 <a asp-area="" asp-controller="Home" asp-action="Cart"><img src="~/images/cart.png" alt="cart"/></a>
                 <a asp-area="" asp-controller="Home" asp-action="Login"><img src="~/images/user.png" alt="user"/></a>
+                </div>
                 </ul>
             </div>
             </nav>
