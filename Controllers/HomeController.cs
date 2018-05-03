@@ -43,6 +43,16 @@ namespace BookCave.RecordStore.HomeController
             return View();
         }
 
+        public IActionResult OurTeam()
+        {
+            return View();
+        }
+
+        public IActionResult Terms()
+        {
+            return View();
+        }
+
         public IActionResult Login() 
         {
             return View();
