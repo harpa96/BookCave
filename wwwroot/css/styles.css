@@ -4,9 +4,23 @@ img
     height: 30px;
 }
 
+
+.header-color
+{
+    background-color: aquamarine;
+}
+
 footer p
 {
     display: inline;
     margin-right: 30px;
 }
+
+.header-right
+{
+    position: absolute;
+    right: 16px; 
+}
+
+
 
