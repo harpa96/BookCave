@@ -1,4 +1,23 @@
-img
+
+/* Remove the navbar's default rounded borders and increase the bottom margin */ 
+.navbar {
+    margin-bottom: 50px;
+    border-radius: 0;
+  }
+  
+  /* Remove the jumbotron's default bottom margin */ 
+   .jumbotron {
+    margin-bottom: 0;
+    color: lightgray;
+    background-color: dimgray;
+  }
+ 
+  /* Add a gray background color and some padding to the footer */
+  footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+  }
+/*img
 {
     width: 30px;
     height: 30px;
@@ -19,7 +38,5 @@ footer p
 {
     position: absolute;
     right: 16px; 
-}
-
-
+}*/
 
