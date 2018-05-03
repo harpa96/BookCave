@@ -12541,11 +12541,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Vigdis\\Documents\\Skoli\\Vor 2018\\verklegt2\\BookCave\\BookCave.csproj",
+      "projectUniqueName": "C:\\Users\\Vigdis\\Documents\\Skoli\\Vor 2018\\verklegt2\\BookCave\\BookCave.csproj",
       "projectName": "BookCave",
-      "projectPath": "c:\\Users\\Vigdis\\Documents\\Skoli\\Vor 2018\\verklegt2\\BookCave\\BookCave.csproj",
+      "projectPath": "C:\\Users\\Vigdis\\Documents\\Skoli\\Vor 2018\\verklegt2\\BookCave\\BookCave.csproj",
       "packagesPath": "C:\\Users\\Vigdis\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Vigdis\\Documents\\Skoli\\Vor 2018\\verklegt2\\BookCave\\obj\\",
+      "outputPath": "C:\\Users\\Vigdis\\Documents\\Skoli\\Vor 2018\\verklegt2\\BookCave\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
