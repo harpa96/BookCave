@@ -8,23 +8,33 @@
 /Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.AssemblyInfo.cs
 /Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.dll
 /Users/harpahreinsdottir/Documents/HR2017/Verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.pdb
-C:\Users\Vigdis\Documents\Skoli\Vor 2018\verklegt2\BookCave\bin\Debug\netcoreapp2.0\BookCave.deps.json
-C:\Users\Vigdis\Documents\Skoli\Vor 2018\verklegt2\BookCave\bin\Debug\netcoreapp2.0\BookCave.runtimeconfig.json
-C:\Users\Vigdis\Documents\Skoli\Vor 2018\verklegt2\BookCave\bin\Debug\netcoreapp2.0\BookCave.runtimeconfig.dev.json
-C:\Users\Vigdis\Documents\Skoli\Vor 2018\verklegt2\BookCave\bin\Debug\netcoreapp2.0\BookCave.dll
-C:\Users\Vigdis\Documents\Skoli\Vor 2018\verklegt2\BookCave\bin\Debug\netcoreapp2.0\BookCave.pdb
-C:\Users\Vigdis\Documents\Skoli\Vor 2018\verklegt2\BookCave\obj\Debug\netcoreapp2.0\BookCave.csproj.CoreCompileInputs.cache
-C:\Users\Vigdis\Documents\Skoli\Vor 2018\verklegt2\BookCave\obj\Debug\netcoreapp2.0\BookCave.AssemblyInfoInputs.cache
-C:\Users\Vigdis\Documents\Skoli\Vor 2018\verklegt2\BookCave\obj\Debug\netcoreapp2.0\BookCave.AssemblyInfo.cs
-C:\Users\Vigdis\Documents\Skoli\Vor 2018\verklegt2\BookCave\obj\Debug\netcoreapp2.0\BookCave.dll
-C:\Users\Vigdis\Documents\Skoli\Vor 2018\verklegt2\BookCave\obj\Debug\netcoreapp2.0\BookCave.pdb
-C:\Users\Lenovo\Desktop\Verklegt 2\BookCave\bin\Debug\netcoreapp2.0\BookCave.deps.json
-C:\Users\Lenovo\Desktop\Verklegt 2\BookCave\bin\Debug\netcoreapp2.0\BookCave.runtimeconfig.json
-C:\Users\Lenovo\Desktop\Verklegt 2\BookCave\bin\Debug\netcoreapp2.0\BookCave.runtimeconfig.dev.json
-C:\Users\Lenovo\Desktop\Verklegt 2\BookCave\bin\Debug\netcoreapp2.0\BookCave.dll
-C:\Users\Lenovo\Desktop\Verklegt 2\BookCave\bin\Debug\netcoreapp2.0\BookCave.pdb
-C:\Users\Lenovo\Desktop\Verklegt 2\BookCave\obj\Debug\netcoreapp2.0\BookCave.csproj.CoreCompileInputs.cache
-C:\Users\Lenovo\Desktop\Verklegt 2\BookCave\obj\Debug\netcoreapp2.0\BookCave.AssemblyInfoInputs.cache
-C:\Users\Lenovo\Desktop\Verklegt 2\BookCave\obj\Debug\netcoreapp2.0\BookCave.AssemblyInfo.cs
-C:\Users\Lenovo\Desktop\Verklegt 2\BookCave\obj\Debug\netcoreapp2.0\BookCave.dll
-C:\Users\Lenovo\Desktop\Verklegt 2\BookCave\obj\Debug\netcoreapp2.0\BookCave.pdb
+C:/Users/Vigdis/Documents/Skoli/Vor 2018/verklegt2/BookCave/bin/Debug/netcoreapp2.0/BookCave.deps.json
+C:/Users/Vigdis/Documents/Skoli/Vor 2018/verklegt2/BookCave/bin/Debug/netcoreapp2.0/BookCave.runtimeconfig.json
+C:/Users/Vigdis/Documents/Skoli/Vor 2018/verklegt2/BookCave/bin/Debug/netcoreapp2.0/BookCave.runtimeconfig.dev.json
+C:/Users/Vigdis/Documents/Skoli/Vor 2018/verklegt2/BookCave/bin/Debug/netcoreapp2.0/BookCave.dll
+C:/Users/Vigdis/Documents/Skoli/Vor 2018/verklegt2/BookCave/bin/Debug/netcoreapp2.0/BookCave.pdb
+C:/Users/Vigdis/Documents/Skoli/Vor 2018/verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.csproj.CoreCompileInputs.cache
+C:/Users/Vigdis/Documents/Skoli/Vor 2018/verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.AssemblyInfoInputs.cache
+C:/Users/Vigdis/Documents/Skoli/Vor 2018/verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.AssemblyInfo.cs
+C:/Users/Vigdis/Documents/Skoli/Vor 2018/verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.dll
+C:/Users/Vigdis/Documents/Skoli/Vor 2018/verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.pdb
+C:/Users/Lenovo/Desktop/Verklegt 2/BookCave/bin/Debug/netcoreapp2.0/BookCave.deps.json
+C:/Users/Lenovo/Desktop/Verklegt 2/BookCave/bin/Debug/netcoreapp2.0/BookCave.runtimeconfig.json
+C:/Users/Lenovo/Desktop/Verklegt 2/BookCave/bin/Debug/netcoreapp2.0/BookCave.runtimeconfig.dev.json
+C:/Users/Lenovo/Desktop/Verklegt 2/BookCave/bin/Debug/netcoreapp2.0/BookCave.dll
+C:/Users/Lenovo/Desktop/Verklegt 2/BookCave/bin/Debug/netcoreapp2.0/BookCave.pdb
+C:/Users/Lenovo/Desktop/Verklegt 2/BookCave/obj/Debug/netcoreapp2.0/BookCave.csproj.CoreCompileInputs.cache
+C:/Users/Lenovo/Desktop/Verklegt 2/BookCave/obj/Debug/netcoreapp2.0/BookCave.AssemblyInfoInputs.cache
+C:/Users/Lenovo/Desktop/Verklegt 2/BookCave/obj/Debug/netcoreapp2.0/BookCave.AssemblyInfo.cs
+C:/Users/Lenovo/Desktop/Verklegt 2/BookCave/obj/Debug/netcoreapp2.0/BookCave.dll
+C:/Users/Lenovo/Desktop/Verklegt 2/BookCave/obj/Debug/netcoreapp2.0/BookCave.pdb
+/Users/thorgeir/Documents/Verklegt2/BookCave/bin/Debug/netcoreapp2.0/BookCave.deps.json
+/Users/thorgeir/Documents/Verklegt2/BookCave/bin/Debug/netcoreapp2.0/BookCave.runtimeconfig.json
+/Users/thorgeir/Documents/Verklegt2/BookCave/bin/Debug/netcoreapp2.0/BookCave.runtimeconfig.dev.json
+/Users/thorgeir/Documents/Verklegt2/BookCave/bin/Debug/netcoreapp2.0/BookCave.dll
+/Users/thorgeir/Documents/Verklegt2/BookCave/bin/Debug/netcoreapp2.0/BookCave.pdb
+/Users/thorgeir/Documents/Verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.csproj.CoreCompileInputs.cache
+/Users/thorgeir/Documents/Verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.AssemblyInfoInputs.cache
+/Users/thorgeir/Documents/Verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.AssemblyInfo.cs
+/Users/thorgeir/Documents/Verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.dll
+/Users/thorgeir/Documents/Verklegt2/BookCave/obj/Debug/netcoreapp2.0/BookCave.pdb
