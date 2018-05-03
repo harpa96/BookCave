@@ -1,4 +1,10 @@
-obj/
+*.cache
+*.json
+*.dll
+*.swp
+bin/*
+obj/*
+bin/Debug/netcoreapp2.0/*
 ###################
 # compiled source #
 ###################
