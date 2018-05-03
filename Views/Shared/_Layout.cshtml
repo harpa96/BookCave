@@ -36,7 +36,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
         </button>
-        <a class="navbar-brand" href="#">Logo</a>
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             
@@ -73,69 +73,8 @@
         </div>
     </div>
     </nav>
-    <!--
-    <nav class="navbar navbar-inverse navbar-fixed-top header-color">
-        
-        <div class="container">      
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>  
-            </div>
-            
-            <div class="container-fluid">
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a>
-                <ul class="nav navbar-nav">
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Efnisflokkar <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a asp-controller="Book" asp-action="Category">Metsölulistinn</a></li>
-                            <li><a asp-controller="Book" asp-action="Category">Klassískar</a></li>
-                            <li><a asp-controller="Book" asp-action="Category">Spenna</a></li>
-                            <li><a asp-controller="Book" asp-action="Category">Gaman</a></li>
-                            <li><a asp-controller="Book" asp-action="Category">Ævintýri</a></li>
-                            <li><a asp-controller="Book" asp-action="Category">Barna og unglingabækur</a></li>
-                            <li><a asp-controller="Book" asp-action="Category">Námsbækur og ljóð</a></li>
-                        </ul>
-                    </li>
-                <li><a asp-controller="Home" asp-action="SpecialOrd">Sérpöntun</a></li>
-                <li><a asp-controller="Home" asp-action="Donate">Ég vil styrkja!</a></li>
-                <li><a asp-controller="Home" asp-action="About">Um Okkur</a></li>
-                <div class="header-right">
-                <form class="navbar-form navbar-left" action="/action_page.php">
-                    <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </div>
-                    </div>
-                </form>
-                <a asp-area="" asp-controller="Home" asp-action="Cart"><img src="~/images/cart.png" alt="cart"/></a>
-                <a asp-area="" asp-controller="Home" asp-action="Login"><img src="~/images/user.png" alt="user"/></a>
-                </div>
-                </ul>
-            </div>
-            </nav>
-                        
-                 <!--   <li class="dropdown">
-                        <a class="cat-btn">Efnisflokkar</a>
-                        <div class="drop-cate">
-                            <a asp-controller="Book" asp-action="Category">Metsölulistinn</a>
-                            <a asp-controller="Book" asp-action="Category">Klassískar</a>
-                        </div>
-                    </li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="SpecialOrd" class="navopt">Sérpantanir</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Donate" class="navopt">Ég vil styrkja!</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About" class="navopt">Um okkur</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>-->
    
+          
  
     <div class="container body-content">
         @RenderBody()
@@ -151,14 +90,7 @@
                 <button type="button" class="btn btn-danger">Skrá</button>
             </form>
             </footer>
-        <!--
-        <footer>
-            <p>contactus&commat;bookcave.is</p>
-            <p>sími: 581-2345</p>
-            <p>kennitala: 210196-3079</p>
-            <p>Fylgdu okkur!</p>
-            <!--<p>&copy; 2018 - BookCave</p>-->
-        <!--</footer> -->
+        
     </div>
 
     <environment include="Development">
