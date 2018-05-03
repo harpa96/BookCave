@@ -23,8 +23,6 @@ namespace BookCave.Services
                             Id = b.Id, 
                             Name = b.Name
                         }).ToList();
-            
-            
             return books;
         }
 
