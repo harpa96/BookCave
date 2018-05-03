@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using BookCave.Models.EntityModels;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,5 +22,16 @@ namespace BookCave
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .Build();
+
+        public static void SeedData()
+        {
+            var db = new List<Book>();
+
+            var initialBooks = new List<Book>()
+            {
+
+            };
+        }
+    
     }
 }
