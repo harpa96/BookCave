@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using BookCave.Data;
 using BookCave.Models.EntityModels;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -15,7 +16,9 @@ namespace BookCave
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            var host = BuildWebHost(args);
+            SeedData();
+            host.Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
@@ -25,13 +28,23 @@ namespace BookCave
 
         public static void SeedData()
         {
-            var db = new List<Book>();
+            var db = new DataContext();
 
-            var initialBooks = new List<Book>()
+            if(!db.Books.Any())
             {
+                var initialBooks = new List<Book>()
+                {
+                    new Book{Name = "10 ráð til að hætta að drepa fólk og byrja að vaska upp"},
+                    new Book{Name = "Týnda systirin"},
+                    new Book{Name = "Gatið"},
+                    new Book{Name = "Blóðengill"},
+                    new Book{Name = "Átta gata Buick"},
+                    new Book{Name = "El Príncipe de la Niebla"}
+                };
 
-            };
+                db.AddRange(initialBooks);
+                db.SaveChanges();
+            }
         }
-    
     }
 }
