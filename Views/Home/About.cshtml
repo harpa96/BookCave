@@ -1,7 +1,39 @@
-﻿@{
-    ViewData["Title"] = "Um Okkur";
-}
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+        <ul class="nav navbar-nav">
+            <div class="about-button">
+                <li><a class="btn btn-info" role="button" asp-controller="Home" asp-action="OurTeam">Teymið okkar</a></li>
+            </div>
+            <div class="about-button">
+                <li><a class="btn btn-info" role="button" asp-controller="Home" asp-action="Terms">Skilmálar og skilyrði</a></li>
+            </div>  
+        </ul>
+    </div>
+    <div class="col-sm-8 text-left"> 
+      @{
+            ViewData["Title"] = "Um okkur";
+        }
+        <h2>@ViewData["Title"]</h2>
+      <p>Bóksalan BookCave hóf störf í apríl 2018, og hefur sótt í sig veðrið síðan þá.Tíminn sem fólk fór í bókabúðir til að leita sér að tiltekinni bók
+         er að líða undir lok og tæknin er að taka yfir. Bókamarkaðurinn á Íslandi þarfnast nútímavæðingar og er það markmið okkar. BookCave mun mæta 
+         kröfum notendahópa með því að einfalda innkaup á bókum, hvort sem það er í hagnýtum tilgangi eða til yndislesturs. Okkar markmið er að auka jákvætt 
+         viðhorf til nútímavæðingar með því hvetja til þess að fólk nýti sér rafræn viðskipti.</p>
+      <hr>
+      <h3>Hafðu samband!</h3>
+      <p>Fyrir frekari ábendingar og/eða fyrirspurnir er hægt að hafa samband í síma 581-2345 eða með því að senda tölvupóst á netfangið contactus&commat;bookcave.is. </p>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>Use this area to provide additional information.</p>
+
+
+
