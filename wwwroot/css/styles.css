@@ -49,4 +49,7 @@ footer p
     margin: 10px;
 }
 
-
+.specialOrd-div
+{
+    border: black, solid, 2px;
+}
