@@ -1,0 +1,54 @@
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+        <ul class="nav navbar-nav">
+            <div class="about-button">
+                <li><a class="btn btn-info" role="button" asp-controller="Home" asp-action="About">Um okkur</a></li>
+            </div>
+            <div class="about-button">
+                <li><a class="btn btn-info" role="button" asp-controller="Home" asp-action="OurTeam">Teymið okkar</a></li>
+            </div>  
+        </ul>
+    </div>
+    <div class="col-sm-8 text-left"> 
+      @{
+            ViewData["Title"] = "Skilmálar og skilyrði";
+        }
+        <h2>@ViewData["Title"]</h2>
+        <h3>Almennt</h3>
+        <p>BookCave áskilur sér rétt til að hætta við pantanir, t.d. vegna rangra verðupplýsinga og einnig að breyta verðum eða hætta að bjóða upp á vörutegundir fyrirvaralaust. 
+          Þetta á einnig við ef um villur í reiknireglum vefverslunnar eiga sér stað.</p>
+
+        <h3>Afhending vöru</h3>
+        <p>(SKOÐA TEXTA FYRIR SÉRPÖNTUN) Fyrirtækjaþjónusta Pennans dreifir vörum til viðskiptavina sinna á Höfuðborgarsvæðinu. Öllum öðrum pöntunum er dreift af Póstinum. Sendingarkostnaður er reiknaður út 
+            frá gjaldskrá Póstsins með tilliti til áfangastaðar og fjölda vara, stærð þeirra og þyngd. Reynt er eftir fremsta megni að afgreiða öll kaup næsta virka dag eftir pöntun. 
+            Sé varan ekki til á lager mun starfsmaður hafa samband og tilkynna um áætlaðan afhendingartíma vörunnar. Gilda afhendingar-, ábyrgðar- og flutningsskilmálar Íslandspósts um afhendingu vöru frá Póstinum. 
+            Skilmálar Póstsins eru aðgengilegir á vefsíðu fyrirtækisins. Penninn.is ber samkvæmt þessu enga ábyrgð á tjóni sem kann að verða á vöru í flutningi Póstsins. Verði vara fyrir tjóni frá því að að hún er send frá 
+            Pennanum Eymundsson og þar til hún berst viðtakanda er tjónið á ábyrgð flutningsaðila.</p>
+
+        <h3>Skilafrestur</h3>
+        <p>Kaupandi hefur 14 daga til að hætta við kaupin að því tilskildu að hann hafi ekki notað vöruna, henni sé skilað í góðu lagi í óuppteknum upprunalegum umbúðum. Ef vara er innsigluð má ekki rjúfa innsiglið. 
+            Fresturinn byrjar að líða þegar varan er afhent skráðum viðtakanda. Kvittun fyrir vörukaupunum þarf að fylgja með. Hér má lesa nánari upplýsingar um skilareglur.</p>
+
+        <h3>Gölluð vara</h3>
+        <p>Sé vara gölluð er viðskiptavinum boðin ný vara í staðinn og greiðum við allan kostnað sem gæti komið upp við sendingu.</p>
+       
+        <h3>Trúnaður</h3>
+        <p>Seljandi heitir kaupanda fullum trúnaði um allar þær upplýsingar sem kaupandi gefur upp í tengslum við viðskiptin. Upplýsingar frá kaupanda verða ekki afhentar þriðja aðila undir neinum kringumstæðum.</p>
+       
+        <h3>Varnarþing</h3>
+        <p>Þessi samningur er í samræmi við íslensk lög. Rísi mál vegna hans, skal það rekið fyrir íslenskum dómstóli. Um skilmála þessa gilda ákvæði laga um húsgöngu- og fjarsölu nr. 96/1992, ákvæði laga um lausafjárkaup nr. 50/2000 
+            eftir því sem við getur átt og ákvæði laga um neytendakaup nr. 48/2003. Allir frestir sem nefndir eru í lögum nr. 96/1992 byrja að líða móttaka vöru á sér stað.</p>
+      <hr>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
+</div>
+                    
