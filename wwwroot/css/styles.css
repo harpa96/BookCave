@@ -116,12 +116,8 @@ span.psw {
     font-weight: bold;
 }
 
-<<<<<<< HEAD
-.specialOrd-div
-{
-    border: black, solid, 2px;
-}
-=======
+
+
 .close:hover,
 .close:focus {
     color: red;
@@ -154,5 +150,3 @@ span.psw {
        width: 100%;
     }
 }
-
->>>>>>> 972ff07660340ad4767b3e5818a054bef8becf70
