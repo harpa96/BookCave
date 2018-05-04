@@ -34,12 +34,12 @@ namespace BookCave
             {
                 var initialBooks = new List<Book>()
                 {
-                    new Book{Name = "10 ráð til að hætta að drepa fólk og byrja að vaska upp"},
-                    new Book{Name = "Týnda systirin"},
-                    new Book{Name = "Gatið"},
-                    new Book{Name = "Blóðengill"},
-                    new Book{Name = "Átta gata Buick"},
-                    new Book{Name = "El Príncipe de la Niebla"}
+                    new Book{ Name = "10 ráð til að hætta að drepa fólk og byrja að vaska upp"},
+                    new Book{ Name = "Týnda systirin"},
+                    new Book{ Name = "Gatið"},
+                    new Book{ Name = "Blóðengill"},
+                    new Book{ Name = "Átta gata Buick"},
+                    new Book{ Name = "El Príncipe de la Niebla"}
                 };
 
                 db.AddRange(initialBooks);
