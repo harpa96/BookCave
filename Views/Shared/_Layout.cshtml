@@ -42,97 +42,68 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             
-        <ul class="nav navbar-nav">
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Efnisflokkar <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a asp-controller="Book" asp-action="Category">Metsölulistinn</a></li>
-                            <li><a asp-controller="Book" asp-action="Category">Klassískar</a></li>
-                            <hr/>
-                            <li><a asp-controller="Book" asp-action="Category">Spenna</a></li>
-                            <li><a asp-controller="Book" asp-action="Category">Gaman</a></li>
-                            <li><a asp-controller="Book" asp-action="Category">Ævintýri</a></li>
-                            <li><a asp-controller="Book" asp-action="Category">Barna og unglingabækur</a></li>
-                            <li><a asp-controller="Book" asp-action="Category">Námsbækur</a></li>
-                            <li><a asp-controller="Book" asp-action="Category">Ljóð</a></li>
-                        </ul>
-            </li>
-            <li><a asp-controller="Home" asp-action="SpecialOrd">Sérpöntun</a></li>
-            <li><a asp-controller="Home" asp-action="Donate">Ég vil styrkja!</a></li>
-            <li><a asp-controller="Home" asp-action="About">Um Okkur</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <form class="navbar-form navbar-left" action="/action_page.php">
-                    <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
+            <ul class="nav navbar-nav">
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Efnisflokkar <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-controller="Book" asp-action="Category">Metsölulistinn</a></li>
+                                <li><a asp-controller="Book" asp-action="Category">Klassískar</a></li>
+                                <hr/>
+                                <li><a asp-controller="Book" asp-action="Category">Spenna</a></li>
+                                <li><a asp-controller="Book" asp-action="Category">Gaman</a></li>
+                                <li><a asp-controller="Book" asp-action="Category">Ævintýri</a></li>
+                                <li><a asp-controller="Book" asp-action="Category">Barna og unglingabækur</a></li>
+                                <li><a asp-controller="Book" asp-action="Category">Námsbækur</a></li>
+                                <li><a asp-controller="Book" asp-action="Category">Ljóð</a></li>
+                            </ul>
+                </li>
+                <li><a asp-controller="Home" asp-action="SpecialOrd">Sérpöntun</a></li>
+                <li><a asp-controller="Home" asp-action="Donate">Ég vil styrkja!</a></li>
+                <li><a asp-controller="Home" asp-action="About">Um Okkur</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <form class="navbar-form navbar-left" action="/action_page.php">
+                        <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+                        </div>
+                    </form>
+                
+                <li><a asp-area="" asp-controller="Home" asp-action="Cart"><span class="glyphicon glyphicon-shopping-cart">Karfa</a></li>-->
+                <li><a onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><span class="glyphicon glyphicon-user"></span>Skráðu þig inn</button>
+
+                    <div id="id01" class="modal">
+                        <form class="modal-content animate" action="/action_page.php">
+                            <div class="imgcontainer">
+                            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                            <img src="~/images/login.png" alt="Avatar" class="avatar">
+                            </div>
+
+                            <div class="container">
+                            <label for="uname"><b>Notananafn</b></label>
+                            <input type="text" placeholder="Notananafn:" name="uname" required>
+
+                            <label for="psw"><b>Lykilorð</b></label>
+                            <input type="password" placeholder="Lykilorð" name="psw" required>
+                                
+                            <button type="submit">Skrá inn</button>
+                            <label>
+                                <input type="checkbox" checked="checked" name="remember"> Muna eftir mér
+                            </label>
+                            </div>
+
+                            <div class="container" style="background-color:#f1f1f1">
+                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Loka</button>
+                            <span class="psw">Gleymt <a href="#">lykilorð?</a></span>
+                            </div>
+                        </form>
                     </div>
-                    </div>
-                </form>
-            <li><a onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><span class="glyphicon glyphicon-shopping-cart"></span>Karfa</button>
-            <!--<li><a asp-area="" asp-controller="Home" asp-action="Cart"><span class="glyphicon glyphicon-shopping-cart">Karfa</a></li>-->
-            <li><a onclick="document.getElementById('id02').style.display='block'" style="width:auto;"><span class="glyphicon glyphicon-user"></span>Skráðu þig inn</button>
-
-<div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="/action_page.php">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="~/images/login.png" alt="Avatar" class="avatar">
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Notananafn</b></label>
-      <input type="text" placeholder="Notandanafn:" name="uname" required/>
-
-      <label for="psw"><b>Lykilorð</b></label>
-      <input type="password" placeholder="Lykilorð:" name="psw" required/>
-        
-      <button type="Skrá inn">Skrá inn</button>
-      <label>
-        <input type="checkbox" checked="checked" name="Muna eftir mér"> Remember me
-      </label>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Loka</button>
-      <span class="psw">Gleymt <a href="#">lykilorð?</a></span>
-    </div>
-  </form>
-</div>
-</li>
-<div id="id02" class="modal">
-  
-  <form class="modal-content animate" action="/action_page.php">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="~/images/login.png" alt="Avatar" class="avatar">
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Notananafn</b></label>
-      <input type="text" placeholder="Notananafn:" name="uname" required>
-
-      <label for="psw"><b>Lykilorð</b></label>
-      <input type="password" placeholder="Lykilorð" name="psw" required>
-        
-      <button type="submit">Skrá inn</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Muna eftir mér
-      </label>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Loka</button>
-      <span class="psw">Gleymt <a href="#">lykilorð?</a></span>
-    </div>
-  </form>
-</div>
-</li>
-          <!--  <li><a asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-user"></span>Skráðu þig inn</a></li> -->
-        </ul>
+                </li>
+            <!--  <li><a asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-user"></span>Skráðu þig inn</a></li> -->
+            </ul>
         </div>
     </div>
     </nav>
@@ -178,6 +149,8 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> <!--added this for cart -harpa -->
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> <!--added this for cart -harpa -->
     </environment>
 
     @RenderSection("Scripts", required: false)

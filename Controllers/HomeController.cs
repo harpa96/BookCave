@@ -57,5 +57,9 @@ namespace BookCave.RecordStore.HomeController
         {
             return View();
         }
+         public IActionResult Pay() 
+        {
+            return View();
+        }
     }
 }
