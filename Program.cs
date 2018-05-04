@@ -45,6 +45,17 @@ namespace BookCave
                 db.AddRange(initialBooks);
                 db.SaveChanges();
             }
+
+            if(!db.Authors.Any())
+            {
+                var initialAuthors = new List<Author>()
+                {
+                    new Author{ Name = "Hallgrímur Helgason"}
+                };
+
+                db.AddRange(initialAuthors);
+                db.SaveChanges();
+            }
         }
     }
 }

@@ -25,5 +25,17 @@ namespace BookCave.Services
                         }).ToList();
             return books;
         }
+ 
+        public List<AuthorListViewModel> GetAllAuthors()
+        {
+            var authors = (from a in db.Authors
+                        select new AuthorListViewModel
+                        {
+                            Id = a.Id, 
+                            Name = a.Name
+                        }).ToList();
+            return authors;
+        }
+
     }
 }
