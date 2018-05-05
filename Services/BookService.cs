@@ -39,5 +39,32 @@ namespace BookCave.Services
             return authors;
         }
 
+        public List<BookListViewModel> SearchedBooks(string searchInput)
+        {
+            if (searchInput != null)
+            {
+                var searchedBooks = (from b in db.Books
+                                where b.Name.ToLower().Contains(searchInput.ToLower())
+                                select new BookListViewModel
+                                {
+                                    Id = b.Id,
+                                    Name = b.Name,
+                                    Image = b.Image,
+                                    Price = b.Price
+                                }).ToList();
+                return searchedBooks;
+            }
+
+            var books = (from b in db.Books
+                         select new BookListViewModel
+                         {
+                            Id = b.Id, 
+                            Name = b.Name,
+                            Image = b.Image,
+                            Price = b.Price
+                         }).ToList();
+            return books;
+        }
+
     }
 }
