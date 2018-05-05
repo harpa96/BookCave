@@ -25,11 +25,8 @@ namespace BookCave.Services
                             Name = b.Name,
                             Image = b.Image,
                             Price = b.Price
-<<<<<<< HEAD
                         }).Take(6).ToList();
-=======
-                        }).ToList();
->>>>>>> bc4d6dfdf9a25c9137e21d90b4984f1ffbd8baf1
+                     
             return books;
         }
  
