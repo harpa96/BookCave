@@ -25,7 +25,7 @@ namespace BookCave.Services
                             Name = b.Name,
                             Image = b.Image,
                             Price = b.Price
-                        }).Take(6).ToList();
+                        }).Take(12).ToList();
                      
             return books;
         }
