@@ -1,0 +1,43 @@
+.thecontainer
+{
+    background-color: aquamarine;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#filters
+{
+    position: sticky;
+    border: 1px solid pink;
+    width: 20%;
+}
+
+.col-md-3
+{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    right: 0;
+    width: 80%;
+    border: 1px solid black;
+    float: right;
+}
+
+.thumbnail
+{
+    width: 250px;
+}
+
+.books
+{
+    display: flex;
+}
+
+img 
+{
+    height: 150px;
+    width: 120px;
+}
+
