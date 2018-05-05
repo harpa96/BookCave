@@ -25,6 +25,5 @@ namespace BookCave.Services
                         }).ToList();
             return authors;
         }
-
     }
 }

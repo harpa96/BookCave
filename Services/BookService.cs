@@ -21,7 +21,9 @@ namespace BookCave.Services
                         select new BookListViewModel
                         {
                             Id = b.Id, 
-                            Name = b.Name
+                            Name = b.Name,
+                            Image = b.Image,
+                            Price = b.Price
                         }).ToList();
             return books;
         }
