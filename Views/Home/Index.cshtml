@@ -16,6 +16,19 @@
                     <div class="carousel-inner">
                         <div class="item active">
                             <div class="row">
+                                @foreach (var book in Model)
+                                {
+                                    <div class="col-xs-2">
+                                    <img src=@book.Image class="img-responsive">
+                                    <div class="carousel-caption">
+                                        <h3>@book.Name</h3>
+                                        <p>@book.Price</p>
+                                    </div>
+                                    </div>
+                                }
+                            </div>
+                                
+                                <!--
                                 <div class="col-xs-2">
                                     <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
                                     <div class="carousel-caption">
@@ -103,55 +116,9 @@
                                         <h3>Koala</h3>
                                         <p>Koala Image Description</p>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Tulips</h3>
-                                        <p>Tulips Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Chrysanthemum</h3>
-                                        <p>Chrysanthemum Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                            </div>
+                                </div>-->
+                            
+                            
                         </div>
                     </div>
 
@@ -336,12 +303,7 @@
             </div>
         </div>
     </div>
-    <!--
-    <h3>Vinsælar</h3>
-    @foreach(var book in @Model)
-    {
-        <p>@book.Name</p>
-    }-->
+    
 </div>
 
 

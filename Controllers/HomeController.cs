@@ -61,5 +61,10 @@ namespace BookCave.RecordStore.HomeController
         {
             return View();
         }
+
+         public IActionResult Confirmation() 
+        {
+            return View();
+        }
     }
 }
