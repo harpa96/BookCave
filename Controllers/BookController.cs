@@ -26,6 +26,12 @@ namespace BookCave.RecordStore.HomeController
 
         public IActionResult Category()
         {
+            var books = _bookService.GetAllBooks();
+            return View(books);
+        }
+
+        public IActionResult Details()
+        {
             return View();
         }
 
