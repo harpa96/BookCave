@@ -23,11 +23,16 @@ namespace BookCave.RecordStore.HomeController
             return View(books);
         }
 
-
         public IActionResult Category()
         {
             var books = _bookService.GetAllBooks();
             return View(books);
+        }
+
+        public IActionResult Category(string searchInput)
+        {
+            var searchedBooks = _bookService.SearchedBooks(searchInput);
+            return View(searchedBooks);
         }
 
         public IActionResult Details()

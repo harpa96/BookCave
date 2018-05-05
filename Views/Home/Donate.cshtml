@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="~/css/donate.css">
-
+<div class="container-fluid text-center">    
+  <div class="row content">
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -51,13 +51,15 @@
 
 <h1>Þitt framlag skiptir máli!</h1>
 <form>
+    <div class="form-group col-md-6"> 
     <label for="name">Fullt nafn:</label>
     <input style="text" id="name">
-    </br>
+    </div>
 
+    <div class="form-group col-md-6"> 
     <label for="mail">Netfang:</label>
     <input style="email" id="mail">
-    </br>
+    </div>
 
     <label for="ammount">Upphæð:</label>
     <select>
@@ -71,5 +73,5 @@
     <input type="checkbox" name="terms" value="terms"> Ég samþykki skilmála
     <input type="submit" value="Greiða fyrir framlag">
 </form>
-
-<script src="~/js/donate.js"></script>
+</div>
+</div>
