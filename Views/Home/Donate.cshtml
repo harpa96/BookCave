@@ -1,77 +1,78 @@
-<div class="container-fluid text-center">    
-  <div class="row content">
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="~/images/schoolkid.jpg" alt="School kid" width="1200" height="700"/>
-        <div class="carousel-caption">
-          <h3>Við viljum að allir fái tækifæri til þess að lesa</h3>
-          <p>Um allan heim eru milljónir manns sem geta ekki nýtt sér hæfileika sína til fulls að sökum lélegs aðgengis að 
-            lesefni. Rannsóknir hafa leitt í ljós að gott aðgengi að bókum dregur gríðarlega úr fátækt og veitir 
-            einstaklingum möguleika á góðri vinnu, góðum launum og betri heilsu barna.</p>
-        </div>      
-      </div>
-
-      <div class="item">
-        <img src="~/images/group-of-kids.jpg" alt="Happy kids" width="1200" height="700"/>
-        <div class="carousel-caption">
-          <h3>Betri heilsa barna</h3>
-          <p>Börn í þróunarlöndum, sem eiga læsa móður, eru helmingi líklegri að lifa lengur en til 5 ára aldurs.</p>
-        </div>      
-      </div>
-    
-      <div class="item">
-        <img src="/images/kid-smiling.jpg" alt="Kids with book" width="1200" height="700"/>
-        <div class="carousel-caption"/>
-          <h3>Bjartari framtíð</h3>
-          <p>Við vinnum með mörgum útgáfufyrirtækjum sem styðja við bakið á rúmlega 3.000 bókasöfnum víða í Afríku og Asíu með því að senda þeim vel valdar bækur.
-              Þannig tryggjum við betri framtíð og lífsgæði fyrir þá sem minna mega sín.</p>
-        </div>      
-      </div>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="~/images/schoolkid.jpg" alt="School kid" width="1200" height="700"/>
+      <div class="carousel-caption">
+        <h3>Við viljum að allir fái tækifæri til þess að lesa</h3>
+        <p>Um allan heim eru milljónir manns sem geta ekki nýtt sér hæfileika sína til fulls að sökum lélegs aðgengis að 
+          lesefni. Rannsóknir hafa leitt í ljós að gott aðgengi að bókum dregur gríðarlega úr fátækt og veitir 
+          einstaklingum möguleika á góðri vinnu, góðum launum og betri heilsu barna.</p>
+      </div>      
     </div>
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+    <div class="item">
+      <img src="~/images/group-of-kids.jpg" alt="Happy kids" width="1200" height="700"/>
+      <div class="carousel-caption">
+        <h3>Betri heilsa barna</h3>
+        <p>Börn í þróunarlöndum, sem eiga læsa móður, eru helmingi líklegri að lifa lengur en til 5 ára aldurs.</p>
+      </div>      
+    </div>
+  
+    <div class="item">
+      <img src="/images/kid-smiling.jpg" alt="Kids with book" width="1200" height="700"/>
+      <div class="carousel-caption"/>
+        <h3>Bjartari framtíð</h3>
+        <p>Við vinnum með mörgum útgáfufyrirtækjum sem styðja við bakið á rúmlega 3.000 bókasöfnum víða í Afríku og Asíu með því að senda þeim vel valdar bækur.
+            Þannig tryggjum við betri framtíð og lífsgæði fyrir þá sem minna mega sín.</p>
+      </div>      
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<div class="container-fluid text-center">  
+<h1 id="title">Þitt framlag skiptir máli!</h1>
 </div>
 
-<h1>Þitt framlag skiptir máli!</h1>
 <form>
-    <div class="form-group col-md-6"> 
-    <label for="name">Fullt nafn:</label>
-    <input style="text" id="name">
-    </div>
-
-    <div class="form-group col-md-6"> 
-    <label for="mail">Netfang:</label>
-    <input style="email" id="mail">
-    </div>
-
-    <label for="ammount">Upphæð:</label>
-    <select>
-        <option>0 kr.</option>
-        <option>1.000 kr.</option>
-        <option>2.000 kr.</option>
-        <option>5.000 kr.</option>
-        <option>10.000 kr.</option>
-    </select>
-    </br>
-    <input type="checkbox" name="terms" value="terms"> Ég samþykki skilmála
-    <input type="submit" value="Greiða fyrir framlag">
+  <div class="form-group">
+    <label for="name">Fullt nafn</label>
+    <input type="text" class="form-control" id="nameInput" required/>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Netfang</label>
+    <input type="email" class="form-control" id="emailInput" required/>
+  </div>
+  <label for="ammount">Upphæð:</label>
+  <select class="form-control" id="ammount">
+    <option>0 kr.</option>
+    <option>1.000 kr.</option>
+    <option>2.000 kr.</option>
+    <option>5.000 kr.</option>
+    <option>10.000 kr.</option>
+    <option>15.000 kr.</option>
+    <option>25.000 kr.</option>
+    <option>50.000 kr.</option>
+  </select>
+  <div class="form-check">
+    <input type="checkbox" class="terms-check" id="terms-check"/>
+    <label class="form-check-label" for="terms-check">Ég samþykki skilmála</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Greiða fyrir framlag</button>
 </form>
-</div>
-</div>
