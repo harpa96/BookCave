@@ -17,10 +17,17 @@ namespace BookCave.RecordStore.HomeController
         {
             _bookService = new BookService();
         }
+        
         public IActionResult Index()
         {
             var books = _bookService.GetAllBooks();
             return View(books);
+        }
+
+        public IActionResult SearchBar(string searchInput)
+        {
+            var searchedBooks = _bookService.SearchedBooks(searchInput);
+            return View(searchedBooks);
         }
         
         public IActionResult Cart()

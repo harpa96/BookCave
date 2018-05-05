@@ -25,7 +25,7 @@ namespace BookCave.Services
                             Name = b.Name,
                             Image = b.Image,
                             Price = b.Price
-                        }).Take(6).ToList();
+                        }).Take(12).ToList();
                      
             return books;
         }
@@ -43,10 +43,12 @@ namespace BookCave.Services
 
         public List<BookListViewModel> SearchedBooks(string searchInput)
         {
+
             if (searchInput != null)
             {
                 var searchedBooks = (from b in db.Books
-                                where b.Name.ToLower().Contains(searchInput.ToLower())
+                                join a in db.Authors on b.AuthorId equals a.Id
+                                where b.Name.ToLower().Contains(searchInput.ToLower()) || a.Name.ToLower().Contains(searchInput.ToLower())
                                 select new BookListViewModel
                                 {
                                     Id = b.Id,
