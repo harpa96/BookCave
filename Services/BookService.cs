@@ -18,13 +18,15 @@ namespace BookCave.Services
         public List<BookListViewModel> GetAllBooks()
         {
             var books = (from b in db.Books
+                        orderby b.Price descending
                         select new BookListViewModel
                         {
                             Id = b.Id, 
                             Name = b.Name,
                             Image = b.Image,
                             Price = b.Price
-                        }).ToList();
+                        }).Take(6).ToList();
+                     
             return books;
         }
  
