@@ -1,6 +1,6 @@
 @model List<BookCave.Models.ViewModels.BookListViewModel>
-<div class="thecontainer">
-    <div id="filters">
+<div class="row">
+    <div class="col-sm-3">
         <form>
             <p>Flokkar:</p>
             <div class="form-check form-check">
@@ -61,11 +61,10 @@
     </div>
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-9 col-sm-12">
                     @foreach(var book in @Model)
                     {
-                        <div class="books">
+                        <div class="col-xs-4">
                         <span class="thumbnail">
                             <img src="@book.Image" alt="cover">
                             <h4>@book.Name</h4>
@@ -84,13 +83,12 @@
                                 <div class="col-md-6 col-sm-6">
                                     <button class="btn btn-success right">Setja í körfu</button>
                                 </div>
-                                
                             </div>
                         </span>
                         </div>
-                    }  
+                    }
+                </div>  
             </div>
-        </div>
     </div>
 </div>
     
