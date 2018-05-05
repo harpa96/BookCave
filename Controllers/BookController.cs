@@ -34,5 +34,11 @@ namespace BookCave.RecordStore.HomeController
             return View();
         }
 
+        public IActionResult Filter(string filterChoice)
+        {
+            var filteredBooks = _bookService.SearchedBooks(filterChoice);
+            return View(filteredBooks);
+        }
+
     }
 }

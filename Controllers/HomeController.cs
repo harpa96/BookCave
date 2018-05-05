@@ -29,6 +29,7 @@ namespace BookCave.RecordStore.HomeController
             var searchedBooks = _bookService.SearchedBooks(searchInput);
             return View(searchedBooks);
         }
+
         
         public IActionResult Cart()
         {

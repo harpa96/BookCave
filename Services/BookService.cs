@@ -70,5 +70,22 @@ namespace BookCave.Services
             return books;
         }
 
+        public List<BookListViewModel> FilterBooks(string filterChoice)
+        {
+
+           
+                var filteredBooks = (from b in db.Books
+                                join a in db.Authors on b.AuthorId equals a.Id
+                                where b.Genre.ToLower().Contains(filterChoice.ToLower()) || b.Language.ToLower().Contains(filterChoice.ToLower())
+                                select new BookListViewModel
+                                {
+                                    Id = b.Id,
+                                    Name = b.Name,
+                                    Image = b.Image,
+                                    Price = b.Price
+                                }).ToList();
+                return filteredBooks;
+
+        }
     }
 }
