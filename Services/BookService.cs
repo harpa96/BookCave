@@ -67,6 +67,23 @@ namespace BookCave.Services
             return books;
         }
 
+        public BookDetailsViewModel FindBookById (int? Id)
+        {
+            var book = (from b in db.Books
+                        where b.Id == Id
+                        select new BookDetailsViewModel
+                        {
+                            Id = b.Id, 
+                            Name = b.Name,
+                            Genre = b.Genre,
+                            Price = b.Price, 
+                            AuthorID = b.AuthorId, 
+                            Image = b.Image,
+                            Description = b.Description
+                        }).SingleOrDefault(); 
+            return book;
+        }
+
         public List<BookListViewModel> OrderBooks(string order)
         {
             if(order == "highest")
@@ -129,7 +146,9 @@ namespace BookCave.Services
                                     Id = b.Id,
                                     Name = b.Name,
                                     Image = b.Image,
-                                    Price = b.Price
+                                    Price = b.Price,
+                                    AuthorID = b.AuthorId,
+                                    Genre = b.Genre
                                 }).ToList();
                 return searchedBooks;
             }

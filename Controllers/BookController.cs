@@ -5,47 +5,46 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
 using BookCave.Services;
+using BookCave.Models.ViewModels;
 
 namespace BookCave.HomeController
 {
     public class BookController : Controller
     {
         private BookService _bookService;
-
+        private List<BookListViewModel> books;
         public BookController()
         {
             _bookService = new BookService();
+            books = _bookService.GetAllBooks();
         }
-        [HttpGet]
+        
         public IActionResult Category(string Id)
         {
-
-            var filteredBooks = _bookService.FilterCategories(Id);
-
+            books = _bookService.FilterCategories(Id);
+           
             if(Id == "allar")
             {
                 ViewBag.Genre = "Allar bækur";
             }
             else
             {
-                ViewBag.Genre = (filteredBooks[0].Genre).ToUpper();
+                ViewBag.Genre = (books[0].Genre).ToUpper();
             }
 
-            return View(filteredBooks);
+            return View(books);
         }
         
-        [HttpPost]
-        public IActionResult Category()
+        public IActionResult Details(int? Id)
         {
+            if(Id == null)
+            {
+                return View("NotFound");
+            }
             
-            
-            return RedirectToAction("Category");
-        }
+            var book = _bookService.FindBookById(Id);
 
-
-        public IActionResult Details()
-        {
-            return View();
+            return View(book);
         }
 
         public IActionResult Filter(string filterChoice)

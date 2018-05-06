@@ -65,24 +65,26 @@
             <h1>@ViewBag.Genre</h1>
             <div>
                 
-                <form method="POST">
+                <form asp-controller="Book" asp-action="Category">
                     <label>Raða eftir: 
-                        <select name="">
-
+                        <select class="custom-select" name="orderby">
+                            <option value="lowest">Ódýrasta verði</option>
+                            <option value="highest">Dýrasta verði</option>
+                            <option value="name">Nafni bókar</option>
                         </select>
                     </label>
-                    <a asp-controller="Book" asp-action="Category" class="btn btn-info">Raða</a>
+                    <a asp-controller="Book" asp-action="Order" class="btn btn-info">Raða</a>
                 </form>
-                
             </div>
-
+            <br/>
+            <br/>
             <div class="col-md-9 col-sm-9">
                     @foreach(var book in @Model)
                     {
                         <div class="col-xs-4 books">
                         <span class="thumbnail">
-                            <img src="@book.Image" alt="cover">
-                            <h4>@book.Name</h4>
+                            <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id"><img src="@book.Image" alt="cover"></a>
+                            <h4><a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">@book.Name</a></h4>
                             <div class="ratings">
                                 <span class="glyphicon glyphicon-star"></span>
                                 <span class="glyphicon glyphicon-star"></span>
@@ -96,7 +98,7 @@
                                     <p class="price">@book.Price kr.</p>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
-                                    <button asp-controller="Home" asp-action="Cart" class="btn btn-success right">Setja í körfu</button>
+                                    <a asp-controller="Home" asp-action="Cart" class="btn btn-success right">Setja í körfu</a>
                                 </div>
                             </div>
                         </span>
