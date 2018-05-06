@@ -50,8 +50,21 @@
             <input type="email" class="form-control" id="inputEmail"/>
         </div>
 
-        <h3>Upplýsingar um bók</h3>
-        <ul id="bookList"></ul>
+        <h3>Upplýsingar um bók</h3>   
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Titill</th>
+                <th>Höfundur</th>
+                <th>ISBN</th>
+                <th>Magn</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
         <button onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Bæta við bók...</button>
         <div id="id03" class="modal">
         <form class="modal-content animate" action="/action_page.php">
@@ -59,7 +72,7 @@
             <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Hætta við</button>
             
             <div class="main-container">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-5">
                 <label for="title"><b>Titill</b></label>
                 <input type="text" name="title" required/>
                 </div>
@@ -69,17 +82,17 @@
                 <input type="text" name="author" required/>
                 </div>
                     
-                <div class="form-group col-md-3">  
+                <div class="form-group col-md-2">  
                 <label for="isbn"><b>ISBN (13 stafir)</b></label>
                 <input type="text" name="isbn"/>
                 </div>
 
                 <div class="form-group col-md-1">
-                <label for="ammount"><b>Fjöldi</b></label>
-                <input type="text" name="ammount" required/>
+                <label for="amount"><b>Magn</b></label>
+                <input type="text" name="amount" required/>
                 </div>
 
-                <button id="addNewBook" type="submit">Bæta við bók</button>
+                <button type="submit" id="btn-addBook">Bæta við bók</button>
             </div>
         </div>
             
