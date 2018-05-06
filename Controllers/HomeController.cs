@@ -17,11 +17,19 @@ namespace BookCave.RecordStore.HomeController
         {
             _bookService = new BookService();
         }
+        
         public IActionResult Index()
         {
             var books = _bookService.GetAllBooks();
             return View(books);
         }
+
+        public IActionResult SearchBar(string searchInput)
+        {
+            var searchedBooks = _bookService.SearchedBooks(searchInput);
+            return View(searchedBooks);
+        }
+
         
         public IActionResult Cart()
         {
@@ -58,6 +66,20 @@ namespace BookCave.RecordStore.HomeController
             return View();
         }
          public IActionResult Pay() 
+        {
+            return View();
+        }
+
+         public IActionResult Confirmation() 
+        {
+            return View();
+        }
+
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+        public IActionResult loggedUser()
         {
             return View();
         }

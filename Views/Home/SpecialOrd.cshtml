@@ -6,54 +6,102 @@
         @{
             ViewData["Title"] = "Sérpantanir";
         }
-        <h2>@ViewData["Title"]</h2>
-        <p>Texti um sérpantanir.....</p>
+        <h1>@ViewData["Title"]</h1>
+        <p>Við rekum umfangsmikla pöntunarþjónustu. Við bjóðum upp á mikið og breitt úrval af bókum en finnir þú ekki bókina sem þú leitar að, þá gerum við okkar 
+            besta til að hjálpa þér.</br>
+            Við viljum einnig þjóna þeim sem kaupa bækur í miklu magni hverju sinni. 
+            Hér getur þú pantað eins margar bækur og þér sýnist.</p>
+        <p> Fylltu inn upplýsingar hér að neðan um þá bók sem þú óskar eftir og legðu inn pöntun.</p>
+
+        <p>Sérpantaðar vörur greiðast við afhendingu. Þú færð tilkynningu í tölvupósti þegar varan hefur 
+            borist okkur og þá er gengið frá greiðslu- og afhendingarmáta. Erlendar vörur taka um 2-4 vikur 
+            í pöntun en íslenskar vörur taka innan við viku.</p>
+        
+        <h2>Upplýsingar um kaupanda</h2>
+
         <form>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-            <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-            </div>
-            <div class="form-group col-md-6">
-            <label for="inputPassword4">Password</label>
-            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-            </div>
+        <div class="form-group col-md-8">
+            <label for="inputName">Nafn</label>
+            <input type="text" class="form-control" id="inputName"/>
         </div>
-        <div class="form-group">
-            <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-        </div>
-        <div class="form-group">
-            <label for="inputAddress2">Address 2</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+
+        <div class="form-group col-md-4">
+            <label for="inputPhone">Símanúmer</label>
+            <input type="text" class="form-control" id="inputPhone"/>
+
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
-            <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputCity">
-            </div>
-            <div class="form-group col-md-4">
-            <label for="inputState">State</label>
-            <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
-            </select>
+            <div class="form-group col-md-5">
+            <label for="inputAddress">Heimilisfang</label>
+            <input type="text" class="form-control" id="Address"/>
             </div>
             <div class="form-group col-md-2">
-            <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip">
+            <label for="inputZip">Póstnúmer</label>
+            <input type="text" class="form-control" id="inputZip"/>
+            </div>
+            <div class="form-group col-md-5">
+            <label for="inputCity">Borg</label>
+            <input type="text" class="form-control" id="inputCity"/>
             </div>
         </div>
+
+        <div class="form-group">
+            <label for="inputEmail">Netfang</label>
+            <input type="email" class="form-control" id="inputEmail"/>
+        </div>
+
+        <h3>Upplýsingar um bók</h3>
+        <ul id="bookList"></ul>
+        <button onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Bæta við bók...</button>
+        <div id="id03" class="modal">
+        <form class="modal-content animate" action="/action_page.php">
+            <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Hætta við</button>
+            
+            <div class="main-container">
+                <div class="form-group col-md-4">
+                <label for="title"><b>Titill</b></label>
+                <input type="text" name="title" required/>
+                </div>
+
+                <div class="form-group col-md-4"> 
+                <label for="author"><b>Höfundur</b></label>
+                <input type="text" name="author" required/>
+                </div>
+                    
+                <div class="form-group col-md-3">  
+                <label for="isbn"><b>ISBN (13 stafir)</b></label>
+                <input type="text" name="isbn"/>
+                </div>
+
+                <div class="form-group col-md-1">
+                <label for="ammount"><b>Fjöldi</b></label>
+                <input type="text" name="ammount" required/>
+                </div>
+
+                <button id="addNewBook" type="submit">Bæta við bók</button>
+            </div>
+        </div>
+            
+        </form>
+        </div>
+
+        <div class="form-group">
+        <label for="exampleFormControlTextarea1">Athugasemdir</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+        </div>
+
         <div class="form-group">
             <div class="form-check">
             <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-                Check me out
-            </label>
+            <label class="form-check-label" for="gridCheck"> Ég samþykki skilmála</label>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        
+        <button type="submit" class="btn btn-primary">Senda pöntun</button>
+
         </form>
     </div>
   </div>
 </div>
+

@@ -18,13 +18,15 @@ namespace BookCave.Services
         public List<BookListViewModel> GetAllBooks()
         {
             var books = (from b in db.Books
+                        orderby b.Price descending
                         select new BookListViewModel
                         {
                             Id = b.Id, 
                             Name = b.Name,
                             Image = b.Image,
                             Price = b.Price
-                        }).ToList();
+                        }).Take(12).ToList();
+                     
             return books;
         }
  
@@ -39,5 +41,51 @@ namespace BookCave.Services
             return authors;
         }
 
+        public List<BookListViewModel> SearchedBooks(string searchInput)
+        {
+
+            if (searchInput != null)
+            {
+                var searchedBooks = (from b in db.Books
+                                join a in db.Authors on b.AuthorId equals a.Id
+                                where b.Name.ToLower().Contains(searchInput.ToLower()) || a.Name.ToLower().Contains(searchInput.ToLower())
+                                select new BookListViewModel
+                                {
+                                    Id = b.Id,
+                                    Name = b.Name,
+                                    Image = b.Image,
+                                    Price = b.Price
+                                }).ToList();
+                return searchedBooks;
+            }
+
+            var books = (from b in db.Books
+                         select new BookListViewModel
+                         {
+                            Id = b.Id, 
+                            Name = b.Name,
+                            Image = b.Image,
+                            Price = b.Price
+                         }).ToList();
+            return books;
+        }
+
+        public List<BookListViewModel> FilterBooks(string filterChoice)
+        {
+
+           
+                var filteredBooks = (from b in db.Books
+                                join a in db.Authors on b.AuthorId equals a.Id
+                                where b.Genre.ToLower().Contains(filterChoice.ToLower()) || b.Language.ToLower().Contains(filterChoice.ToLower())
+                                select new BookListViewModel
+                                {
+                                    Id = b.Id,
+                                    Name = b.Name,
+                                    Image = b.Image,
+                                    Price = b.Price
+                                }).ToList();
+                return filteredBooks;
+
+        }
     }
 }

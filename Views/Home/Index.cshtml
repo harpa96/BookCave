@@ -16,144 +16,34 @@
                     <div class="carousel-inner">
                         <div class="item active">
                             <div class="row">
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
+                                @for (var i = 0; i < 6;i++)
+                                {
+                                    <div class="col-xs-2">
+                                    <img src=@Model[i].Image class="img-responsive">
                                     <div class="carousel-caption">
-                                        <h3>Desert</h3>
-                                        <p>Desert Image Description</p>
+                                        <h3>@Model[i].Name</h3>
+                                        <p>@Model[i].Price</p>
                                     </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
                                     </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Jellyfish</h3>
-                                        <p>Jellyfish Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Penguins</h3>
-                                        <p>Penguins Image Description</p>
-                                    </div>
-                                </div>
+                                }
                             </div>
                         </div>
                         <div class="item">
                             <div class="row">
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
+                                @for (var i = 6; i < 12;i++)
+                                {
+                                    <div class="col-xs-2">
+                                    <img src=@Model[i].Image class="img-responsive">
                                     <div class="carousel-caption">
-                                        <h3>Lighthouse</h3>
-                                        <p>Lighthouse Image Description</p>
+                                        <h3>@Model[i].Name</h3>
+                                        <p>@Model[i].Price</p>
                                     </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
                                     </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Hydrangeas</h3>
-                                        <p>Hydrangeas Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Koala</h3>
-                                        <p>Koala Image Description</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Tulips</h3>
-                                        <p>Tulips Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Chrysanthemum</h3>
-                                        <p>Chrysanthemum Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
+                                }
                             </div>
                         </div>
                     </div>
+                </div>
 
                     <a href="#imageCarousel" class="carousel-control left" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left"></span>
@@ -184,146 +74,39 @@
                     </ol>
 
                     <div class="carousel-inner">
+                        <div class="carousel-inner">
                         <div class="item active">
                             <div class="row">
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
+                                @for (var i = 0; i < 6;i++)
+                                {
+                                    <div class="col-xs-2">
+                                    <img src=@Model[i].Image class="img-responsive">
                                     <div class="carousel-caption">
-                                        <h3>Desert</h3>
-                                        <p>Desert Image Description</p>
+                                        <h3>@Model[i].Name</h3>
+                                        <p>@Model[i].Price</p>
                                     </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
                                     </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Jellyfish</h3>
-                                        <p>Jellyfish Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Penguins</h3>
-                                        <p>Penguins Image Description</p>
-                                    </div>
-                                </div>
+                                }
                             </div>
                         </div>
                         <div class="item">
                             <div class="row">
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
+                                @for (var i = 6; i < 12;i++)
+                                {
+                                    <div class="col-xs-2">
+                                    <img src=@Model[i].Image class="img-responsive">
                                     <div class="carousel-caption">
-                                        <h3>Lighthouse</h3>
-                                        <p>Lighthouse Image Description</p>
+                                        <h3>@Model[i].Name</h3>
+                                        <p>@Model[i].Price</p>
                                     </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
                                     </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Hydrangeas</h3>
-                                        <p>Hydrangeas Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Koala</h3>
-                                        <p>Koala Image Description</p>
-                                    </div>
-                                </div>
+                                }
                             </div>
                         </div>
-
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Tulips</h3>
-                                        <p>Tulips Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Chrysanthemum</h3>
-                                        <p>Chrysanthemum Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-2">
-                                    <img src="~/images/FrodiogFreyja_eignast_gaeludyr_72.jpg" class="img-responsive">
-                                    <div class="carousel-caption">
-                                        <h3>Stripes</h3>
-                                        <p>Stripes Image Description</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            
                     </div>
+                </div>
+            </div>
 
                     <a href="#imageCarousel" class="carousel-control left" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left"></span>
