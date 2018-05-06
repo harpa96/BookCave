@@ -57,12 +57,14 @@
                                 <li><a asp-controller="Book" asp-action="Category">Metsölulistinn</a></li>
                                 <li><a asp-controller="Book" asp-action="Category">Klassískar</a></li>
                                 <hr/>
-                                <li><a asp-controller="Book" asp-action="Category">Spenna</a></li>
-                                <li><a asp-controller="Book" asp-action="Category">Gaman</a></li>
-                                <li><a asp-controller="Book" asp-action="Category">Ævintýri</a></li>
-                                <li><a asp-controller="Book" asp-action="Category">Barna og unglingabækur</a></li>
-                                <li><a asp-controller="Book" asp-action="Category">Námsbækur</a></li>
-                                <li><a asp-controller="Book" asp-action="Category">Ljóð</a></li>
+                                <li><a asp-controller="Book" asp-action="Category" asp-route-id ="allar">Allir flokkar</a></li>
+                                <li><a asp-controller="Book" asp-action="Category" asp-route-id="spenna">Spenna</a></li>
+                                <li><a asp-controller="Book" asp-action="Category" asp-route-id="gaman">Gaman</a></li>
+                                <li><a asp-controller="Book" asp-action="Category" asp-route-id="ævintýri">Ævintýri</a></li>
+                                <hr/>                                
+                                <li><a asp-controller="Book" asp-action="Category" asp-route-id="barna">Barna og unglingabækur</a></li>
+                                <li><a asp-controller="Book" asp-action="Category" asp-route-id="námsbækur">Námsbækur</a></li>
+                                <li><a asp-controller="Book" asp-action="Category" asp-route-id="ljóð">Ljóð</a></li>
                             </ul>
                 </li>
                 <li><a asp-controller="Home" asp-action="SpecialOrd">Sérpöntun</a></li>

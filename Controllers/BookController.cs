@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
 using BookCave.Services;
 
-namespace BookCave.RecordStore.HomeController
+namespace BookCave.HomeController
 {
     public class BookController : Controller
     {
@@ -17,18 +16,33 @@ namespace BookCave.RecordStore.HomeController
         {
             _bookService = new BookService();
         }
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Category(string Id)
         {
-            var books = _bookService.GetAllBooks();
-            return View(books);
-        }
 
-        public IActionResult Category()
-        {
-            var books = _bookService.GetAllBooks();
-            return View(books);
+            var filteredBooks = _bookService.FilterCategories(Id);
+
+            if(Id == "allar")
+            {
+                ViewBag.Genre = "Allar bækur";
+            }
+            else
+            {
+                ViewBag.Genre = (filteredBooks[0].Genre).ToUpper();
+            }
+
+            return View(filteredBooks);
         }
         
+        [HttpPost]
+        public IActionResult Category()
+        {
+            
+            
+            return RedirectToAction("Category");
+        }
+
+
         public IActionResult Details()
         {
             return View();
