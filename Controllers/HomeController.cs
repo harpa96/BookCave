@@ -79,7 +79,7 @@ namespace BookCave.RecordStore.HomeController
         {
             return View();
         }
-        public IActionResult loggedUser()
+        public IActionResult LoggedUser()
         {
             return View();
         }
