@@ -55,8 +55,7 @@
                     <input class="form-check-input" type="checkbox" id="franska" value="Franska"/> Franska
                 </label>
             </div>
-            
-            <input type="submit" value="Sía" class="btn btn-success active"/>
+            <button asp-controller="Home" asp-action="Index" class="btn btn-success active">Sía</button>
         </form>
     </div>
 
@@ -81,7 +80,7 @@
                                     <p class="price">@book.Price kr.</p>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
-                                    <button class="btn btn-success right">Setja í körfu</button>
+                                    <button asp-controller="Home" asp-action="Cart" class="btn btn-success right">Setja í körfu</button>
                                 </div>
                             </div>
                         </span>
