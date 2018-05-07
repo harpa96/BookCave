@@ -8,7 +8,7 @@ namespace BookCave.Models.ViewModels
         public int Price { get; set; }
         public int AuthorID { get; set; }
         public string Genre {get; set;}
+        public int Date {get; set;}
       
-
     }
 }
