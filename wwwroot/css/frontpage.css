@@ -7,3 +7,14 @@
 .frontpage-heading{
     text-align: center;
 }
+
+.harpa {
+    font-size: 12px;
+    color: black;
+    line-height: 0;
+}
+
+.carousel-control.left, .carousel-control.right {
+    background-image:none !important;
+    filter:none !important;
+ }

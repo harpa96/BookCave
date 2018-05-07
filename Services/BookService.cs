@@ -17,15 +17,17 @@ namespace BookCave.Services
         
         public List<BookListViewModel> GetAllBooks()
         {
+            
             var books = (from b in db.Books
-                        orderby b.Price descending
+                        orderby b.Date descending
                         select new BookListViewModel
                         {
                             Id = b.Id, 
                             Name = b.Name,
                             Image = b.Image,
                             Price = b.Price,
-                            Genre = b.Genre
+                            Genre = b.Genre,
+                            Date = b.Date
                         }).ToList();
                      
             return books;
@@ -101,7 +103,7 @@ namespace BookCave.Services
                                         Image = b.Image,
                                         Price = b.Price,
                                         AuthorID = b.AuthorId,
-                                        Genre = b.Genre
+                                        Genre = b.Genre,
                                     }).ToList();
                 return orderedBooks;
             }
