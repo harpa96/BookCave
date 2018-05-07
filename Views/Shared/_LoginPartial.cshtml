@@ -1,0 +1,35 @@
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using BookCave.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    var claim = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault(c => c.Type == "Name")?.Value;
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-controller="Account" asp-action="LogOut" method="POST">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <button class="btn btn-link navbar-btn navbar-link">@claim</button>
+            </li>
+            <li>
+                <button type="submit" class="btn btn-link navbar-btn navbar-link">Útskrá</button>
+            </li>
+        </ul>
+    </form>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-rigt">
+        <li>
+            <a asp-area="" asp-controller="Account" asp-action="Register">Stofna aðgang</a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Account" asp-action="Login">Skrá inn</a>
+        </li>
+    </ul>
+
+}

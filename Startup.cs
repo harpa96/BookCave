@@ -35,10 +35,10 @@ namespace BookCave
             });
             */
 
-            services.AddDbContext<DataContext>(o => o.UseSqlServer(Configuration.GetConnectionString("AuthenticationConnection")));
+            services.AddDbContext<AuthenticationDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("AuthenticationConnection")));
             
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<DataContext>()
+                .AddEntityFrameworkStores<AuthenticationDbContext>()
                 .AddDefaultTokenProviders();
 
 
@@ -47,16 +47,21 @@ namespace BookCave
                 //User settings
                 config.User.RequireUniqueEmail = true;
 
+                //Password policy
+                config.Password.RequireDigit = true;
+                config.Password.RequireNonAlphanumeric = false;
+                config.Password.RequireUppercase = true;
                 config.Password.RequiredLength = 8;
             });
 
             services.ConfigureApplicationCookie(options => 
             {
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromHours(3);
-
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+/* 
                 options.LoginPath = "/Account/Login";
                 options.AccessDeniedPath = "/Account/AccessDenied";
+ */
                 options.SlidingExpiration = true;
             });
 

@@ -9,8 +9,7 @@ using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.RecordStore.HomeController
-{
-    [Authorize]
+{    
     public class HomeController : Controller
     {
         private BookService _bookService;
