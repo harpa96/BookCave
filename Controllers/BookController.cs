@@ -1,38 +1,52 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
 using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
+using BookCave.Models.ViewModels;
 
-namespace BookCave.RecordStore.HomeController
+namespace BookCave.HomeController
 {
        public class BookController : Controller
     {
         private BookService _bookService;
-
+        private List<BookListViewModel> books;
         public BookController()
         {
             _bookService = new BookService();
+            books = _bookService.GetAllBooks();
         }
-        public IActionResult Index()
+        
+        public IActionResult Category(string Id)
         {
-            var books = _bookService.GetAllBooks();
-            return View(books);
-        }
+            books = _bookService.FilterCategories(Id);
+           
+            if(Id == "allar")
+            {
+                ViewBag.Genre = "Allar bækur";
+            }
+            else
+            {
+                ViewBag.Genre = (books[0].Genre).ToUpper();
+                
+            }
 
-        public IActionResult Category()
-        {
-            var books = _bookService.GetAllBooks();
             return View(books);
         }
         
-        public IActionResult Details()
+        public IActionResult Details(int? Id)
         {
-            return View();
+            if(Id == null)
+            {
+                return View("NotFound");
+            }
+            
+            var book = _bookService.FindBookById(Id);
+
+            return View(book);
         }
 
         public IActionResult Filter(string filterChoice)

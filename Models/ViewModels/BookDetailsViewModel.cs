@@ -1,6 +1,6 @@
 namespace BookCave.Models.ViewModels
 {
-    public class BookListViewModel
+    public class BookDetailsViewModel
     {
         public int Id {get; set; }
         public string Name {get; set; }
@@ -8,7 +8,7 @@ namespace BookCave.Models.ViewModels
         public int Price { get; set; }
         public int AuthorID { get; set; }
         public string Genre {get; set;}
-      
-
+        public string Description {get; set;}
+        public float Rating {get; set;}
     }
 }
