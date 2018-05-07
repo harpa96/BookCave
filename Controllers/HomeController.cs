@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
 using BookCave.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.RecordStore.HomeController
-{
+{    
     public class HomeController : Controller
     {
         private BookService _bookService;
@@ -80,6 +81,10 @@ namespace BookCave.RecordStore.HomeController
             return View();
         }
         public IActionResult LoggedUser()
+        {
+            return View();
+        }
+        public IActionResult Edit()
         {
             return View();
         }
