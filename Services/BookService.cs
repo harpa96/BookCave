@@ -68,6 +68,10 @@ namespace BookCave.Services
         }
         public BookDetailsViewModel FindBookById (int? Id)
         {
+            var rating = (from r in db.Ratings
+                                        where r.BookId == Id
+                                        select r.Rate).ToList();
+            
             var book = (from b in db.Books
                         where b.Id == Id
                         select new BookDetailsViewModel
@@ -78,7 +82,8 @@ namespace BookCave.Services
                             Price = b.Price, 
                             AuthorID = b.AuthorId, 
                             Image = b.Image,
-                            Description = b.Description
+                            Description = b.Description,
+                            Rating = rating.Average()
                         }).SingleOrDefault(); 
             return book;
         }

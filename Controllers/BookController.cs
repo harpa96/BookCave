@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
 using BookCave.Services;
+using Microsoft.AspNetCore.Authorization;
 using BookCave.Models.ViewModels;
 
 namespace BookCave.HomeController
 {
-    public class BookController : Controller
+       public class BookController : Controller
     {
         private BookService _bookService;
         private List<BookListViewModel> books;

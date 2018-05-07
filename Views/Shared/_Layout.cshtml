@@ -83,77 +83,46 @@
                     </form>
                 
                 <li><a asp-area="" asp-controller="Home" asp-action="Cart"><span class="glyphicon glyphicon-shopping-cart">Karfa</a></li>
-                <li class="dropdown">
-                    
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
-			<ul id="login-dp" class="dropdown-menu">
-				<li>
-					 <div class="row">
-							<div class="col-md-12">
-								Skrá inn með
-								<div class="social-buttons">
-									<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-									<a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
-								</div>
-                                eða
-								 <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-										<div class="form-group">
-											 <label class="sr-only" for="exampleInputEmail2">Netfang</label>
-											 <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Netfang" required>
-										</div>
-										<div class="form-group">
-											 <label class="sr-only" for="exampleInputPassword2">Lykilorð</label>
-											 <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Lykilorð" required>
-                                             <div class="help-block text-right"><a href="">Gleymt lykilorð?</a></div>
-										</div>
-										<div class="form-group">
-											 <button type="submit" asp-controller="Home" asp-action="LoggedUser" class="btn btn-primary btn-block">Skrá inn</button>
-										</div>
-										<div class="checkbox">
-											 <label>
-											 <input type="checkbox"> Halda mér innskráðum
-											 </label>
-										</div>
-								 </form>
-							</div>
-							<div class="bottom text-center">
-								Nýr hér ? <a asp-controller="Home" asp-action="SignUp"><b>búðu til aðgang hér!</b></a>
-							</div>
-					 </div>
-				</li>
-			</ul>
-        </li>
-                <!-- ***GAMALT DOT -HARPA ***
-                <li><a onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><span class="glyphicon glyphicon-user"></span>Skráðu þig inn</button>
-
-                    <div id="id01" class="modal">
-                        <form class="modal-content animate" action="/action_page.php">
-                            <div class="imgcontainer">
-                                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                                <img src="~/images/login.png" alt="Avatar" class="avatar">
-                            </div>
-
-                            <div class="container">
-                                <label for="uname"><b>Notananafn</b></label>
-                                <input type="text" placeholder="Notananafn:" name="uname" required>
-
-                                <label for="psw"><b>Lykilorð</b></label>
-                                <input type="password" placeholder="Lykilorð" name="psw" required>
-                                
-                                <button type="submit">Skrá inn</button>
-                                <label>
-                                <input type="checkbox" checked="checked" name="remember"> Muna eftir mér
-                                </label>
-                            </div>
-
-                            <div class="container" style="background-color:#f1f1f1">
-                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Loka</button>
-                                <span class="psw">Gleymt <a href="#">lykilorð?</a></span>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-            <!--  <li><a asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-user"></span>Skráðu þig inn</a></li> -->
+                <li> @await Html.PartialAsync("_LoginPartial")</li>
+                <!--li class="dropdown"> 
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>
+                                <div class="row">
+                                        <div class="col-md-12">
+                                            Skrá inn með
+                                            <div class="social-buttons">
+                                                <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                                <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                            </div>
+                                            eða
+                                            <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="exampleInputEmail2">Netfang</label>
+                                                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Netfang" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="exampleInputPassword2">Lykilorð</label>
+                                                        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Lykilorð" required>
+                                                        <div class="help-block text-right"><a href="">Gleymt lykilorð?</a></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button type="submit" asp-controller="Home" asp-action="LoggedUser" class="btn btn-primary btn-block">Skrá inn</button>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                        <input type="checkbox"> Halda mér innskráðum
+                                                        </label>
+                                                    </div>
+                                            </form>
+                                        </div>
+                                        <div class="bottom text-center">
+                                            Nýr hér ? <a asp-controller="Home" asp-action="SignUp"><b>búðu til aðgang hér!</b></a>
+                                        </div>
+                                </div>
+                            </li>
+                        </ul>
+                </li-->
             </ul>
         </div>
     </div>
