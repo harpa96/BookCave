@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using BookCave.Data;
 using System.Linq;
 using BookCave.Models.ViewModels;
+using BookCave.Models.EntityModels;
 
 
 namespace BookCave.Services
@@ -15,6 +16,13 @@ namespace BookCave.Services
             db = new DataContext();
         }
         
+        public void AddRating(float rating, int? book)
+        {
+            var rate = new Rating(){BookId = book, Rate = rating};
+            db.AddRange(rate);
+            db.SaveChanges();
+        }
+
         public List<BookListViewModel> GetAllBooks()
         {
             var books = (from b in db.Books
