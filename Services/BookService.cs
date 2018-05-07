@@ -16,7 +16,7 @@ namespace BookCave.Services
             db = new DataContext();
         }
         
-        public void AddRating(float rating, int? book)
+        public void AddRating(float rating, int book)
         {
             var rate = new Rating(){BookId = book, Rate = rating};
             db.AddRange(rate);
@@ -52,23 +52,54 @@ namespace BookCave.Services
 
         public List<BookListViewModel> FilterCategories(string category)
         {
-            var allbooks = (from b in db.Books
+            var allBooks = (from b in db.Books
             select new BookListViewModel
             {
                 Id = b.Id,
                 Name = b.Name,
                 Price = b.Price,
-                AuthorID = b.AuthorId,
+                AuthorId = b.AuthorId,
                 Genre = b.Genre,
                 Image = b.Image
             }).ToList();
             
             if(category == null || category == "allar")
             {
-                return allbooks;
+                return allBooks;
             }
 
-            var books = (from b in allbooks
+            else if(category == "top10")
+            {
+                var topBooks = (from b in db.Books
+                                join r in db.Ratings on b.Id equals r.Id
+                                select new BookDetailsViewModel
+                                {
+                                    Id = b.Id,
+                                    Name = b.Name,
+                                    Price = b.Price,
+                                    AuthorId = b.AuthorId,
+                                    Genre = b.Genre,
+                                    Image = b.Image,
+                                    Rating = (from ra in db.Ratings
+                                              where ra.BookId == b.Id
+                                              select ra.Rate).ToList().Average()
+                                }).ToList();
+
+                var topBooks2 = (from b in topBooks
+                            select new BookListViewModel
+                            {
+                                 Id = b.Id,
+                                Name = b.Name,
+                                Price = b.Price,
+                                AuthorId = b.AuthorId,
+                                Genre = b.Genre,
+                                Image = b.Image
+                            }).Take(10).ToList();
+
+                return topBooks2;
+            }
+
+            var books = (from b in allBooks
                         where (b.Genre).ToLower() == category.ToLower()
                         select b).ToList();
 
@@ -88,7 +119,7 @@ namespace BookCave.Services
                             Name = b.Name,
                             Genre = b.Genre,
                             Price = b.Price, 
-                            AuthorID = b.AuthorId, 
+                            AuthorId = b.AuthorId, 
                             Image = b.Image,
                             Description = b.Description,
                             Rating = rating.Average()
@@ -108,7 +139,7 @@ namespace BookCave.Services
                                         Name = b.Name,
                                         Image = b.Image,
                                         Price = b.Price,
-                                        AuthorID = b.AuthorId,
+                                        AuthorId = b.AuthorId,
                                         Genre = b.Genre
                                     }).ToList();
                 return orderedBooks;
@@ -123,7 +154,7 @@ namespace BookCave.Services
                                         Name = b.Name,
                                         Image = b.Image,
                                         Price = b.Price,
-                                        AuthorID = b.AuthorId,
+                                        AuthorId = b.AuthorId,
                                         Genre = b.Genre
                                     }).ToList();
                 return orderedBooks;
@@ -138,7 +169,7 @@ namespace BookCave.Services
                                         Name = b.Name,
                                         Image = b.Image,
                                         Price = b.Price,
-                                        AuthorID = b.AuthorId,
+                                        AuthorId = b.AuthorId,
                                         Genre = b.Genre
                                     }).ToList();
                 return orderedBooks;
@@ -159,7 +190,7 @@ namespace BookCave.Services
                                     Name = b.Name,
                                     Image = b.Image,
                                     Price = b.Price,
-                                    AuthorID = b.AuthorId,
+                                    AuthorId = b.AuthorId,
                                     Genre = b.Genre
                                 }).ToList();
                 return searchedBooks;
