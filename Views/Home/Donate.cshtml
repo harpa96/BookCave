@@ -74,5 +74,17 @@
     <input type="checkbox" class="terms-check" id="terms-check"/>
     <label class="form-check-label" for="terms-check">Ég samþykki skilmála</label>
   </div>
-  <button type="submit" class="btn btn-primary">Greiða fyrir framlag</button>
+  <button onclick="document.getElementById('id05').style.display='block'">Senda pöntun</button>
+      <div id="id05" class="modal">
+        <form class="modal-content animate" action="/action_page.php">
+          <div class="container" style="background-color:#f1f1f1">
+            <div class="main-container">
+                <h1>Takk fyrir stuðninginn!</h1>
+                <h3>Framlag þitt hefur verið greitt</h3>
+                <p>Þú hefur fengið staðfestingu á netfangið þitt</p>
+                <a href="/">Aftur á forsíðu</a>
+            </div>
+          </div>
+        </form>
+      </div>
 </form>

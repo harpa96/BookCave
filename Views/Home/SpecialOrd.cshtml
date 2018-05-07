@@ -60,12 +60,12 @@
                 <th>Magn</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="bookList">
 
             </tbody>
         </table>
 
-        <button onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Bæta við bók...</button>
+        <button class="btn btn-primary" onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Bæta við bók...</button>
         <div id="id03" class="modal">
         <form class="modal-content animate" action="/action_page.php">
             <div class="container" style="background-color:#f1f1f1">
@@ -111,7 +111,19 @@
             </div>
         </div>
         
-        <button type="submit" class="btn btn-primary">Senda pöntun</button>
+        <button onclick="document.getElementById('id04').style.display='block'">Senda pöntun</button>
+        <div id="id04" class="modal">
+        <form class="modal-content animate" action="/action_page.php">
+            <div class="container" style="background-color:#f1f1f1">
+            <div class="main-container">
+                <h1>Fyrirspurn þín hefur verið send!</h1>
+                <p>Þú munt eiga von á svari innan 24 klukkustunda á netfangið þitt.</p>
+                <a href="/">Aftur á forsíðu</a>
+            </div>
+        </div>
+            
+        </form>
+        </div>
 
         </form>
     </div>

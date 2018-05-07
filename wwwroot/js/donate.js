@@ -26,3 +26,13 @@ $(document).ready(function(){
       } // End if
     });
   })
+
+  // Get the modal
+var modal5 = document.getElementById('id05');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal5) {
+        modal5.style.display = "none";
+    }
+}
