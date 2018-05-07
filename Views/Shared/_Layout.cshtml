@@ -8,8 +8,7 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-
+        <link rel="stylesheet" href="~/css/site.css"/>
         <link rel="stylesheet" href="~/css/styles.css">
         <link rel="stylesheet" ref="~/css/frontpage.css">
         <link rel="stylesheet" href="~/css/addbook.css">
@@ -108,7 +107,7 @@
                                              <div class="help-block text-right"><a href="">Gleymt lykilorð?</a></div>
 										</div>
 										<div class="form-group">
-											 <button type="submit" class="btn btn-primary btn-block">Skrá inn</button>
+											 <button type="submit" asp-controller="Home" asp-action="LoggedUser" class="btn btn-primary btn-block">Skrá inn</button>
 										</div>
 										<div class="checkbox">
 											 <label>

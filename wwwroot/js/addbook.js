@@ -7,11 +7,9 @@ window.onclick = function(event) {
         modal3.style.display = "none";
     }
 }
-/*
-$("#addNewBook").click(function() {
-    $.get("Views/Home/SpecialOrd", function(data, status) {
-        var markup = "<li>" + data.title + "</li>";
-        $("#bookList").append(markup);
+
+$(function() {
+    $("#btn-addBook").click(function(){
+        alert(1);
     })
-});
-*/
+})
