@@ -66,7 +66,6 @@ namespace BookCave.Services
 
             return books;
         }
-
         public BookDetailsViewModel FindBookById (int? Id)
         {
             var book = (from b in db.Books

@@ -30,6 +30,7 @@ namespace BookCave.HomeController
             else
             {
                 ViewBag.Genre = (books[0].Genre).ToUpper();
+                
             }
 
             return View(books);
