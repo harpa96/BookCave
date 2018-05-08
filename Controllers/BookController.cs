@@ -30,21 +30,20 @@ namespace BookCave.HomeController
             return View(books);
         }
 
-        public IActionResult Category(string Id)
+        public IActionResult Category(int? Id)
         {
-            books = _bookService.FilterCategories(Id);
-           
-            if(Id == "allar")
+            if (Id == null)
             {
+                books = _bookService.GetAllBooks();
                 ViewBag.Genre = "Allar bækur";
             }
-
-            else
+            
+            else 
             {
-                ViewBag.Genre = (books[0].Genre).ToUpper();
-
+                books = _bookService.FilterCategories(Id);
+                ViewBag.Genre = _bookService.getGenre(Id);
             }
-
+    
             return View(books);
         }
         
