@@ -11,7 +11,6 @@ using BookCave.Models.ViewModels;
 using System.Security.Claims;
 using BookCave.Models.EntityModels;
 using Microsoft.AspNetCore.Authorization;
-using BookCave.Data;
 
 public class AccountController : Controller
 {
@@ -40,7 +39,7 @@ public class AccountController : Controller
             return View();
         }
 
-        var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber.ToString(), Id = model.Id.ToString() };
+        var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, Id = model.Id.ToString() };
 
         var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -64,21 +63,37 @@ public class AccountController : Controller
 
     [Authorize]
     [HttpGet]
-    public IActionResult Profile(int? Id)
+    public async Task<IActionResult> Profile()
     {
         // Get all user data
-        
-        var user = new ApplicationUser { 
-                UserName = model.Email, 
-                Email = model.Email, 
-                PhoneNumber = model.PhoneNumber.ToString(),
-
+        var user = await _userManager.GetUserAsync(User);
         return View(new RegisterViewModel 
         {
-           
-
-
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Email = user.Email,
+            Address = user.Address,
+            Image = user.Image,
+            PhoneNumber = user.PhoneNumber
         });
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> Profile(RegisterViewModel profile)
+    {
+        var user = await _userManager.GetUserAsync(User);
+
+        // Update all properties
+        user.Email = profile.Email;
+        user.FirstName = profile.FirstName;
+        user.LastName = profile.LastName;
+        user.Address = profile.Address;
+        user.PhoneNumber = profile.PhoneNumber;
+        user.Image = profile.Image;
+
+        await _userManager.UpdateAsync(user);
+
+        return View(profile);
     }
 
     [HttpPost]
@@ -98,7 +113,7 @@ public class AccountController : Controller
         }
         return View();
     }
-*/
+
     [HttpPost]
     [ValidateAntiForgeryToken]
 
