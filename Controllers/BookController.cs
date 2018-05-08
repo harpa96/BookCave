@@ -7,19 +7,29 @@ using BookCave.Models;
 using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
 using BookCave.Models.ViewModels;
+using BookCave.Models.InputModels;
 
 namespace BookCave.HomeController
 {
-       public class BookController : Controller
+    public class BookController : Controller
     {
         private BookService _bookService;
         private List<BookListViewModel> books;
+        private int? currentBook;
         public BookController()
         {
             _bookService = new BookService();
             books = _bookService.GetAllBooks();
+            currentBook = 0;
         }
         
+        public IActionResult Top10()
+        {
+            books = _bookService.GetTop();
+            
+            return View(books);
+        }
+
         public IActionResult Category(string Id)
         {
             books = _bookService.FilterCategories(Id);
@@ -28,15 +38,22 @@ namespace BookCave.HomeController
             {
                 ViewBag.Genre = "Allar bækur";
             }
+
+            else if(Id == "top10")
+            {
+                ViewBag.Genre = "Topp 10 listinn";
+            }
+
             else
             {
                 ViewBag.Genre = (books[0].Genre).ToUpper();
-                
+
             }
 
             return View(books);
         }
         
+        [HttpGet]
         public IActionResult Details(int? Id)
         {
             if(Id == null)
@@ -45,9 +62,19 @@ namespace BookCave.HomeController
             }
             
             var book = _bookService.FindBookById(Id);
+            currentBook = Id;
 
             return View(book);
         }
+
+       /* [HttpPost]
+
+        public IActionResult Details(RatingInputModel rating)
+        {
+            _bookService.AddRating(rating.Rate, currentBook);
+            
+            return RedirectToAction("");
+        }*/
 
         public IActionResult Filter(string filterChoice)
         {
