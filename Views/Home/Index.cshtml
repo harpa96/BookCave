@@ -19,6 +19,7 @@
                                 @for (var i = 0; i < 6;i++)
                                 {
                                     <div class="col-xs-2">
+                                    //<img asp-net-controller="Book" asp-net-action="details" asp-route-id=@Model[i].Id src=@Model[i].Image class="img-responsive">
                                     <img src=@Model[i].Image class="img-responsive">
                                     <div class="frontpage-caption">
                                         <h4>@Model[i].Name</h4>
@@ -33,6 +34,7 @@
                                 @for (var i = 6; i < 12;i++)
                                 {
                                     <div class="col-xs-2">
+                                    //<a asp-controller="Book" asp-action="Details" asp-route-id="@Model[i].Id"><img src="@Model[i].Image" alt="cover"></a>
                                     <img src=@Model[i].Image class="img-responsive">
                                     <div class="frontpage-caption">
                                         <h4>@Model[i].Name</h4>
