@@ -44,11 +44,9 @@ namespace BookCave.Services
                             Genre = b.Genre,
                             Date = b.Date
                         }).ToList();
-                     
             return books;
         }
- 
-        public List<AuthorListViewModel> GetAllAuthors()
+         public List<AuthorListViewModel> GetAllAuthors()
         {
             var authors = (from a in db.Authors
                         select new AuthorListViewModel
@@ -58,7 +56,6 @@ namespace BookCave.Services
                         }).ToList();
             return authors;
         }
-
         public List<BookListViewModel> GetTop()
         { 
             var topBooks = (from b in db.Books
