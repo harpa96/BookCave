@@ -30,6 +30,11 @@ namespace BookCave.HomeController
             return View(books);
         }
 
+       /* public IActionResult getJsonData()
+        {
+            return Json("Hello world");
+         } IF WE NEED AJAX - HARPA*/
+
         public IActionResult Category(string Id)
         {
             books = _bookService.FilterCategories(Id);
