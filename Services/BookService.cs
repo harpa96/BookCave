@@ -16,8 +16,6 @@ namespace BookCave.Services
             db = new DataContext();
         }
         
-        
-
         public void AddRating(float rating, int book)
         {
             var rate = new Rating(){ BookId = book, Rate = rating };
