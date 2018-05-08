@@ -75,11 +75,15 @@ namespace BookCave.Services
             var returnValue = (from b in topBooks
                             orderby b.Rating.DefaultIfEmpty(0).Average() descending
                             select b).Take(10).ToList();
-            
             return returnValue;
         }
         public List<BookListViewModel> FilterCategories(int? Id)
         {
+            if (Id == null)
+            {
+                return GetAllBooks();
+            }
+            
             var allBooks = (from b in db.Books
             join g in db.Genre on b.GenreId equals g.Id
             where b.GenreId == Id
@@ -124,11 +128,11 @@ namespace BookCave.Services
             return book;
         }
 
-        public List<BookListViewModel> OrderBooks(string order)
+        public List<BookListViewModel> OrderBooks(string order, List<BookListViewModel> books)
         {
             if(order == "highest")
             {
-                var orderedBooks = (from b in db.Books
+                books = (from b in db.Books
                                     join g in db.Genre on b.GenreId equals g.Id
                                     orderby b.Price descending
                                     select new BookListViewModel
@@ -140,13 +144,13 @@ namespace BookCave.Services
                                         Genre = g.TheGenre,
                                         AuthorId = b.AuthorId,
                                     }).ToList();
-                return orderedBooks;
+                return books;
             }
             else if( order == "lowest")
             {
-                var orderedBooks = (from b in db.Books
+                books = (from b in db.Books
                                     join g in db.Genre on b.GenreId equals g.Id
-                                    orderby b.Price
+                                    orderby b.Price ascending
                                     select new BookListViewModel
                                     {
                                         Id = b.Id,
@@ -156,11 +160,11 @@ namespace BookCave.Services
                                         Genre = g.TheGenre,
                                         AuthorId = b.AuthorId,
                                     }).ToList();
-                return orderedBooks;
+                return books;
             }
             else
             {
-                var orderedBooks = (from b in db.Books
+                books = (from b in db.Books
                                     join g in db.Genre on b.GenreId equals g.Id
                                     orderby b.Name
                                     select new BookListViewModel
@@ -172,7 +176,7 @@ namespace BookCave.Services
                                         Genre = g.TheGenre,
                                         AuthorId = b.AuthorId
                                     }).ToList();
-                return orderedBooks;
+                return books;
             }            
         }
 
