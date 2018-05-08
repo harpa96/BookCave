@@ -2,12 +2,6 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-           <a href="edit.html" >Breyta</a>
-            <a href="edit.html" >Útskrá</a>
-            <br/>
-            <p class=" text-info">May 05,2014,03:00 pm </p>
-        </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
           <div class="panel panel-info">
             <div class="panel-heading">
@@ -36,14 +30,14 @@
                         <td>@Model.PhoneNumber<br></td>
                       </tr>
                       <tr>
-                        <td>Uppáhaldsbækur:</td>
+                        <td>Uppáhaldsbók:</td>
                         <td>SETJA INN</td>
                       </tr>
                     </tbody>
                   </table>
                   
                   <a href="#" class="btn btn-primary">Mínar pantanir</a>
-                  <a href="#" class="btn btn-primary">Aukaflipi</a>
+                  <a asp-controller="Account" asp-action="EditProfile" class="btn btn-primary">Breyta mínum upplýsingum</a>
                 </div>
               </div>
             </div>

@@ -1,0 +1,62 @@
+@model BookCave.Models.ViewModels.RegisterViewModel;
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+             <section>      
+                <h1 class="entry-title"><span>Uppfæra mínar síður</span> </h1>
+                <hr/>
+                <form class="form-horizontal" asp-controller="Account" asp-action="EditProfile" method="POST">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Fornafn</label>
+                        <div class="col-md-8 col-sm-9">
+                            <input type="text" asp-for="FirstName" class="form-control"/>
+                            <span asp-validation-for="FirstName"></span><br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Eftirnafn</label>
+                        <div class="col-md-8 col-sm-9">
+                            <input type="text" asp-for="LastName" class="form-control" placeholder="Vinsamlegast skrifaðu eftirnafn hér"/>
+                            <span asp-validation-for="LastName"></span><br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Heimilisfang</label>
+                        <div class="col-md-8 col-sm-9">
+                            <input type="text" asp-for="Address" class="form-control" placeholder="Vinsamlegast skrifaðu heimilisfang hér"/>
+                            <span asp-validation-for="Address"></span><br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Símanúmer</label>
+                        <div class="col-md-8 col-sm-9">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                                <input type="text" asp-for="PhoneNumber" class="form-control" placeholder="Vinsamlegast skrifaðu símanúmer hér"/>
+                                <span asp-validation-for="PhoneNumber"></span><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Mynd</label>
+                        <div class="col-md-5 col-sm-8">
+                            <div class="input-group"> <span class="input-group-addon" id="file_upload"><i class="glyphicon glyphicon-upload"></i></span>
+                                <input type="file" asp-for="Image" name="file_nm" id="file_nm" class="form-control upload" placeholder="" aria-describedby="file_upload"/>
+                                <span asp-validation-for="Image"></span><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-offset-3 col-md-8 col-sm-9"><span class="text-muted"><span class="label label-danger">Athugasemd:-</span> Með því að smella á Stofna aðgang, ert þú að samþykkja <a asp-area="" asp-controller="Home" asp-action="Terms">skilmála og skilyrði</a> Book Cave.</span> </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-offset-3 col-xs-10">
+                            <input name="Submit" type="submit" value="Uppfæra" class="btn btn-primary"/>
+                        </div>
+                    </div>
+                </form>
+             </section>
+        </div>
+    </div>
+</div>
