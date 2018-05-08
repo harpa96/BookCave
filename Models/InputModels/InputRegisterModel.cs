@@ -1,10 +1,8 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using BookCave.Models.ViewModels;
-
-namespace BookCave.Models.ViewModels
+/* TAKA ÚT
+namespace BookCave.Models.InputModels
 {
-    public class RegisterViewModel
+    public class InputRegisterModel
     {
         public int Id { get; set; }
         [Required]
@@ -20,7 +18,5 @@ namespace BookCave.Models.ViewModels
         public string Address { get; set; }
         public int PhoneNumber { get; set; }
         public string Image { get; set; }
-
-        public List<BookListViewModel> FavoriteBooks { get; set; }
     }
-}
+}*/

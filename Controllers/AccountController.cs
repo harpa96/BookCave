@@ -9,6 +9,9 @@ using BookCave.Models;
 using BookCave.Services;
 using BookCave.Models.ViewModels;
 using System.Security.Claims;
+using BookCave.Models.EntityModels;
+using Microsoft.AspNetCore.Authorization;
+using BookCave.Data;
 
 public class AccountController : Controller
 {
@@ -21,6 +24,7 @@ public class AccountController : Controller
         _userManager = userManager;
     }
 
+    [HttpGet]
     public IActionResult Register()
     {
         return View();
@@ -36,7 +40,7 @@ public class AccountController : Controller
             return View();
         }
 
-        var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+        var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber.ToString(), Id = model.Id.ToString() };
 
         var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -44,7 +48,7 @@ public class AccountController : Controller
         {
             //The user is successfully registered
             //Add the concatenated first and last name as fullName in claims
-            await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
+            await _userManager.AddClaimAsync(user, new Claim("FirstName", model.FirstName));
             await _signInManager.SignInAsync(user, false);
 
             return RedirectToAction("Index", "Home");
@@ -56,6 +60,25 @@ public class AccountController : Controller
     public IActionResult Login()
     {
         return View();
+    }
+
+    [Authorize]
+    [HttpGet]
+    public IActionResult Profile(int? Id)
+    {
+        // Get all user data
+        
+        var user = new ApplicationUser { 
+                UserName = model.Email, 
+                Email = model.Email, 
+                PhoneNumber = model.PhoneNumber.ToString(),
+
+        return View(new RegisterViewModel 
+        {
+           
+
+
+        });
     }
 
     [HttpPost]
@@ -75,7 +98,7 @@ public class AccountController : Controller
         }
         return View();
     }
-
+*/
     [HttpPost]
     [ValidateAntiForgeryToken]
 
