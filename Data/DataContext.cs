@@ -5,14 +5,12 @@ namespace BookCave.Data
 {
      public class DataContext : DbContext
      {
-
         public DbSet<Book> Books {get; set; }
         public DbSet<Author> Authors {get; set;}
         public DbSet<Rating> Ratings {get; set;}
         public DbSet<Comment> Comments {get; set;}
         public DbSet<Order> Orders {get; set;}
         public DbSet<OrderedBooks> BooksInOrder {get; set;}
-
          protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
          {
              optionsBuilder 

@@ -65,10 +65,11 @@ namespace BookCave.Services
                             Name = b.Name,
                             Price = b.Price,
                             AuthorId = b.AuthorId,
-                            Genre = b.Genre, // (from r in db.Ratings where r.BookId == b.Id select r.Rate.Average())
+                            Genre = b.Genre, 
                             Image = b.Image,
                             Rating = (from r in db.Ratings where r.BookId == b.Id select r.Rate).ToList()
                         }).ToList();
+                        
             var returnValue = (from b in topBooks
                             orderby b.Rating.DefaultIfEmpty(0).Average() descending
                             select b).Take(10).ToList();

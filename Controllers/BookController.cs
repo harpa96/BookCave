@@ -15,12 +15,12 @@ namespace BookCave.HomeController
     {
         private BookService _bookService;
         private List<BookListViewModel> books;
-        private int? currentBook;
+
         public BookController()
         {
             _bookService = new BookService();
             books = _bookService.GetAllBooks();
-            currentBook = 0;
+            
         }
         
         public IActionResult Top10()
@@ -37,11 +37,6 @@ namespace BookCave.HomeController
             if(Id == "allar")
             {
                 ViewBag.Genre = "Allar bækur";
-            }
-
-            else if(Id == "top10")
-            {
-                ViewBag.Genre = "Topp 10 listinn";
             }
 
             else
@@ -62,7 +57,6 @@ namespace BookCave.HomeController
             }
             
             var book = _bookService.FindBookById(Id);
-            currentBook = Id;
 
             return View(book);
         }
@@ -76,8 +70,12 @@ namespace BookCave.HomeController
             return RedirectToAction("");
         }*/
 
-        public IActionResult Filter(string filterChoice)
+        public IActionResult Filter(string filterChoice = "", string searchTerm = "")
         {
+            if(searchTerm != "") 
+            {
+                // skila leitar view
+            }
             var filteredBooks = _bookService.SearchedBooks(filterChoice);
             return View(filteredBooks);
         }
