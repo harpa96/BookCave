@@ -39,7 +39,7 @@ public class AccountController : Controller
             return View();
         }
 
-        var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber };
+        var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, Address = model.Address, Image = model.Image, FirstName = model.FirstName, LastName = model.LastName };
 
         var result = await _userManager.CreateAsync(user, model.Password);
 
