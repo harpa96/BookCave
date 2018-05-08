@@ -9,6 +9,8 @@ using BookCave.Models;
 using BookCave.Services;
 using BookCave.Models.ViewModels;
 using System.Security.Claims;
+using BookCave.Models.EntityModels;
+using Microsoft.AspNetCore.Authorization;
 
 public class AccountController : Controller
 {
@@ -21,6 +23,7 @@ public class AccountController : Controller
         _userManager = userManager;
     }
 
+    [HttpGet]
     public IActionResult Register()
     {
         return View();
@@ -36,7 +39,7 @@ public class AccountController : Controller
             return View();
         }
 
-        var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+        var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber };
 
         var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -44,7 +47,7 @@ public class AccountController : Controller
         {
             //The user is successfully registered
             //Add the concatenated first and last name as fullName in claims
-            await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
+            await _userManager.AddClaimAsync(user, new Claim("FirstName", model.FirstName));
             await _signInManager.SignInAsync(user, false);
 
             return RedirectToAction("Index", "Home");
@@ -56,6 +59,40 @@ public class AccountController : Controller
     public IActionResult Login()
     {
         return View();
+    }
+
+    [Authorize]
+    [HttpGet]
+    public async Task<IActionResult> Profile()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        return View(new RegisterViewModel 
+        {
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Email = user.Email,
+            Address = user.Address,
+            Image = user.Image,
+            PhoneNumber = user.PhoneNumber
+        });
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> Profile(RegisterViewModel profile)
+    {
+        var user = await _userManager.GetUserAsync(User);
+
+        // Update all properties
+        user.Email = profile.Email;
+        user.FirstName = profile.FirstName;
+        user.LastName = profile.LastName;
+        user.Address = profile.Address;
+        user.PhoneNumber = profile.PhoneNumber;
+        user.Image = profile.Image;
+
+        await _userManager.UpdateAsync(user);
+
+        return View(profile);
     }
 
     [HttpPost]

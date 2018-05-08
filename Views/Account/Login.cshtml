@@ -1,20 +1,32 @@
 @model BookCave.Models.ViewModels.LoginViewModel;
 
-<h1>Login</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <section>      
+                <h1 class="entry-title"><span>Innskráning</span> </h1>
+                <hr/>
+                <form class="form-horizontal" asp-controller="Account" asp-action="Login">
+                    <div class="form-group">
+                        <input type="email" asp-for="Email" class="form-control" placeholder="Skrifaðu netfangið þitt"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" asp-for="Password" class="form-control" placeholder="Skrifaðu lykilorðið þitt"/>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" asp-for="RememberMe"/>Muna eftir mér
+                        </label><br/><br/>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-default" value="Skrá inn"/>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>    
 
-<form class="form-horizontal" asp-controller="Account" asp-action="Login">
-    <div class="form-group">
-        <input type="email" asp-for="Email" class="form-control" placeholder="Skrifaðu netfangið þitt"/>
-    </div>
-    <div class="form-group">
-        <input type="password" asp-for="Password" class="form-control" placeholder="Skrifaðu lykilorðið þitt"/>
-    </div>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox" asp-for="RememberMe"/>Muna eftir mér
-        </label>
-    </div>
-    <div class="form-group">
-        <input type="submit" class="btn btn-default" value="Skrá inn"/>
-    </div>
-</form>
+
+
+                    
