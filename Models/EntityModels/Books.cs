@@ -1,6 +1,6 @@
 namespace BookCave.Models.EntityModels
 {
-    public class Book
+    public class Books
     {
         public int Id {get; set; }
         public string Name {get; set; }
@@ -11,6 +11,5 @@ namespace BookCave.Models.EntityModels
         public int Price {get; set;}
         public string Image {get; set;}
         public string Description {get; set;}
-    
     }
 }

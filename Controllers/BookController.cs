@@ -30,21 +30,26 @@ namespace BookCave.HomeController
             return View(books);
         }
 
-        public IActionResult Category(string Id)
+       /* public IActionResult getJsonData()
         {
-            books = _bookService.FilterCategories(Id);
-           
-            if(Id == "allar")
+            return Json("Hello world");
+         } IF WE NEED AJAX - HARPA*/
+
+        public IActionResult Category(int? Id)
+
+        {
+            if (Id == null)
             {
+                books = _bookService.GetAllBooks();
                 ViewBag.Genre = "Allar bækur";
             }
-
-            else
+            
+            else 
             {
-                ViewBag.Genre = (books[0].Genre).ToUpper();
-
+                books = _bookService.FilterCategories(Id);
+                ViewBag.Genre = _bookService.getGenre(Id);
             }
-
+    
             return View(books);
         }
         
