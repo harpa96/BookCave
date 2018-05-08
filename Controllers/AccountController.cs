@@ -39,7 +39,7 @@ public class AccountController : Controller
             return View();
         }
 
-        var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, Id = model.Id.ToString() };
+        var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber };
 
         var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -65,7 +65,6 @@ public class AccountController : Controller
     [HttpGet]
     public async Task<IActionResult> Profile()
     {
-        // Get all user data
         var user = await _userManager.GetUserAsync(User);
         return View(new RegisterViewModel 
         {
