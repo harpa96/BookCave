@@ -17,7 +17,6 @@ namespace BookCave
         public static void Main(string[] args)
         {
             var host = BuildWebHost(args);
-            SeedData();
             host.Run();
         }
 
@@ -26,36 +25,6 @@ namespace BookCave
                 .UseStartup<Startup>()
                 .Build();
 
-        public static void SeedData()
-        {
-            var db = new DataContext();
 
-            if(!db.Books.Any())
-            {
-                var initialBooks = new List<Book>()
-                {
-                    new Book{ Name = "10 ráð til að hætta að drepa fólk og byrja að vaska upp"},
-                    new Book{ Name = "Týnda systirin"},
-                    new Book{ Name = "Gatið"},
-                    new Book{ Name = "Blóðengill"},
-                    new Book{ Name = "Átta gata Buick"},
-                    new Book{ Name = "El Príncipe de la Niebla"}
-                };
-
-                db.AddRange(initialBooks);
-                db.SaveChanges();
-            }
-
-            if(!db.Authors.Any())
-            {
-                var initialAuthors = new List<Author>()
-                {
-                    new Author{ Name = "Hallgrímur Helgason"}
-                };
-
-                db.AddRange(initialAuthors);
-                db.SaveChanges();
-            }
-        }
     }
 }

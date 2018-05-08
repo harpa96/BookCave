@@ -23,6 +23,13 @@ namespace BookCave.HomeController
             currentBook = 0;
         }
         
+        public IActionResult Top10()
+        {
+            books = _bookService.GetTop();
+            
+            return View(books);
+        }
+
         public IActionResult Category(string Id)
         {
             books = _bookService.FilterCategories(Id);

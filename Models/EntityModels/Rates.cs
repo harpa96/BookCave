@@ -6,6 +6,6 @@ namespace BookCave.Models.EntityModels
     {
         public int Id { get; set; }
         public int BookId { get; set; }
-        public List<float> BookRatings {get; set;}
+        public float Average {get; set; }
     }
 }
