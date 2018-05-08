@@ -20,8 +20,16 @@ namespace BookCave.Services
 
         public void AddRating(float rating, int book)
         {
-            var rate = new Rating(){BookId = book, Rate = rating};
-            db.AddRange(rate);
+            var rate = new Rating(){ BookId = book, Rate = rating };
+            db.Add(rate);
+            db.SaveChanges();
+        }
+
+        public void UpdateRating(int ratingId, float newRating) 
+        {
+            var rate = db.Ratings.FirstOrDefault(r => r.Id == ratingId);
+            rate.Rate = newRating;
+            db.Update(rate);
             db.SaveChanges();
         }
 
