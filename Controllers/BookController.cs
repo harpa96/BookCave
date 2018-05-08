@@ -14,18 +14,15 @@ namespace BookCave.HomeController
     public class BookController : Controller
     {
         private BookService _bookService;
-        private List<BookListViewModel> books;
-
+        
         public BookController()
         {
             _bookService = new BookService();
-            books = _bookService.GetAllBooks();
-            
         }
         
         public IActionResult Top10()
         {
-            books = _bookService.GetTop();
+            var books = _bookService.GetTop();
             
             return View(books);
         }
@@ -35,22 +32,35 @@ namespace BookCave.HomeController
             return Json("Hello world");
          } IF WE NEED AJAX - HARPA*/
 
-        public IActionResult Category(int? Id)
-
+        public IActionResult Category(int? Id, string orderby)
         {
             if (Id == null)
             {
-                books = _bookService.GetAllBooks();
+                var books = _bookService.GetAllBooks();
                 ViewBag.Genre = "Allar bækur";
+
+                if(orderby != null)
+                {
+                    books = _bookService.OrderBooks(orderby, books);
+                    return View(books);
+                }
+
+                return View(books);                
             }
             
             else 
             {
-                books = _bookService.FilterCategories(Id);
+                var books = _bookService.FilterCategories(Id);
+                
+                if(orderby != null)
+                {
+                    books = _bookService.OrderBooks(orderby, books);
+                    return View(books);
+                }
+                
                 ViewBag.Genre = _bookService.getGenre(Id);
+                return View(books);
             }
-    
-            return View(books);
         }
         
         [HttpGet]
