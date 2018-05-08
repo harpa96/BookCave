@@ -8,8 +8,12 @@ window.onclick = function(event) {
     }
 }
 
-$(function() {
-    $("#btn-addBook").click(function(){
-        alert(1);
-    })
-})
+// Get the modal
+var modal4 = document.getElementById('id04');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal4) {
+        modal4.style.display = "none";
+    }
+}
