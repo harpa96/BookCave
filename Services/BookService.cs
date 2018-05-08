@@ -44,11 +44,9 @@ namespace BookCave.Services
                             Genre = b.Genre,
                             Date = b.Date
                         }).ToList();
-                     
             return books;
         }
- 
-        public List<AuthorListViewModel> GetAllAuthors()
+         public List<AuthorListViewModel> GetAllAuthors()
         {
             var authors = (from a in db.Authors
                         select new AuthorListViewModel
@@ -58,7 +56,6 @@ namespace BookCave.Services
                         }).ToList();
             return authors;
         }
-
         public List<BookListViewModel> GetTop()
         { 
             var topBooks = (from b in db.Books
@@ -68,10 +65,11 @@ namespace BookCave.Services
                             Name = b.Name,
                             Price = b.Price,
                             AuthorId = b.AuthorId,
-                            Genre = b.Genre, // (from r in db.Ratings where r.BookId == b.Id select r.Rate.Average())
+                            Genre = b.Genre, 
                             Image = b.Image,
                             Rating = (from r in db.Ratings where r.BookId == b.Id select r.Rate).ToList()
                         }).ToList();
+                        
             var returnValue = (from b in topBooks
                             orderby b.Rating.DefaultIfEmpty(0).Average() descending
                             select b).Take(10).ToList();
