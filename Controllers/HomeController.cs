@@ -32,10 +32,6 @@ namespace BookCave.RecordStore.HomeController
         }
 
         
-        public IActionResult Cart()
-        {
-            return View();
-        }
 
         public IActionResult Donate()
         {
@@ -85,6 +81,11 @@ namespace BookCave.RecordStore.HomeController
             return View();
         }
         public IActionResult Edit()
+        {
+            return View();
+        }
+
+          public IActionResult Cart()
         {
             return View();
         }
