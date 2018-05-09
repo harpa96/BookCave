@@ -20,7 +20,7 @@
                                 @for (var i = 0; i < 6;i++)
                                 {
                                     <div class="col-xs-2">
-                                    <img src=@Model[i].Image class="img-responsive">
+                                    <a asp-controller="Book" asp-action="Details" asp-route-id="@Model[i].Id"><img src=@Model[i].Image class="img-responsive"></a>
                                     <div class="frontpage-caption">
                                         <h4>@Model[i].Name</h4>
                                         <p>@Model[i].Date</p>
@@ -34,7 +34,7 @@
                                 @for (var i = 6; i < 12;i++)
                                 {
                                     <div class="col-xs-2">
-                                    <img src=@Model[i].Image class="img-responsive">
+                                    <a asp-controller="Book" asp-action="Details" asp-route-id="@Model[i].Id"><img src=@Model[i].Image class="img-responsive"></a>
                                     <div class="frontpage-caption">
                                         <h4>@Model[i].Name</h4>
                                         <p>@Model[i].Date</p>
@@ -60,7 +60,7 @@
     <br/>
     <br/>
     <br/>
-    <h1 class="carousel-heading frontpage-heading">Vinsælar bækur</h1>
+    <!--h1 class="carousel-heading frontpage-heading">Vinsælar bækur</h1>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -119,7 +119,7 @@
 
             </div>
         </div>
-    </div>
+    </div-->
     
 </div>
 
