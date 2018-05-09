@@ -85,9 +85,19 @@ namespace BookCave.RecordStore.HomeController
             return View();
         }
 
-          public IActionResult Cart()
+        public IActionResult Cart()
         {
             return View();
         }
+        public IActionResult SendEmail()
+        {
+            return View();
+        }
+        public IActionResult form()
+        {
+            return View("form.php");
+        }
+
+        
     }
 }
