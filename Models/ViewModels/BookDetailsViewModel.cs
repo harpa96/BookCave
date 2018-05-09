@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BookCave.Models.EntityModels;
 
 namespace BookCave.Models.ViewModels
 {
@@ -11,6 +12,7 @@ namespace BookCave.Models.ViewModels
         public int AuthorId { get; set; }
         public string Genre {get; set;}
         public string Description {get; set;}
+        public List<Comment> Comments {get; set;}
         public List<float> Rates {get; set;}
         public float Rating {get; set;}
     }

@@ -16,11 +16,24 @@ namespace BookCave.Services
             db = new DataContext();
         }
         
-        public void AddRating(float rating, int book)
+        public void AddRating(float? rating, int book)
         {
-            var rate = new Rating(){ BookId = book, Rate = rating };
-            db.Add(rate);
-            db.SaveChanges();
+            if(rating != null)
+            {
+                var rate = new Rating(){ BookId = book, Rate = (float)rating};
+                db.Add(rate);
+                db.SaveChanges();
+            }
+        }
+
+        public void AddComment(string text, int book)
+        {
+            if(text != "" && text.Length != 0)
+            {
+                var comment = new Comment(){BookId = book, Text = text};
+                db.Add(comment);
+                db.SaveChanges();
+            }
         }
 
         public void UpdateRating(int ratingId, float newRating) 
@@ -107,8 +120,12 @@ namespace BookCave.Services
         public BookDetailsViewModel FindBookById (int? Id)
         {
             var rating = (from r in db.Ratings
-                                        where r.BookId == Id
-                                        select r.Rate).ToList();
+                        where r.BookId == Id
+                        select r.Rate).ToList();
+
+            var comments = (from c in db.Comments
+                            where c.BookId == Id
+                            select c).ToList();
             
             var book = (from b in db.Books
                         join g in db.Genre on b.GenreId equals g.Id
@@ -117,11 +134,11 @@ namespace BookCave.Services
                         {
                             Id = b.Id, 
                             Name = b.Name,
-                           
                             Price = b.Price, 
                             AuthorId = b.AuthorId, 
                             Image = b.Image,
                             Genre = g.TheGenre,
+                            Comments = comments,
                             Description = b.Description,
                             Rating = rating.Average()
                         }).SingleOrDefault(); 
@@ -231,7 +248,6 @@ namespace BookCave.Services
                 return filteredBooks;
 
         }
-
         public string getGenre(int? Id)
         {
             string genre = (from g in db.Genre
@@ -239,6 +255,8 @@ namespace BookCave.Services
                             select g.TheGenre).Single();
             return genre;
         }
+
+        
 
     }
 
