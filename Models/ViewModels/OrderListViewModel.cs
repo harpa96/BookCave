@@ -1,6 +1,6 @@
 namespace BookCave.Models.EntityModels
 {
-    public class OrderViewModel
+    public class OrderListViewModel
     {
         public string BookName {get; set; }
         public string AutorName {get; set;}
