@@ -12,7 +12,7 @@ namespace BookCave.Data
         public DbSet<Order> Orders {get; set;}
         public DbSet<OrderedBooks> BooksInOrder {get; set;}
         public DbSet<Genre> Genre {get; set;}
-        public DbSet<Books> AllBooks {get; set;}
+        
          protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
          {
              optionsBuilder 
