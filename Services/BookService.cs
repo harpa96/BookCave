@@ -28,7 +28,7 @@ namespace BookCave.Services
 
         public void AddComment(string text, int book)
         {
-            if(text != "" && text.Length != 0)
+            if(!string.IsNullOrEmpty(text))
             {
                 var comment = new Comment(){BookId = book, Text = text};
                 db.Add(comment);
@@ -256,10 +256,16 @@ namespace BookCave.Services
             return genre;
         }
 
-        
+        public string getNameOfBook(int Id)
+        {
+            var name = (from b in db.Books
+                        where Id == b.Id
+                        select b.Name).ToString();
+
+            return name;
+        }
+
+
 
     }
-
-
-
 }
