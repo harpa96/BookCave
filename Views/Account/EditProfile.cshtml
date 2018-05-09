@@ -1,4 +1,4 @@
-@model BookCave.Models.ViewModels.RegisterViewModel;
+@model BookCave.Models.ViewModels.ProfileViewModel;
 
 <div class="container">
     <div class="row">
@@ -72,9 +72,16 @@
                         <label class="control-label col-sm-3">Mynd</label>
                         <div class="col-md-5 col-sm-8">
                             <div class="input-group"> <span class="input-group-addon" id="file_upload"><i class="glyphicon glyphicon-upload"></i></span>
-                                <input type="file" asp-for="Image" name="file_nm" id="file_nm" class="form-control upload" placeholder="" aria-describedby="file_upload"/>
+                                <input type="text" asp-for="Image" Class="form-control" placeholder="Settu inn url-ið af myndinni hér"/>
                                 <span asp-validation-for="Image"></span><br>
                             </div>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="control-label col-sm-3">Uppáhaldsbók</label>
+                        <div class="col-md-8 col-sm-9">
+                            <input type="text" asp-for="FavoriteBook" class="form-control"/>
+                            <span asp-validation-for="FavoriteBook"></span><br>
                         </div>
                     </div>
                     <div class="form-group">

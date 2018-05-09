@@ -6,7 +6,7 @@
              <section>      
                 <h1 class="entry-title"><span>Nýskráning</span> </h1>
                 <hr/>
-                <form class="form-horizontal" asp-controller="Account" asp-action="Register" method="POST">
+                <form class="form-horizontal" enctype="multipart/form-data" asp-controller="Account" asp-action="Register" method="POST">
                     <div class="form-group">
                         <label class="control-label col-sm-3">Netfang<span class="text-danger">*</span></label>
                         <div class="col-md-8 col-sm-9">
@@ -43,7 +43,6 @@
                                 <option value="6">England</option>
                                 <option value="7">Bandaríkin</option>
                             </select>
-                            <!--input type="text" asp-for="Address" class="form-control" placeholder="Vinsamlegast skrifaðu heimilisfang hér"/-->
                             <span asp-validation-for="CountryId"></span><br>
                         </div>
                     </div>
@@ -104,7 +103,7 @@
                         <small>valfrjálst</small></label>
                         <div class="col-md-5 col-sm-8">
                             <div class="input-group"> <span class="input-group-addon" id="file_upload"><i class="glyphicon glyphicon-upload"></i></span>
-                                <input type="file" asp-for="Image" name="file_nm" id="file_nm" class="form-control upload" placeholder="" aria-describedby="file_upload"/>
+                                <input type="text" asp-for="Image" Class="form-control" placeholder="Vinsamlegast settu inn url-ið af myndinni hér"/>
                                 <span asp-validation-for="Image"></span><br>
                             </div>
                         </div>

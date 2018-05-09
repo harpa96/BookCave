@@ -11,9 +11,19 @@ using BookCave.Models.ViewModels;
 using System.Security.Claims;
 using BookCave.Models.EntityModels;
 using Microsoft.AspNetCore.Authorization;
+using BookCave.Data;
+
+
+/* 
+using Microsoft.AspNetCore.Http;
+using System.IO;
+*/
+
 
 public class AccountController : Controller
 {
+    //private readonly IHostingEnvironment _env;
+    private DataContext db;
     private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly UserManager<ApplicationUser> _userManager;
 
@@ -21,7 +31,31 @@ public class AccountController : Controller
     {
         _signInManager = signInManager;
         _userManager = userManager;
+        db = new DataContext();
     }
+/* 
+    [HttpPost]
+    public async Task<IActionResult> Upload(FileUploadViewModel model)
+    {
+        var file = model.File;
+        
+
+        if (file.Length > 0)
+        {
+            string path = Path.Combine(_env.WebRootPath, "images");
+
+            using (var fs = new FileStream(Path.Combine(path, file.FileName), FileMode.Create))
+            {
+                file.CopyToAsync(fs);
+            }
+
+            model.Source = $"/images{file.FileName}";
+            return Ok(model);
+        }
+        return BadRequest();
+    }
+
+    */
 
     [HttpGet]
     public IActionResult Register()
@@ -30,6 +64,7 @@ public class AccountController : Controller
     }
 
     [HttpPost]
+    [AllowAnonymous]
     [ValidateAntiForgeryToken]
 
     public async Task<IActionResult> Register(RegisterViewModel model)
@@ -38,8 +73,49 @@ public class AccountController : Controller
         {
             return View();
         }
+/* 
+        var files = HttpContext.Request.Form.Files;
+            foreach (var Image in files)
+            {
+                if (Image != null && Image.Length > 0)
+                {
+                    var file = Image;
+                    //There is an error here
+                    var uploads = Path.Combine(_appEnvironment.WebRootPath, "uploads\\img");
+                    if (file.Length > 0)
+                    {
+                        var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
+                        using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
+                        {
+                            await file.CopyToAsync(fileStream);
+                            model.BookPic = fileName;
+                        }
 
-        var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, Address = model.Address, Image = model.Image, FirstName = model.FirstName, LastName = model.LastName, ZIP = model.ZIP, CountryId = model.CountryId, City = model.City};
+                    }
+                }
+            }
+            */
+
+        var user = new ApplicationUser 
+        { 
+            UserName = model.Email, 
+            Email = model.Email, 
+            PhoneNumber = model.PhoneNumber, 
+            Address = model.Address, 
+            Image = model.Image,
+            FirstName = model.FirstName, 
+            LastName = model.LastName, 
+            ZIP = model.ZIP, 
+            CountryId = model.CountryId, 
+            City = model.City
+        };
+/* 
+        using (var memoryStream = new MemoryStream())
+        {
+            await model.AvatarImage.CopyToAsync(memoryStream);
+            user.AvatarImage = memoryStream.ToArray();
+        }
+*/
 
         var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -66,6 +142,11 @@ public class AccountController : Controller
     public async Task<IActionResult> Profile()
     {
         var user = await _userManager.GetUserAsync(User);
+        
+        var country = (from c in db.Countries 
+                        where user.CountryId == c.Id
+                        select c.Name).ToString();
+        
         return View(new ProfileViewModel 
         {
             FirstName = user.FirstName,
@@ -74,7 +155,7 @@ public class AccountController : Controller
             Address = user.Address,
             City = user.City,
             ZIP = user.ZIP,
-            CountryId = user.CountryId,
+            Country = country,
             Image = user.Image,
             PhoneNumber = user.PhoneNumber,
             FavoriteBook = user.FavoriteBook
@@ -106,6 +187,11 @@ public class AccountController : Controller
     public async Task<IActionResult> EditProfile()
     {
         var user = await _userManager.GetUserAsync(User);
+
+        var country = (from c in db.Countries 
+                        where user.CountryId == c.Id
+                        select c.Name).ToString();
+
         return View(new ProfileViewModel 
         {
             FirstName = user.FirstName,
@@ -114,7 +200,7 @@ public class AccountController : Controller
             Address = user.Address,
             City = user.City,
             ZIP = user.ZIP,
-            CountryId = user.CountryId,
+            Country = country,
             Image = user.Image,
             PhoneNumber = user.PhoneNumber,
             FavoriteBook = user.FavoriteBook
@@ -148,9 +234,36 @@ public class AccountController : Controller
         return RedirectToAction("Login", "Account");
     }
 
+    /* 
+    [HttpPost("UploadFiles")]
+    public async Task<IActionResult> Post(List<IFormFile> files)
+    {
+        long size = files.Sum(f => f.Length);
+
+        // full path to file in temp location
+        var filePath = Path.GetTempFileName();
+
+        foreach (var formFile in files)
+        {
+            if (formFile.Length > 0)
+            {
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await formFile.CopyToAsync(stream);
+                }
+            }
+        }
+
+        // process uploaded files
+        // Don't rely on or trust the FileName property without validation.
+
+        return Ok(new { count = files.Count, size, filePath});
+    }
+*/
     public IActionResult AccessDenied()
     {
         return View();
     }
+
 
 }

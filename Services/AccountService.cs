@@ -10,7 +10,5 @@ namespace BookCave.Services
         {
             db = new DataContext();
         }
-
-        
     }
 }
