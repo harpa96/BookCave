@@ -93,10 +93,15 @@ namespace BookCave.HomeController
             }
             
             currentBook = (int)Id;
+            ViewBag.NameOfBook = _bookService.getNameOfBook(currentBook);
         
             _bookService.AddRating(newComment.Rating, currentBook);
-            _bookService.AddComment(newComment.Text, currentBook);
-
+            
+            if(newComment.Text != String.Empty)
+            {
+                _bookService.AddComment(newComment.Text, currentBook);
+            }
+            
             return RedirectToAction("Details", new {Id = currentBook});
         }
 

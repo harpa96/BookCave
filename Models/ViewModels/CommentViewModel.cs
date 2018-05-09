@@ -3,8 +3,7 @@ namespace BookCave.Models.ViewModels
     public class CommentViewModel
     {
         public int Id { get; set; }
-
-        public int BookId { get; set; }
+        public string BookName { get; set;}
 
         public int UserName { get; set; }
 

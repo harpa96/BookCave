@@ -1,11 +1,15 @@
 @model BookCave.Models.ViewModels.CommentViewModel
 
 <div>
+    <h1>Einkunnargjöf fyrir @ViewBag.NameOfBook</h1>
+</div>
+
+<div>
     <form method="POST">
         <div class="form-group">
             <label for="rating">Þín einkunnargjöf (af 5)</label>
             <select class="form-control" id="rating" asp-for="Rating">
-                <option disabled>Gefðu einkunn</option>
+                <option selected="selected" hidden>Gefðu einkunn</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
