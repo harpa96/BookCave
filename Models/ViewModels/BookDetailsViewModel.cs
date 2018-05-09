@@ -15,5 +15,6 @@ namespace BookCave.Models.ViewModels
         public List<Comment> Comments {get; set;}
         public List<float> Rates {get; set;}
         public float Rating {get; set;}
+        public int Copies {get; set;}
     }
 }

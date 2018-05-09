@@ -14,6 +14,7 @@ namespace BookCave.HomeController
     public class BookController : Controller
     {
         private BookService _bookService;
+
         private int currentBook;
         
         public BookController()
@@ -36,7 +37,7 @@ namespace BookCave.HomeController
 
         public IActionResult Category(int? Id, string orderby)
         {
-            if (Id == null)
+            if (Id == 0)
             {
                 var books = _bookService.GetAllBooks();
                 ViewBag.Genre = "Allar bækur";
@@ -73,9 +74,18 @@ namespace BookCave.HomeController
                 return View("NotFound");
             }
             
+             System.Diagnostics.Debug.WriteLine("hhihi");
             var book = _bookService.FindBookById(Id);
 
             return View(book);
+        }
+
+        [HttpPost]
+        public IActionResult Details (BookDetailsViewModel book)
+        {
+            _bookService.addToCart(book);
+            System.Diagnostics.Debug.WriteLine("hhihi");
+            return RedirectToAction("Cart", "Home");
         }
 
         [HttpGet]

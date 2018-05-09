@@ -10,12 +10,27 @@ namespace BookCave.Services
     public class BookService
     {
         private DataContext db;
+        private List<BookDetailsViewModel> cart;
 
         public BookService()
         {
             db = new DataContext();
+            cart = new List<BookDetailsViewModel>()
+            {
+                new BookDetailsViewModel(){Name = "Bókin hennar Vigdísar", Price=400, Copies=2}
+            };
         }
         
+        public List<BookDetailsViewModel> getBooksInCart()
+        {
+            return cart;
+        }
+
+        public void addToCart(BookDetailsViewModel book)
+        {
+            cart.Add(book);
+        }
+
         public void AddRating(float? rating, int book)
         {
             if(rating != null)

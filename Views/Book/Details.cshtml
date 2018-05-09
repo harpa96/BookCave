@@ -16,16 +16,25 @@
             </div>
                 
             <div class="section" style="padding-bottom:20px;">
-                <h6 class="title-attr"><small>Fjöldi</small></h6>                    
-                <div>
-                    <div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
-                        <input value="1" />
-                    <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
-                </div>
+                <form method="POST">
+            
+                    <h6 class="title-attr"><small>Fjöldi</small></h6>                    
+                    <div>
+                        <input id="copies" type="number" name="Copies" min="1">
+                        <div>
+                            <input type="submit" class="btn btn-success" value="Setja í körfu"/>
+                        </div>
+                        
+                        <!--<div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
+                            <input value="1" />
+                        <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>-->
+                    </div>
+                    
+                </form>
             </div>                
                     
             <div class="section" style="padding-bottom:20px;">
-                <a class="btn btn-success" asp-controller="Home" asp-action="Cart"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Setja í körfu</a>
+                <!--<a class="btn btn-success" asp-controller="Home" asp-action="Cart"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Setja í körfu</a>-->
                 <h6><a><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span> Gera að uppáhaldsbók</a></h6>
                 <h6><a asp-controller="Book" asp-action="AddRating" asp-route-id="@Model.Id">Bæta við athugasemd og/eða einkunn</a></h6>
             </div>                                        
