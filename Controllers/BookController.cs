@@ -14,10 +14,12 @@ namespace BookCave.HomeController
     public class BookController : Controller
     {
         private BookService _bookService;
+        private int currentBook;
         
         public BookController()
         {
             _bookService = new BookService();
+            currentBook = 0;
         }
         
         public IActionResult Top10()
@@ -76,14 +78,27 @@ namespace BookCave.HomeController
             return View(book);
         }
 
-       /* [HttpPost]
-
-        public IActionResult Details(RatingInputModel rating)
+        [HttpGet]
+        public IActionResult AddRating()
         {
-            _bookService.AddRating(rating.Rate, currentBook);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddRating(int? Id, CommentViewModel newComment)
+        {
+            if(Id == null)
+            {
+                return RedirectToAction("NotFound");
+            }
             
-            return RedirectToAction("");
-        }*/
+            currentBook = (int)Id;
+        
+            _bookService.AddRating(newComment.Rating, currentBook);
+            _bookService.AddComment(newComment.Text, currentBook);
+
+            return RedirectToAction("Details", new {Id = currentBook});
+        }
 
         public IActionResult Filter(string filterChoice = "", string searchTerm = "")
         {
