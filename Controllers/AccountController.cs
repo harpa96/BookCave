@@ -78,12 +78,11 @@ public class AccountController : Controller
     }
     
     [HttpPost]
-    public async Task<IActionResult> Profile(RegisterViewModel profile)
+    public async Task<IActionResult> EditProfile(RegisterViewModel profile)
     {
         var user = await _userManager.GetUserAsync(User);
 
         // Update all properties
-        user.Email = profile.Email;
         user.FirstName = profile.FirstName;
         user.LastName = profile.LastName;
         user.Address = profile.Address;
@@ -92,7 +91,24 @@ public class AccountController : Controller
 
         await _userManager.UpdateAsync(user);
 
-        return View(profile);
+        return RedirectToAction("Profile");
+
+        //return View(profile);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> EditProfile()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        return View(new RegisterViewModel 
+        {
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Email = user.Email,
+            Address = user.Address,
+            Image = user.Image,
+            PhoneNumber = user.PhoneNumber
+        });
     }
 
     [HttpPost]
