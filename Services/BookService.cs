@@ -28,7 +28,7 @@ namespace BookCave.Services
 
         public void AddComment(string text, int book)
         {
-            if(text != string.Empty)
+            if(!string.IsNullOrEmpty(text))
             {
                 var comment = new Comment(){BookId = book, Text = text};
                 db.Add(comment);

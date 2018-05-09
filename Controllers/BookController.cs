@@ -84,6 +84,7 @@ namespace BookCave.HomeController
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult AddRating(int? Id, CommentViewModel newComment)
         {
@@ -107,10 +108,6 @@ namespace BookCave.HomeController
 
         public IActionResult Filter(string filterChoice = "", string searchTerm = "")
         {
-            if(searchTerm != "") 
-            {
-                // skila leitar view
-            }
             var filteredBooks = _bookService.SearchedBooks(filterChoice);
             return View(filteredBooks);
         }
