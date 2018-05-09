@@ -62,18 +62,54 @@ namespace BookCave.Services
         public List<BookListViewModel> GetAllBooks()
         {
             var books = (from b in db.Books
-                        join g in db.Genre on b.GenreId equals g.Id
-                        orderby b.Date descending
-                        select new BookListViewModel
-                        {
-                            Id = b.Id, 
-                            Name = b.Name,
-                            Image = b.Image,
-                            Price = b.Price,
-                            Genre = g.TheGenre,
-                            Date = b.Date
-                        }).ToList();
+                            join g in db.Genre on b.GenreId equals g.Id
+                            orderby b.Date descending
+                            select new BookListViewModel
+                            {
+                                Id = b.Id, 
+                                Name = b.Name,
+                                Image = b.Image,
+                                Price = b.Price,
+                                Genre = g.TheGenre,
+                                Date = b.Date
+                            }).ToList();
+
             return books;
+        }
+
+        public FrontPageListsViewModel GetAllFrontPageBooks()
+        {
+            var model = new FrontPageListsViewModel();
+
+            var newBooks = (from b in db.Books
+                            join g in db.Genre on b.GenreId equals g.Id
+                            orderby b.Date descending
+                            select new FrontPageViewModel
+                            {
+                                Id = b.Id,
+                                Name = b.Name,
+                                Image = b.Image,
+                                Price = b.Price,
+                                Date = b.Date
+                            }).Take(12).ToList();
+
+            var popBooks = (from b in db.Books
+                            join g in db.Genre on b.GenreId equals g.Id
+                            join r in db.Ratings on b.Id equals r.BookId
+                            orderby r.Rate descending
+                            select new FrontPageViewModel
+                            {
+                                Id = b.Id,
+                                Name = b.Name,
+                                Image = b.Image,
+                                Price = b.Price,
+                                Rating = r.Rate
+                            }).Take(12).ToList();
+
+            model.NewBooks = newBooks;
+            model.PopularBooks = popBooks;
+
+            return model;
         }
          public List<AuthorListViewModel> GetAllAuthors()
         {
