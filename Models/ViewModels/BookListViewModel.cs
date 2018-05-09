@@ -11,9 +11,9 @@ namespace BookCave.Models.ViewModels
 
         public int AuthorId {get; set;}
         public int AuthorName { get; set; }
+
         public string Genre {get; set; }
         public List<float> Rating {get; set; }
         public int Date {get; set;}
-      
     }
 }
