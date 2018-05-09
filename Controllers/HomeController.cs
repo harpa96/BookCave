@@ -32,8 +32,6 @@ namespace BookCave.RecordStore.HomeController
             return View(searchedBooks);
         }
 
-        
-
         public IActionResult Donate()
         {
             return View();
