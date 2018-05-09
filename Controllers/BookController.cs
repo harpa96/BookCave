@@ -105,7 +105,6 @@ namespace BookCave.HomeController
             
             return RedirectToAction("Details", new {Id = currentBook});
         }
-
         public IActionResult Filter(string filterChoice = "", string searchTerm = "")
         {
             var filteredBooks = _bookService.SearchedBooks(filterChoice);
