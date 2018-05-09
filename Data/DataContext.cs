@@ -11,8 +11,9 @@ namespace BookCave.Data
         public DbSet<Comment> Comments {get; set;}
         public DbSet<Order> Orders {get; set;}
         public DbSet<OrderedBooks> BooksInOrder {get; set;}
-        public DbSet<Genre> Genre {get; set;}
-        
+        public DbSet<Genre> Genre {get; set;}        
+        public DbSet<Country> Countries { get; set;}
+
          protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
          {
              optionsBuilder 
