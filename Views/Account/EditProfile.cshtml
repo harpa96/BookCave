@@ -22,6 +22,36 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="control-label col-sm-3">Land</label>
+                        <div class="col-md-8 col-sm-9">
+                            <select asp-for="CountryId">
+                                <option value="1">Ísland</option>
+                                <option value="2">Danmörk</option>
+                                <option value="3">Noregur</option>
+                                <option value="4">Svíþjóð</option>
+                                <option value="5">Finnland</option>
+                                <option value="6">England</option>
+                                <option value="7">Bandaríkin</option>
+                            </select>
+                            <!--input type="text" asp-for="Address" class="form-control" placeholder="Vinsamlegast skrifaðu heimilisfang hér"/-->
+                            <span asp-validation-for="Address"></span><br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Borg/Bær</label>
+                        <div class="col-md-8 col-sm-9">
+                            <input type="text" asp-for="City" class="form-control" placeholder="Vinsamlegast skrifaðu borg/bæ hér"/>
+                            <span asp-validation-for="City"></span><br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Póstnúmer</label>
+                        <div class="col-md-8 col-sm-9">
+                            <input type="text" asp-for="ZIP" class="form-control" placeholder="Vinsamlegast skrifaðu póstnúmer hér"/>
+                            <span asp-validation-for="ZIP"></span><br>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="control-label col-sm-3">Heimilisfang</label>
                         <div class="col-md-8 col-sm-9">
                             <input type="text" asp-for="Address" class="form-control" placeholder="Vinsamlegast skrifaðu heimilisfang hér"/>

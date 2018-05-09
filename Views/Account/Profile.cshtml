@@ -1,4 +1,4 @@
-@model BookCave.Models.ViewModels.RegisterViewModel;
+@model BookCave.Models.ViewModels.ProfileViewModel;
 
 <div class="container">
     <div class="row">
@@ -15,8 +15,20 @@
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
-                        <td>Notandanafn:</td>
-                        <td>@Model.Email</td>
+                        <td>Netfang:</td>
+                        <td><a href="mailto:info@support.com">@Model.Email</a></td>
+                      </tr>
+                      <tr>
+                        <td>Land:</td>
+                        <td>@Model.CountryId</td>
+                      </tr>
+                      <tr>
+                        <td>Borg/Bær:</td>
+                        <td>@Model.City</td>
+                      </tr>
+                      <tr>
+                        <td>Póstnúmer:</td>
+                        <td>@Model.ZIP</td>
                       </tr>
                       <tr>
                         <td>Heimilisfang:</td>
@@ -31,7 +43,7 @@
                       </tr>
                       <tr>
                         <td>Uppáhaldsbók:</td>
-                        <td>SETJA INN</td>
+                        <td>@Model.FavoriteBook</td>
                       </tr>
                     </tbody>
                   </table>

@@ -39,7 +39,7 @@ public class AccountController : Controller
             return View();
         }
 
-        var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, Address = model.Address, Image = model.Image, FirstName = model.FirstName, LastName = model.LastName };
+        var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, Address = model.Address, Image = model.Image, FirstName = model.FirstName, LastName = model.LastName, ZIP = model.ZIP, CountryId = model.CountryId, City = model.City};
 
         var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -66,19 +66,23 @@ public class AccountController : Controller
     public async Task<IActionResult> Profile()
     {
         var user = await _userManager.GetUserAsync(User);
-        return View(new RegisterViewModel 
+        return View(new ProfileViewModel 
         {
             FirstName = user.FirstName,
             LastName = user.LastName,
             Email = user.Email,
             Address = user.Address,
+            City = user.City,
+            ZIP = user.ZIP,
+            CountryId = user.CountryId,
             Image = user.Image,
-            PhoneNumber = user.PhoneNumber
+            PhoneNumber = user.PhoneNumber,
+            FavoriteBook = user.FavoriteBook
         });
     }
     
     [HttpPost]
-    public async Task<IActionResult> EditProfile(RegisterViewModel profile)
+    public async Task<IActionResult> EditProfile(ProfileViewModel profile)
     {
         var user = await _userManager.GetUserAsync(User);
 
@@ -86,28 +90,34 @@ public class AccountController : Controller
         user.FirstName = profile.FirstName;
         user.LastName = profile.LastName;
         user.Address = profile.Address;
+        user.ZIP = profile.ZIP;
+        user.City = profile.City;
+        user.CountryId = profile.CountryId;
         user.PhoneNumber = profile.PhoneNumber;
         user.Image = profile.Image;
+        user.FavoriteBook = profile.FavoriteBook;
 
         await _userManager.UpdateAsync(user);
 
         return RedirectToAction("Profile");
-
-        //return View(profile);
     }
 
     [HttpGet]
     public async Task<IActionResult> EditProfile()
     {
         var user = await _userManager.GetUserAsync(User);
-        return View(new RegisterViewModel 
+        return View(new ProfileViewModel 
         {
             FirstName = user.FirstName,
             LastName = user.LastName,
             Email = user.Email,
             Address = user.Address,
+            City = user.City,
+            ZIP = user.ZIP,
+            CountryId = user.CountryId,
             Image = user.Image,
-            PhoneNumber = user.PhoneNumber
+            PhoneNumber = user.PhoneNumber,
+            FavoriteBook = user.FavoriteBook
         });
     }
 
