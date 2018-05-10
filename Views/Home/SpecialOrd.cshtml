@@ -1,3 +1,5 @@
+@model BookCave.Models.InputModels.SpecialOrderInputModel
+
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
@@ -48,41 +50,47 @@
 
         <h2>Upplýsingar um kaupanda</h2>
 
-        <form>
+        <form asp-action="SpecialOrd">
         <div class="form-group col-md-8">
             <label for="inputName">Nafn</label>
-            <input type="text" class="form-control" id="inputName"/>
+            <input asp-for="Name" type="text" class="form-control" id="inputName"/>
+            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
 
         <div class="form-group col-md-4">
             <label for="inputPhone">Símanúmer</label>
-            <input type="text" class="form-control" id="inputPhone"/>
-
+            <input asp-for="Phone" type="text" class="form-control" id="inputPhone"/>
+            <span asp-validation-for="Phone" class="text-danger"></span>
         </div>
         <div class="form-row">
             <div class="form-group col-md-5">
             <label for="inputAddress">Heimilisfang</label>
-            <input type="text" class="form-control" id="Address"/>
+            <input asp-for="Address"type="text" class="form-control" id="Address"/>
+            <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group col-md-2">
             <label for="inputZip">Póstnúmer</label>
-            <input type="text" class="form-control" id="inputZip"/>
+            <input asp-for="Zip" type="text" class="form-control" id="inputZip"/>
+            <span asp-validation-for="Zip" class="text-danger"></span>
             </div>
             <div class="form-group col-md-5">
             <label for="inputCity">Borg</label>
-            <input type="text" class="form-control" id="inputCity"/>
+            <input asp-for="City"type="text" class="form-control" id="inputCity"/>
+            <span asp-validation-for="City" class="text-danger"></span>
             </div>
         </div>
 
         <div class="form-group">
             <label for="inputEmail">Netfang</label>
-            <input type="email" class="form-control" id="inputEmail"/>
+            <input asp-for="Email" type="email" class="form-control" id="inputEmail"/>
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
 
         <h3>Upplýsingar um bók</h3>   
         <div class="form-group col-md-6">
         <label for="title"><b>Titill</b></label>
         <input type="text" name="title" required/>
+        
         </div>
 
         <div class="form-group col-md-6"> 
@@ -125,8 +133,8 @@
 
         <div class="form-group">
             <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck"> Ég samþykki skilmála</label>
+      <!--      <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck"> Ég samþykki skilmála</label>-->
             </div>
         </div>
         
@@ -136,4 +144,5 @@
     </div>
   </div>
 </div>
+
 
