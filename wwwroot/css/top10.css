@@ -1,13 +1,13 @@
-ol
+#top10list
 {
     counter-reset: LIST-ITEMS;
 }
-ol > li {
+#top10list > #topBooks {
     position: relative;
     display: inline-block;
 }
 
-ol > li:before
+#top10list > #topBooks:before
 {
     content: counter( LIST-ITEMS ) ".";
     counter-increment: LIST-ITEMS;
@@ -16,7 +16,7 @@ ol > li:before
     font-size: 20px;
 }
 
-ol > li > .books > .thumbnail {
+#top10list > #topBooks > .books > .thumbnail {
     margin-right: 10px;
     width: 200px;
 }
