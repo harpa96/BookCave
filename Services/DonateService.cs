@@ -1,6 +1,8 @@
 using System;
 using BookCave.Models;
 using BookCave.Models.InputModels;
+using System.Net.Mail;
+using System.Net;
 
 namespace BookCave.Services
 {
@@ -15,6 +17,23 @@ namespace BookCave.Services
             {
               throw new Exception("Checked is missing");
             }
+        }
+
+        public void SendDonateEmail(DonateInputModel donate)
+        {
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            client.UseDefaultCredentials = false;
+            client.Credentials = new NetworkCredential("contactus.bookcave@gmail.com", "BookCave1");
+            client.Port = 587;
+            client.EnableSsl = true;
+
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("contactus.bookcave@gmail.com");
+            mailMessage.To.Add(donate.Email);
+            mailMessage.Body = "Sæl/Sæll, Mikið ert þú með gott hjarta. Nú munu fleiri börn í Afríku hafa tækifæri á að læra að lesa. Greiðslan hefur farið í gegn, kærar þakkir fyrir stuðninginn.";
+            mailMessage.Subject = "Greiðslustaðfesting";
+
+            client.Send(mailMessage);
         }
     }
 }

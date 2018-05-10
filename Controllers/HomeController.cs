@@ -8,8 +8,6 @@ using BookCave.Models;
 using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
 using BookCave.Models.ViewModels;
-using System.Net.Mail;
-using System.Net;
 using BookCave.Models.InputModels;
 
 
@@ -73,6 +71,12 @@ namespace BookCave.Controllers.HomeController
             return View();
         }
 
+        public IActionResult reviewOrder()
+        {
+            var books = _bookService.getBooksInCart();
+            return View(books);
+        }
+
 /* 
         public IActionResult Edit()
         {
@@ -98,6 +102,8 @@ namespace BookCave.Controllers.HomeController
         [HttpPost]
         public IActionResult Donate(DonateInputModel donate)
         {
+            
+            _donateService.SendDonateEmail(donate);
             //processContact() imitates a database connection
             //this will fail if ddata is not valid within contactInput
             _donateService.ProcessDonate(donate);
