@@ -19,11 +19,13 @@ namespace BookCave.Controllers.HomeController
     {
         private BookService _bookService;
         private readonly IDonateService _donateService;
+        private readonly ISpecialOrderService _specialOrderService;
 
-        public HomeController(IDonateService donateService)
+        public HomeController(IDonateService donateService, ISpecialOrderService specialOrderService)
         {
             _bookService = new BookService();
             _donateService = donateService;
+            _specialOrderService = specialOrderService;
         }
         
         public IActionResult Index()
@@ -101,6 +103,16 @@ namespace BookCave.Controllers.HomeController
             //processContact() imitates a database connection
             //this will fail if ddata is not valid within contactInput
             _donateService.ProcessDonate(donate);
+            
+            return View();
+        }
+
+        [HttpPost]
+         public IActionResult SpecialOrd(SpecialOrderInputModel specialorder)
+        {
+            //processContact() imitates a database connection
+            //this will fail if ddata is not valid within contactInput
+            _specialOrderService.ProcessSpecialOrder(specialorder);
             
             return View();
         }
