@@ -30,7 +30,9 @@ namespace BookCave.Services
             var order = db.Orders.FirstOrDefault(o => o.UserId == userId);
             var book = (from b in db.BooksInOrder
                         join o in db.Orders on b.OrderId equals o.Id
-                        where o.UserId == userId && b.Id == bookId).FirstOrDefault()db.BooksInOrder.FirstOrDefault(b => b.Id == bookId && b.OrderId == );
+                        where o.UserId == userId && b.Id == bookId
+                        select b).FirstOrDefault();
+                        
             book.Copies = newcopies;
             db.Update(book);
             db.SaveChanges();
