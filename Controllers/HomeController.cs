@@ -8,7 +8,10 @@ using BookCave.Models;
 using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
 using BookCave.Models.ViewModels;
+using System.Net.Mail;
+using System.Net;
 using BookCave.Models.InputModels;
+
 
 namespace BookCave.Controllers.HomeController
 {    
@@ -60,10 +63,6 @@ namespace BookCave.Controllers.HomeController
             return View();
         }
 
-        public IActionResult Login() 
-        {
-            return View();
-        }
          public IActionResult Pay() 
         {
             return View();
@@ -74,18 +73,13 @@ namespace BookCave.Controllers.HomeController
             return View();
         }
 
-        public IActionResult SignUp()
-        {
-            return View();
-        }
-        public IActionResult LoggedUser()
-        {
-            return View();
-        }
+/* 
         public IActionResult Edit()
         {
             return View();
         }
+
+        */
 
         public IActionResult Cart()
         {

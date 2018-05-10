@@ -80,53 +80,43 @@
         </div>
 
         <h3>Upplýsingar um bók</h3>   
+        <div class="form-group col-md-6">
+        <label for="title"><b>Titill</b></label>
+        <input type="text" name="title" required/>
+        </div>
+
+        <div class="form-group col-md-6"> 
+        <label for="author"><b>Höfundur</b></label>
+        <input type="text" name="author" required/>
+        </div>
+            
+        <div class="form-group col-md-6">  
+        <label for="publishDate"><b>Útgáfuár</b></label>
+        <input type="text" name="publishDate"/>
+        </div>
+
+        <div class="form-group col-md-6">
+        <label for="amount"><b>Magn</b></label>
+        <input type="text" name="amount" required/>
+        </div>
+
+        <button type="button" class="btn btn-primary" id="addBook-btn">Bæta við bók</button>
+
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>Titill</th>
                 <th>Höfundur</th>
-                <th>ISBN</th>
+                <th>Útgáfuár</th>
                 <th>Magn</th>
             </tr>
             </thead>
-            <tbody id="bookList">
+            <tbody>
 
             </tbody>
         </table>
-
-        <button class="btn btn-primary" onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Bæta við bók...</button>
-        <div id="id03" class="modal">
-        <form class="modal-content animate" action="/action_page.php">
-            <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Hætta við</button>
-            
-            <div class="main-container">
-                <div class="form-group col-md-5">
-                <label for="title"><b>Titill</b></label>
-                <input type="text" name="title" required/>
-                </div>
-
-                <div class="form-group col-md-4"> 
-                <label for="author"><b>Höfundur</b></label>
-                <input type="text" name="author" required/>
-                </div>
-                    
-                <div class="form-group col-md-2">  
-                <label for="isbn"><b>ISBN (13 stafir)</b></label>
-                <input type="text" name="isbn"/>
-                </div>
-
-                <div class="form-group col-md-1">
-                <label for="amount"><b>Magn</b></label>
-                <input type="text" name="amount" required/>
-                </div>
-
-                <button type="submit" id="btn-addBook">Bæta við bók</button>
-            </div>
-        </div>
-            
-        </form>
-        </div>
+        <br>
+        <br>
 
         <div class="form-group">
         <label for="exampleFormControlTextarea1">Athugasemdir</label>
@@ -140,21 +130,9 @@
             </div>
         </div>
         
-        <button onclick="document.getElementById('id04').style.display='block'">Senda pöntun</button>
-        <div id="id04" class="modal">
-        <form class="modal-content animate" action="/action_page.php">
-            <div class="container" style="background-color:#f1f1f1">
-            <div class="main-container">
-                <h1>Fyrirspurn þín hefur verið send!</h1>
-                <p>Þú munt eiga von á svari innan 24 klukkustunda á netfangið þitt.</p>
-                <a href="/">Aftur á forsíðu</a>
-            </div>
-        </div>
-            
-        </form>
-        </div>
+        <button type="submit" class="btn btn-success">Senda pöntun</button>
 
-        </form>-->
+        </form>
     </div>
   </div>
 </div>

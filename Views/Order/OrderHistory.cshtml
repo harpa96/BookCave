@@ -1,0 +1,36 @@
+@model List<BookCave.Models.ViewModels.BookListViewModel>
+
+<div class="container">
+	<div class="row">
+		<div class="table-responsive">
+            <h1 class="entry-title"><span>Mínar pantanir</span> </h1>
+            <hr/>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Titill bókar</th>
+                    <th>Magn</th>
+                    <th>Höfundur</th>
+                    <th>Dagsetning</th>
+                    <th>Heildarverð</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach (var book in @Model)
+                    {
+                        <tr>
+                            <td>@book.Id</td>
+                            <td>@book.Name</td>
+                            <td>MAGN</td>
+                            <td>@book.AuthorName</td>
+                            <td>Dagsetning??</td>
+                            <td>@book.Price</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <a asp-controller="Account" asp-action="Profile" class="btn btn-primary">Til baka í mínar síður</a>
+        </div>
+	</div>
+</div>
