@@ -139,6 +139,15 @@ namespace BookCave.Services
 
             return allBooks;
         }
+
+        public Book FindEntityBook(int Id)
+        {
+            var book = (from b in db.Books
+                        where Id == b.Id
+                        select b).SingleOrDefault();
+
+            return book;
+        }
         public BookDetailsViewModel FindBookById (int? Id)
         {
             var rating = (from r in db.Ratings
@@ -185,6 +194,7 @@ namespace BookCave.Services
                                     }).ToList();
                 return books;
             }
+            
             else if( order == "lowest")
             {
                 books = (from b in db.Books
