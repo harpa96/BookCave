@@ -1,0 +1,153 @@
+@model BookCave.Models.ViewModels.CheckoutViewModel
+
+<h1>Greiðsluupplýsingar</h1> 
+</br>
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Upplýsingar um viðtakanda</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Fullt nafn</label>  
+  <div class="col-md-4">
+    <input type="text" asp-for="Reciever.Name" class="form-control input-md" value="@Model.User.FirstName @Model.User.LastName"/>
+    <span id="textinput" asp-validation-for="Reciever.Name"></span><br>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Símanúmer</label>  
+  <div class="col-md-4">
+      <input type="text" asp-for="Reciever.PhoneNumber" class="form-control input-md" value="@Model.User.PhoneNumber"/>
+      <span id="textinput" asp-validation-for="Reciever.PhoneNumber"></span><br>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Heimilisfang</label>  
+  <div class="col-md-4">
+      <input type="text" asp-for="Reciever.Address" class="form-control input-md" value="@Model.User.Address"/>
+      <span id="textinput" asp-validation-for="Reciever.Address"></span><br>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Bær/Borg</label>  
+  <div class="col-md-4">
+      <input type="text" asp-for="Reciever.City" class="form-control input-md" value="@Model.User.City"/>
+      <span id="textinput" asp-validation-for="Reciever.City"></span><br>
+  </div>
+</div>
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Póstnúmer</label>  
+  <div class="col-md-4">
+      <input type="text" asp-for="Reciever.ZIP" class="form-control input-md" value="@Model.User.ZIP"/>
+      <span id="textinput" asp-validation-for="Reciever.ZIP"></span><br>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">Land</label>
+  <div class="col-md-4">
+    <select asp-for"Reciever.CountryId" id="selectbasic" name="selectbasic" class="form-control" value="@Model.User.CountryId">
+        <option value="1">Ísland</option>
+        <option value="2">Danmörk</option>
+        <option value="3">Noregur</option>
+        <option value="4">Svíþjóð</option>
+        <option value="5">Finnland</option>
+        <option value="6">England</option>
+        <option value="7">Bandaríkin</option>
+      </select>
+    <span asp-validation-for="Reciever.CountryId"></span><br/>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Upplýsingar um greiðanda</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Fullt nafn</label>  
+  <div class="col-md-4">
+      <input type="text" asp-for="Payer.Name" class="form-control input-md" value="@Model.User.FirstName @Model.User.LastName"/>
+      <span id="textinput" asp-validation-for="Payer.Name"></span><br>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Símanúmer</label>  
+  <div class="col-md-4">
+      <input type="text" asp-for="Payer.PhoneNumber" class="form-control input-md" value="@Model.User.PhoneNumber"/>
+      <span id="textinput" asp-validation-for="Payer.PhoneNumber"></span><br>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Heimilisfang</label>  
+  <div class="col-md-4">
+      <input type="text" asp-for="Payer.Address" class="form-control input-md" value="@Model.User.Address"/>
+      <span id="textinput" asp-validation-for="Payer.Address"></span><br>
+  </div>
+</div>
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Bær/Borg</label>  
+  <div class="col-md-4">
+      <input type="text" asp-for="Payer.City" class="form-control input-md" value="@Model.User.City"/>
+      <span id="textinput" asp-validation-for="Payer.City"></span><br>
+  </div>
+</div>
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Póstnúmer</label>  
+  <div class="col-md-4">
+      <input type="text" asp-for="Payer.ZIP" class="form-control input-md" value="@Model.User.ZIP"/>
+      <span id="textinput" asp-validation-for="Payer.ZIP"></span><br>
+  </div>
+</div>
+
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">Land</label>
+  <div class="col-md-4">
+    <select asp-for"Payer.CountryId" id="selectbasic" name="selectbasic" class="form-control" value="@Model.User.CountryId">
+        <option value="1">Ísland</option>
+        <option value="2">Danmörk</option>
+        <option value="3">Noregur</option>
+        <option value="4">Svíþjóð</option>
+        <option value="5">Finnland</option>
+        <option value="6">England</option>
+        <option value="7">Bandaríkin</option>
+      </select>
+    <span asp-validation-for="Payer.CountryId"></span><br/>
+  </div>
+</div>
+
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <a asp-controller="Home" asp-action="ReviewOrder" class="btn btn-primary">Halda áfram í greiðslu</a>
+    <a asp-controller="Home" asp-action="Cart" class="btn btn-primary">Til baka í körfu</a>
+  </div>
+</div>
+
+</fieldset>
+</form>

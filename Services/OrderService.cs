@@ -15,6 +15,15 @@ namespace BookCave.Services
         {
             db = new DataContext();
         }
+
+        public string GetCountry(int cId)
+        {
+            var country = (from c in db.Countries 
+                            where cId == c.Id
+                            select c.Name).FirstOrDefault().ToString();
+
+            return country;
+        }
         
         public void AddOrder(int order, int user, int book, int copies)
         {
