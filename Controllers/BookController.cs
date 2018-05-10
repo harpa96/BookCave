@@ -42,7 +42,6 @@ namespace BookCave.Controllers.BookController
 
         public IActionResult Category(int? Id, string orderby)
         {
-            Console.WriteLine("Id inní categories: " + Id);
             
             if (Id == 0)
             {

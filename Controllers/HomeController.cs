@@ -81,11 +81,11 @@ namespace BookCave.Controllers.HomeController
             return View();
         }
 
-        /*public IActionResult reviewOrder()
+        public IActionResult reviewOrder()
         {
-           var books = _bookService.getBooksInCart();
-            return View(books);
-        }*/
+           //var books = _bookService.getBooksInCart();
+            return View();
+        }
 
 /* 
         public IActionResult Edit()
