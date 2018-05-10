@@ -3,13 +3,18 @@
 <<h1>Karfan þín</h1>
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">    
+            <form method="POST">
+                <input type="hidden" asp-for="@Model.BookToDelete" value="0">
+                <input class="btn btn-danger" type="submit" value="Hreinsa úr körfu"/>
+            </form>
+
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Vara</th>
                         <th>Fjöldi</th>
-                        <th class="text-center">Verð</th>
+                        <th class="text-center">Einingarerð</th>
                         <th class="text-center">Heildarverð</th>
                         <th> </th>
                     </tr>
@@ -20,7 +25,7 @@
                         <tr>
                         <td class="col-sm-8 col-md-6">
                         <div >
-                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="@book.Image" style="width: 72px; height: 72px;"> </a>
+                            <a class="thumbnail pull-left"> <img class="media-object" src="@book.Image" style="width: 72px; height: 72px;"> </a>
                             <div class="media-body">
                                 <h4 class="media-heading">@book.Name</h4>
                                 <h5 class="media-heading"> by Vigdís Birna</h5>
@@ -33,11 +38,9 @@
                         <td class="col-sm-1 col-md-1 text-center"><strong>@book.PriceSum</strong></td>
                         <td class="col-sm-1 col-md-1">
                         <form method="POST">
-                            <input class="btn btn-danger" type="submit" asp-for="" value="Fjarlægja"/>
+                            <input type="hidden" asp-for="@Model.BookToDelete" value="@book.Id">
+                            <input class="btn btn-danger" type="submit" value="Fjarlægja"/>
                         </form>
-                        
-                        <button type="button" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove"></span> Fjarlægja</button></td>
                     </tr>
                     }
                 
@@ -71,9 +74,9 @@
                         <a class="btn btn-default" asp-controller="Home" asp-action="Index"><span class="glyphicon glyphicon-shopping-cart"></span> halda áfram að versla</a>
                         
                         <td>
-                        <button type="button" class="btn btn-success">
-                            Greiða <span class="glyphicon glyphicon-play"></span>
-                        </button></td>
+                        <a asp-controller="Order" asp-action="Pay" class="btn btn-success">
+                            Greiða <span class="glyphicon glyphicon-menu-right"></span>
+                        </a></td>
                     </tr>
                 </tbody>
             </table>
