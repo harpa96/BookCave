@@ -16,9 +16,7 @@ namespace BookCave.Controllers.HomeController
     public class HomeController : Controller
     {
         private BookService _bookService;
-
         List<BookDetailsViewModel> myCart;
-
         private readonly IDonateService _donateService;
 
         private readonly ISpecialOrderService _specialOrderService;
@@ -33,8 +31,6 @@ namespace BookCave.Controllers.HomeController
             _donateService = donateService;
 
             _specialOrderService = specialOrderService;
-
-
         }
         
         public IActionResult Index()
@@ -95,6 +91,8 @@ namespace BookCave.Controllers.HomeController
         {
             return View();
         }
+*/
+
 
 
         /*public IActionResult Cart(List<BookDetailsViewModel> booksInCart)
@@ -102,6 +100,7 @@ namespace BookCave.Controllers.HomeController
         */
 
    
+
         public IActionResult SendEmail()
         {
             return View();
