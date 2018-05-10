@@ -9,6 +9,6 @@ $(function() {
 
         $('tbody').append(_tr);
 
-        $('input').val("");
+        $('#orderInput input').val("");
     });
 });
