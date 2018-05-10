@@ -14,10 +14,12 @@ namespace BookCave.RecordStore.HomeController
     public class HomeController : Controller
     {
         private BookService _bookService;
+        List<BookDetailsViewModel> myCart;
 
         public HomeController()
         {
             _bookService = new BookService();
+            myCart = new List<BookDetailsViewModel>();
         }
         
         public IActionResult Index()
@@ -84,12 +86,13 @@ namespace BookCave.RecordStore.HomeController
             return View();
         }
 
-        public IActionResult Cart()
+        /*public IActionResult Cart(List<BookDetailsViewModel> booksInCart)
         {
-            var books = _bookService.getBooksInCart();
             
-            return View(books);
-        }
+            Console.WriteLine("Fjöldi bóka þegar ég er í Cart Viewinu: " + booksInCart.Count);
+            
+            return View(booksInCart);
+        }*/
         public IActionResult SendEmail()
         {
             return View();

@@ -1,5 +1,12 @@
-$(document).ready(function(){
-    //-- Click on detail
+    function addToCart()
+    {
+        alert("Hello World");
+        //var h2Element = document.getElementById();
+        //h2Element.innerText = (parseInt(h2Element.innerText) - parseInt(1)).toString();
+    }
+    
+/*
+    
     $("ul.menu-items > li").on("click",function(){
         $("ul.menu-items > li").removeClass("active");
         $(this).addClass("active");
@@ -29,8 +36,8 @@ $(document).ready(function(){
         }else{
             $(".section > div > input").val("1");
         }
-    })                        
-})
+    })                        */
+
 
 //STAR RATING
 

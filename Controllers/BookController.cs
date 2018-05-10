@@ -74,18 +74,21 @@ namespace BookCave.HomeController
                 return View("NotFound");
             }
             
-             System.Diagnostics.Debug.WriteLine("hhihi");
             var book = _bookService.FindBookById(Id);
 
             return View(book);
         }
 
         [HttpPost]
-        public IActionResult Details (BookDetailsViewModel book)
+        public IActionResult Details (int? Id, BookDetailsViewModel book)
         {
-            _bookService.addToCart(book);
-            System.Diagnostics.Debug.WriteLine("hhihi");
-            return RedirectToAction("Cart", "Home");
+            var newBook = _bookService.FindBookById(Id);
+            newBook.Copies = book.Copies;
+
+            _bookService.addToCart(newBook);
+
+            Console.WriteLine("Bækur í körfu áður en ég færi mig um controller: " + _bookService.getBooksInCart().Count);
+            return RedirectToAction("Cart");
         }
 
         [HttpGet]
@@ -119,6 +122,15 @@ namespace BookCave.HomeController
         {
             var filteredBooks = _bookService.SearchedBooks(filterChoice);
             return View(filteredBooks);
+        }
+
+        public IActionResult Cart()
+        {
+            var books = _bookService.getBooksInCart();
+
+            Console.WriteLine("Fjöldi í körfu inn í Cart viewi: " + books.Count);
+
+            return View(books);
         }
 
     }

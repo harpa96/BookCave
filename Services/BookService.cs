@@ -3,7 +3,7 @@ using BookCave.Data;
 using System.Linq;
 using BookCave.Models.ViewModels;
 using BookCave.Models.EntityModels;
-
+using System;
 
 namespace BookCave.Services
 {
@@ -15,20 +15,27 @@ namespace BookCave.Services
         public BookService()
         {
             db = new DataContext();
-            cart = new List<BookDetailsViewModel>()
-            {
-                new BookDetailsViewModel(){Name = "Bókin hennar Vigdísar", Price=400, Copies=2}
-            };
+            cart = new List<BookDetailsViewModel>();
         }
         
         public List<BookDetailsViewModel> getBooksInCart()
         {
+            Console.WriteLine("Fjöldi bóka þegar ég kalla á getBooks in Cart: " + cart.Count);
+            
             return cart;
         }
 
         public void addToCart(BookDetailsViewModel book)
         {
-            cart.Add(book);
+    
+            Console.WriteLine("þessi bók á að vera ödduð: " + book.Name);
+            Console.WriteLine("þetta er fjöldi bóka: " + book.Copies);
+            var addBook = new BookDetailsViewModel();
+            addBook = book;
+
+            Console.WriteLine("Cart.Count FYRIR add: " + cart.Count);
+            cart.Add(addBook);
+            Console.WriteLine("Cart.Count EFTIR add: " + cart.Count);
         }
 
         public void AddRating(float? rating, int book)
