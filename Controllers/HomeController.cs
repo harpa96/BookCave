@@ -16,20 +16,16 @@ namespace BookCave.Controllers.HomeController
     public class HomeController : Controller
     {
         private BookService _bookService;
-<<<<<<< HEAD
         List<BookDetailsViewModel> myCart;
-=======
         private readonly IDonateService _donateService;
->>>>>>> 920ec7d3f8bbadaf5294df9c04d28741ad900003
+
 
         public HomeController(IDonateService donateService)
         {
             _bookService = new BookService();
-<<<<<<< HEAD
+
             myCart = new List<BookDetailsViewModel>();
-=======
             _donateService = donateService;
->>>>>>> 920ec7d3f8bbadaf5294df9c04d28741ad900003
         }
         
         public IActionResult Index()
@@ -91,19 +87,8 @@ namespace BookCave.Controllers.HomeController
             return View();
         }
 
-<<<<<<< HEAD
-        /*public IActionResult Cart(List<BookDetailsViewModel> booksInCart)
-=======
-        */
+*/
 
-        public IActionResult Cart()
->>>>>>> 920ec7d3f8bbadaf5294df9c04d28741ad900003
-        {
-            
-            Console.WriteLine("Fjöldi bóka þegar ég er í Cart Viewinu: " + booksInCart.Count);
-            
-            return View(booksInCart);
-        }*/
         public IActionResult SendEmail()
         {
             return View();
