@@ -86,27 +86,28 @@
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
 
-        <h3>Upplýsingar um bók</h3>   
-        <div class="form-group col-md-6">
-        <label for="title"><b>Titill</b></label>
-        <input type="text" name="title" required/>
-        
-        </div>
+        <h3>Upplýsingar um bók</h3> 
+        <div id="orderInput">
+            <div class="form-group col-md-6">
+            <label for="title"><b>Titill</b></label>
+            <input type="text" name="title"/>
+            </div>
 
-        <div class="form-group col-md-6"> 
-        <label for="author"><b>Höfundur</b></label>
-        <input type="text" name="author" required/>
-        </div>
-            
-        <div class="form-group col-md-6">  
-        <label for="publishDate"><b>Útgáfuár</b></label>
-        <input type="text" name="publishDate"/>
-        </div>
+            <div class="form-group col-md-6"> 
+            <label for="author"><b>Höfundur</b></label>
+            <input type="text" name="author"/>
+            </div>
+                
+            <div class="form-group col-md-6">  
+            <label for="publishDate"><b>Útgáfuár</b></label>
+            <input type="text" name="publishDate"/>
+            </div>
 
-        <div class="form-group col-md-6">
-        <label for="amount"><b>Magn</b></label>
-        <input type="text" name="amount" required/>
-        </div>
+            <div class="form-group col-md-6">
+            <label for="amount"><b>Magn</b></label>
+            <input type="text" name="amount"/>
+            </div>
+        </div>  
 
         <button type="button" class="btn btn-primary" id="addBook-btn">Bæta við bók</button>
 

@@ -31,6 +31,7 @@ namespace BookCave.Controllers.HomeController
             _donateService = donateService;
 
             _specialOrderService = specialOrderService;
+
         }
         
         public IActionResult Index()
@@ -80,11 +81,11 @@ namespace BookCave.Controllers.HomeController
             return View();
         }
 
-        public IActionResult reviewOrder()
+        /*public IActionResult reviewOrder()
         {
-            var books = _bookService.getBooksInCart();
+           var books = _bookService.getBooksInCart();
             return View(books);
-        }
+        }*/
 
 /* 
         public IActionResult Edit()
@@ -93,13 +94,6 @@ namespace BookCave.Controllers.HomeController
         }
 */
 
-
-
-        /*public IActionResult Cart(List<BookDetailsViewModel> booksInCart)
-
-        */
-
-   
 
         public IActionResult SendEmail()
         {

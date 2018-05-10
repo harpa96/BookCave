@@ -18,12 +18,14 @@ namespace BookCave.Controllers
         
         private readonly UserManager<ApplicationUser> _userManager;
         private ShoppingCartService _shoppingCart;
+        private BookService _bookService;
 
         
         public CartController(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
             _shoppingCart = new ShoppingCartService();
+            _bookService = new BookService();
 
         }
 
@@ -43,31 +45,38 @@ namespace BookCave.Controllers
             }
 
             cart.Total = total;
-            cart.TotalPlus = total+500;
+            
+            if(total > 0)
+            {
+                cart.TotalPlus = total+500;
+            }
+            else
+            {
+                cart.TotalPlus = 0;
+            }
+            
 
             return View(cart);
         }
 
-        /*[Authorize]
+        [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(CartViewModel model)
         {
+            
+            
             var user = await _userManager.GetUserAsync(User);
             var id = user.Id;
-            var cart = new CartViewModel{Books = _shoppingCart.getCart(id)};
-            
-            var total = 0;
-
-            foreach(var book in cart.Books)
+            if(model.BookToDelete == 0)
             {
-                total += book.Price*book.Copies;
+                _shoppingCart.clearCart(id);
+                return RedirectToAction("Index");
             }
+    
+            var book = _bookService.FindBookById(model.BookToDelete);
+           _shoppingCart.removeFromCart(book, id);
 
-            cart.Total = total;
-            cart.TotalPlus = total+500;
-
-            return View(cart);
-        }*/
-
+            return RedirectToAction("Index");
+        }
     }
 }
