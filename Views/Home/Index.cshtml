@@ -1,4 +1,4 @@
-﻿@model List<BookCave.Models.ViewModels.BookListViewModel>
+﻿@model BookCave.Models.ViewModels.FrontPageListsViewModel
 <h1 class="carousel-heading frontpage-heading">Nýjar bækur</h1>
     <div class="container">
         <div class="row">
@@ -17,27 +17,27 @@
                         <div class="carousel-inner">
                         <div class="item active">
                             <div class="row">
-                                @for (var i = 0; i < 6;i++)
+                                @for (var i = 0; i < 6; i++)
                                 {
                                     <div class="col-xs-2">
-                                    <img src=@Model[i].Image class="img-responsive">
-                                    <div class="frontpage-caption">
-                                        <h4>@Model[i].Name</h4>
-                                        <p>@Model[i].Date</p>
-                                    </div>
+                                        <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.NewBooks[i].Id"><img src=@Model.NewBooks[i].Image class="img-responsive"></a>
+                                        <div class="frontpage-caption">
+                                            <h4>@Model.NewBooks[i].Name</h4>
+                                            <p>@Model.NewBooks[i].Date</p>
+                                        </div>
                                     </div>
                                 }
                             </div>
                         </div>
                         <div class="item">
                             <div class="row">
-                                @for (var i = 6; i < 12;i++)
+                                @for (var i = 6; i < 12; i++)
                                 {
                                     <div class="col-xs-2">
-                                    <img src=@Model[i].Image class="img-responsive">
+                                    <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.NewBooks[i].Id"><img src=@Model.NewBooks[i].Image class="img-responsive"></a>
                                     <div class="frontpage-caption">
-                                        <h4>@Model[i].Name</h4>
-                                        <p>@Model[i].Date</p>
+                                        <h4>@Model.NewBooks[i].Name</h4>
+                                        <p>@Model.NewBooks[i].Date</p>
                                     </div>
                                     </div>
                                 }
@@ -61,7 +61,7 @@
     <br/>
     <br/>
     <h1 class="carousel-heading frontpage-heading">Vinsælar bækur</h1>
-    <div class="container">
+    <div class="container" id="popularBooks">
         <div class="row">
             <div class="col-xs-12">
 
@@ -78,28 +78,28 @@
                         <div class="carousel-inner">
                         <div class="item active">
                             <div class="row">
-                                @for (var i = 0; i < 6;i++)
+                                @for (var i = 0; i < 6; i++)
                                 {
                                     <div class="col-xs-2">
-                                    <img src=@Model[i].Image class="img-responsive">
-                                    <div class="frontpage-caption">
-                                        <h4>@Model[i].Name</h4>
-                                        <p>@Model[i].Price</p>
-                                    </div>
+                                        <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.NewBooks[i].Id"><img src=@Model.PopularBooks[i].Image class="img-responsive"></a>
+                                        <div class="frontpage-caption">
+                                            <h4>@Model.PopularBooks[i].Name</h4>
+                                            <p>@Model.PopularBooks[i].Rating</p>
+                                        </div>
                                     </div>
                                 }
                             </div>
                         </div>
                         <div class="item">
                             <div class="row">
-                                @for (var i = 6; i < 12;i++)
+                                @for (var i = 6; i < 12; i++)
                                 {
                                     <div class="col-xs-2">
-                                    <img src=@Model[i].Image class="img-responsive">
-                                    <div class="frontpage-caption">
-                                        <h4>@Model[i].Name</h4>
-                                        <p>@Model[i].Price</p>
-                                    </div>
+                                        <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.NewBooks[i].Id"><img src=@Model.PopularBooks[i].Image class="img-responsive"></a>
+                                        <div class="frontpage-caption">
+                                            <h4>@Model.PopularBooks[i].Name</h4>
+                                            <p>@Model.PopularBooks[i].Rating</p>
+                                        </div>
                                     </div>
                                 }
                             </div>

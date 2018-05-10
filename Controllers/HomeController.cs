@@ -25,7 +25,7 @@ namespace BookCave.Controllers.HomeController
         
         public IActionResult Index()
         {
-            var books = _bookService.GetAllBooks();
+            var books = _bookService.GetAllFrontPageBooks();
             return View(books);
         }
 
@@ -34,8 +34,6 @@ namespace BookCave.Controllers.HomeController
             var searchedBooks = _bookService.SearchedBooks(searchInput);
             return View(searchedBooks);
         }
-
-        
 
         public IActionResult Donate()
         {
