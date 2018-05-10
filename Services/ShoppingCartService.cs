@@ -72,20 +72,35 @@ namespace BookCave.Services
             db.SaveChanges();
         }
 
+        public void clearCart(string userId)
+        {
+                var allBooks = (from c in db.Cart
+                    where c.UserId == userId
+                    select c);
+
+                foreach (var b in allBooks)
+                {
+                    db.Remove(b);
+                }
+                db.SaveChanges();
+        }
+
         public void removeFromCart(BookDetailsViewModel book, string userId)
         {
-            var theBook = (from c in db.Cart
-                            where userId == c.UserId && book.Id == c.BookId
-                            select c).FirstOrDefault();
-            if(theBook.Copies > 1)
-            {
-                theBook.Copies--;
-            }
+                var theBook = (from c in db.Cart
+                where userId == c.UserId && book.Id == c.BookId
+                select c).FirstOrDefault();
             
-            else
-            {
-                db.Cart.Remove(theBook);
-            }
+                if(theBook.Copies > 1)
+                {
+                    theBook.Copies--;
+                    db.Update(theBook);
+                }
+
+                else
+                {
+                    db.Cart.Remove(theBook);
+                }
             
             db.SaveChanges();
         }

@@ -29,6 +29,7 @@ namespace BookCave
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IDonateService, DonateService>();
+            services.AddTransient<ISpecialOrderService, SpecialOrderService>();
             /* 
             var policy = new AuthorizationPolicyBuilder()
                              .RequireAuthenticatedUser()
