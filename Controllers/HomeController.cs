@@ -8,16 +8,19 @@ using BookCave.Models;
 using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
 using BookCave.Models.ViewModels;
+using BookCave.Models.InputModels;
 
-namespace BookCave.RecordStore.HomeController
+namespace BookCave.Controllers.HomeController
 {    
     public class HomeController : Controller
     {
         private BookService _bookService;
+        private readonly IDonateService _donateService;
 
-        public HomeController()
+        public HomeController(IDonateService donateService)
         {
             _bookService = new BookService();
+            _donateService = donateService;
         }
         
         public IActionResult Index()
@@ -99,6 +102,15 @@ namespace BookCave.RecordStore.HomeController
         public IActionResult form()
         {
             return View("form.php");
+        }
+        [HttpPost]
+        public IActionResult Donate(DonateInputModel donate)
+        {
+            //processContact() imitates a database connection
+            //this will fail if ddata is not valid within contactInput
+            _donateService.ProcessDonate(donate);
+            
+            return View();
         }
 
         
