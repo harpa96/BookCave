@@ -32,6 +32,10 @@
                         <td class="col-sm-1 col-md-1 text-center"><strong>@book.Price</strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>@book.PriceSum</strong></td>
                         <td class="col-sm-1 col-md-1">
+                        <form method="POST">
+                            <input class="btn btn-danger" type="submit" asp-for="" value="Fjarlægja"/>
+                        </form>
+                        
                         <button type="button" class="btn btn-danger">
                             <span class="glyphicon glyphicon-remove"></span> Fjarlægja</button></td>
                     </tr>
