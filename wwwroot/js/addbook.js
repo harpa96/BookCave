@@ -1,19 +1,14 @@
-// Get the modal
-var modal3 = document.getElementById('id03');
+$(function() {
+    $("#addBook-btn").click(function() {
+        var _title = $('input[name="title"]').val();
+        var _author = $('input[name="author"]').val();
+        var _publishDate = $('input[name="publishDate"]').val();
+        var _amount = $('input[name="amount"]').val();
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal3) {
-        modal3.style.display = "none";
-    }
-}
+        var _tr = '<tr><td>' + _title + '</td> <td>' + _author + '</td> <td>' + _publishDate + '</td><td>' + _amount + '</td></tr>';
 
-// Get the modal
-var modal4 = document.getElementById('id04');
+        $('tbody').append(_tr);
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal4) {
-        modal4.style.display = "none";
-    }
-}
+        $('input').val("");
+    });
+});
