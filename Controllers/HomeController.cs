@@ -101,14 +101,7 @@ namespace BookCave.Controllers.HomeController
 
         */
 
-        public IActionResult Cart()
-
-        {
-            
-            Console.WriteLine("Fjöldi bóka þegar ég er í Cart Viewinu: " + booksInCart.Count);
-            
-            return View(booksInCart);
-        }
+   
         public IActionResult SendEmail()
         {
             return View();

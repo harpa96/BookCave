@@ -13,11 +13,7 @@ namespace BookCave.Services
             if(string.IsNullOrEmpty(donate.Name)) {throw new Exception("Name is missing");}
             if(string.IsNullOrEmpty(donate.Email)) {throw new Exception("Email is missing");}
             if(string.IsNullOrEmpty(donate.Amount)) {throw new Exception("Amount is missing");}
-
-            if(!donate.Checked.Equals("yes"))
-            {
-              throw new Exception("Checked is missing");
-            }
+            if(donate.Checked == false){throw new Exception("Amount is missing");}
         }
 
         public void SendDonateEmail(DonateInputModel donate)
