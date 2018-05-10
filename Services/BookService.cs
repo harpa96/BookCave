@@ -17,26 +17,6 @@ namespace BookCave.Services
             db = new DataContext();
             cart = new List<BookDetailsViewModel>();
         }
-        
-        public List<BookDetailsViewModel> getBooksInCart()
-        {
-            Console.WriteLine("Fjöldi bóka þegar ég kalla á getBooks in Cart: " + cart.Count);
-            
-            return cart;
-        }
-
-        public void addToCart(BookDetailsViewModel book)
-        {
-    
-            Console.WriteLine("þessi bók á að vera ödduð: " + book.Name);
-            Console.WriteLine("þetta er fjöldi bóka: " + book.Copies);
-            var addBook = new BookDetailsViewModel();
-            addBook = book;
-
-            Console.WriteLine("Cart.Count FYRIR add: " + cart.Count);
-            cart.Add(addBook);
-            Console.WriteLine("Cart.Count EFTIR add: " + cart.Count);
-        }
 
         public void AddRating(float? rating, int book)
         {
@@ -176,14 +156,6 @@ namespace BookCave.Services
             return allBooks;
         }
 
-        public Book FindEntityBook(int Id)
-        {
-            var book = (from b in db.Books
-                        where Id == b.Id
-                        select b).SingleOrDefault();
-
-            return book;
-        }
         public BookDetailsViewModel FindBookById (int? Id)
         {
             var rating = (from r in db.Ratings
@@ -214,10 +186,13 @@ namespace BookCave.Services
 
         public List<BookListViewModel> OrderBooks(string order, List<BookListViewModel> books)
         {
+            var genre = books[0].Genre;
+            
             if(order == "highest")
             {
                 books = (from b in db.Books
                                     join g in db.Genre on b.GenreId equals g.Id
+                                    where g.TheGenre == genre
                                     orderby b.Price descending
                                     select new BookListViewModel
                                     {
@@ -235,6 +210,7 @@ namespace BookCave.Services
             {
                 books = (from b in db.Books
                                     join g in db.Genre on b.GenreId equals g.Id
+                                    where g.TheGenre == genre
                                     orderby b.Price ascending
                                     select new BookListViewModel
                                     {
@@ -251,6 +227,7 @@ namespace BookCave.Services
             {
                 books = (from b in db.Books
                                     join g in db.Genre on b.GenreId equals g.Id
+                                    where g.TheGenre == genre
                                     orderby b.Name
                                     select new BookListViewModel
                                     {

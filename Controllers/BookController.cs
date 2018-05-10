@@ -62,6 +62,7 @@ namespace BookCave.Controllers.BookController
             {
                 var books = _bookService.FilterCategories(Id);
                 
+                
                 if(orderby != null)
                 {
                     books = _bookService.OrderBooks(orderby, books);
@@ -132,15 +133,5 @@ namespace BookCave.Controllers.BookController
             var filteredBooks = _bookService.SearchedBooks(filterChoice);
             return View(filteredBooks);
         }
-
-        public IActionResult Cart()
-        {
-            var books = _bookService.getBooksInCart();
-
-            Console.WriteLine("Fjöldi í körfu inn í Cart viewi: " + books.Count);
-
-            return View(books);
-        }
-
     }
 }

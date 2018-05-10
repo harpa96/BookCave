@@ -28,7 +28,6 @@ namespace BookCave.Controllers.HomeController
             myCart = new List<BookDetailsViewModel>();
 
             _donateService = donateService;
-
         }
         
         public IActionResult Index()
