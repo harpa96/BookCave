@@ -11,9 +11,10 @@ using System;
 namespace BookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180509111545_deletingBooksExtraTable")]
+    partial class deletingBooksExtraTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,18 +71,6 @@ namespace BookCave.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.Country", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Countries");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Genre", b =>

@@ -10,17 +10,45 @@ namespace BookCave.Services
     public class BookService
     {
         private DataContext db;
+        private List<BookDetailsViewModel> cart;
 
         public BookService()
         {
             db = new DataContext();
+            cart = new List<BookDetailsViewModel>()
+            {
+                new BookDetailsViewModel(){Name = "Bókin hennar Vigdísar", Price=400, Copies=2}
+            };
         }
         
-        public void AddRating(float rating, int book)
+        public List<BookDetailsViewModel> getBooksInCart()
         {
-            var rate = new Rating(){ BookId = book, Rate = rating };
-            db.Add(rate);
-            db.SaveChanges();
+            return cart;
+        }
+
+        public void addToCart(BookDetailsViewModel book)
+        {
+            cart.Add(book);
+        }
+
+        public void AddRating(float? rating, int book)
+        {
+            if(rating != null)
+            {
+                var rate = new Rating(){ BookId = book, Rate = (float)rating};
+                db.Add(rate);
+                db.SaveChanges();
+            }
+        }
+
+        public void AddComment(string text, int book)
+        {
+            if(!string.IsNullOrEmpty(text))
+            {
+                var comment = new Comment(){BookId = book, Text = text};
+                db.Add(comment);
+                db.SaveChanges();
+            }
         }
 
         public void UpdateRating(int ratingId, float newRating) 
@@ -34,18 +62,54 @@ namespace BookCave.Services
         public List<BookListViewModel> GetAllBooks()
         {
             var books = (from b in db.Books
-                        join g in db.Genre on b.GenreId equals g.Id
-                        orderby b.Date descending
-                        select new BookListViewModel
-                        {
-                            Id = b.Id, 
-                            Name = b.Name,
-                            Image = b.Image,
-                            Price = b.Price,
-                            Genre = g.TheGenre,
-                            Date = b.Date
-                        }).ToList();
+                            join g in db.Genre on b.GenreId equals g.Id
+                            orderby b.Date descending
+                            select new BookListViewModel
+                            {
+                                Id = b.Id, 
+                                Name = b.Name,
+                                Image = b.Image,
+                                Price = b.Price,
+                                Genre = g.TheGenre,
+                                Date = b.Date
+                            }).ToList();
+
             return books;
+        }
+
+        public FrontPageListsViewModel GetAllFrontPageBooks()
+        {
+            var model = new FrontPageListsViewModel();
+
+            var newBooks = (from b in db.Books
+                            join g in db.Genre on b.GenreId equals g.Id
+                            orderby b.Date descending
+                            select new FrontPageViewModel
+                            {
+                                Id = b.Id,
+                                Name = b.Name,
+                                Image = b.Image,
+                                Price = b.Price,
+                                Date = b.Date
+                            }).Take(12).ToList();
+
+            var popBooks = (from b in db.Books
+                            join g in db.Genre on b.GenreId equals g.Id
+                            join r in db.Ratings on b.Id equals r.BookId
+                            orderby r.Rate descending
+                            select new FrontPageViewModel
+                            {
+                                Id = b.Id,
+                                Name = b.Name,
+                                Image = b.Image,
+                                Price = b.Price,
+                                Rating = r.Rate
+                            }).Take(12).ToList();
+
+            model.NewBooks = newBooks;
+            model.PopularBooks = popBooks;
+
+            return model;
         }
          public List<AuthorListViewModel> GetAllAuthors()
         {
@@ -107,8 +171,12 @@ namespace BookCave.Services
         public BookDetailsViewModel FindBookById (int? Id)
         {
             var rating = (from r in db.Ratings
-                                        where r.BookId == Id
-                                        select r.Rate).ToList();
+                        where r.BookId == Id
+                        select r.Rate).ToList();
+
+            var comments = (from c in db.Comments
+                            where c.BookId == Id
+                            select c).ToList();
             
             var book = (from b in db.Books
                         join g in db.Genre on b.GenreId equals g.Id
@@ -117,11 +185,11 @@ namespace BookCave.Services
                         {
                             Id = b.Id, 
                             Name = b.Name,
-                           
                             Price = b.Price, 
                             AuthorId = b.AuthorId, 
                             Image = b.Image,
                             Genre = g.TheGenre,
+                            Comments = comments,
                             Description = b.Description,
                             Rating = rating.Average()
                         }).SingleOrDefault(); 
@@ -231,7 +299,6 @@ namespace BookCave.Services
                 return filteredBooks;
 
         }
-
         public string getGenre(int? Id)
         {
             string genre = (from g in db.Genre
@@ -240,8 +307,16 @@ namespace BookCave.Services
             return genre;
         }
 
+        public string getNameOfBook(int Id)
+        {
+            var name = (from b in db.Books
+                        where Id == b.Id
+                        select b.Name).ToString();
+
+            return name;
+        }
+
+
+
     }
-
-
-
 }

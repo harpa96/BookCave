@@ -14,10 +14,13 @@ namespace BookCave.HomeController
     public class BookController : Controller
     {
         private BookService _bookService;
+
+        private int currentBook;
         
         public BookController()
         {
             _bookService = new BookService();
+            currentBook = 0;
         }
         
         public IActionResult Top10()
@@ -34,7 +37,7 @@ namespace BookCave.HomeController
 
         public IActionResult Category(int? Id, string orderby)
         {
-            if (Id == null)
+            if (Id == 0)
             {
                 var books = _bookService.GetAllBooks();
                 ViewBag.Genre = "Allar bækur";
@@ -71,26 +74,49 @@ namespace BookCave.HomeController
                 return View("NotFound");
             }
             
+             System.Diagnostics.Debug.WriteLine("hhihi");
             var book = _bookService.FindBookById(Id);
 
             return View(book);
         }
 
-       /* [HttpPost]
-
-        public IActionResult Details(RatingInputModel rating)
+        [HttpPost]
+        public IActionResult Details (BookDetailsViewModel book)
         {
-            _bookService.AddRating(rating.Rate, currentBook);
-            
-            return RedirectToAction("");
-        }*/
+            _bookService.addToCart(book);
+            System.Diagnostics.Debug.WriteLine("hhihi");
+            return RedirectToAction("Cart", "Home");
+        }
 
+        [HttpGet]
+        public IActionResult AddRating()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult AddRating(int? Id, CommentViewModel newComment)
+        {
+            if(Id == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            
+            currentBook = (int)Id;
+            ViewBag.NameOfBook = _bookService.getNameOfBook(currentBook);
+        
+            _bookService.AddRating(newComment.Rating, currentBook);
+            
+            if(newComment.Text != String.Empty)
+            {
+                _bookService.AddComment(newComment.Text, currentBook);
+            }
+            
+            return RedirectToAction("Details", new {Id = currentBook});
+        }
         public IActionResult Filter(string filterChoice = "", string searchTerm = "")
         {
-            if(searchTerm != "") 
-            {
-                // skila leitar view
-            }
             var filteredBooks = _bookService.SearchedBooks(filterChoice);
             return View(filteredBooks);
         }

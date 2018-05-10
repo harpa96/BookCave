@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
 using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
+using BookCave.Models.ViewModels;
 
 namespace BookCave.RecordStore.HomeController
 {    
@@ -21,7 +22,7 @@ namespace BookCave.RecordStore.HomeController
         
         public IActionResult Index()
         {
-            var books = _bookService.GetAllBooks();
+            var books = _bookService.GetAllFrontPageBooks();
             return View(books);
         }
 
@@ -30,8 +31,6 @@ namespace BookCave.RecordStore.HomeController
             var searchedBooks = _bookService.SearchedBooks(searchInput);
             return View(searchedBooks);
         }
-
-        
 
         public IActionResult Donate()
         {
@@ -87,7 +86,9 @@ namespace BookCave.RecordStore.HomeController
 
         public IActionResult Cart()
         {
-            return View();
+            var books = _bookService.getBooksInCart();
+            
+            return View(books);
         }
         public IActionResult SendEmail()
         {
