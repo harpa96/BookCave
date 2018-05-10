@@ -130,7 +130,7 @@ namespace BookCave.Services
                             Id = b.Id,
                             Name = b.Name,
                             Price = b.Price,
-                            AuthorId = b.AuthorId,
+                            //AuthorId = b.AuthorId,
                             Genre = g.TheGenre,
                             Image = b.Image,
                             Rating = (from r in db.Ratings where r.BookId == b.Id select r.Rate).ToList()
@@ -156,7 +156,7 @@ namespace BookCave.Services
                 Id = b.Id,
                 Name = b.Name,
                 Price = b.Price,
-                AuthorId = b.AuthorId,
+                //AuthorId = b.AuthorId,
                 Genre = g.TheGenre,
                 Image = b.Image
             }).ToList();
@@ -210,7 +210,7 @@ namespace BookCave.Services
                                         Image = b.Image,
                                         Price = b.Price,
                                         Genre = g.TheGenre,
-                                        AuthorId = b.AuthorId,
+                                        //AuthorId = b.AuthorId,
                                     }).ToList();
                 return books;
             }
@@ -226,7 +226,7 @@ namespace BookCave.Services
                                         Image = b.Image,
                                         Price = b.Price,
                                         Genre = g.TheGenre,
-                                        AuthorId = b.AuthorId,
+                                        //AuthorId = b.AuthorId,
                                     }).ToList();
                 return books;
             }
