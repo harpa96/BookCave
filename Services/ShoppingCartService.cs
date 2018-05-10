@@ -27,6 +27,7 @@ namespace BookCave.Services
         {
             var cart = (from c in db.Cart
                         join b in db.Books on c.BookId equals b.Id
+                        join a in db.Authors on b.AuthorId equals a.Id
                         where userId == c.UserId
                         select new BookCartViewModel
                         {
@@ -35,7 +36,8 @@ namespace BookCave.Services
                             Price = b.Price,
                             PriceSum = b.Price*c.Copies,
                             Copies = c.Copies,
-                            Image = b.Image
+                            Image = b.Image,
+                            Author = a.Name
                         }).ToList();
 
             return cart;
