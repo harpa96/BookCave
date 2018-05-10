@@ -145,7 +145,7 @@ public class AccountController : Controller
         
         var country = (from c in db.Countries 
                         where user.CountryId == c.Id
-                        select c.Name).ToString();
+                        select c.Name).FirstOrDefault().ToString();
         
         return View(new ProfileViewModel 
         {

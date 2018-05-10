@@ -8,8 +8,6 @@ using BookCave.Models;
 using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
 using BookCave.Models.ViewModels;
-using System.Net.Mail;
-using System.Net;
 using BookCave.Models.InputModels;
 
 
@@ -18,12 +16,20 @@ namespace BookCave.Controllers.HomeController
     public class HomeController : Controller
     {
         private BookService _bookService;
+<<<<<<< HEAD
+        List<BookDetailsViewModel> myCart;
+=======
         private readonly IDonateService _donateService;
+>>>>>>> 920ec7d3f8bbadaf5294df9c04d28741ad900003
 
         public HomeController(IDonateService donateService)
         {
             _bookService = new BookService();
+<<<<<<< HEAD
+            myCart = new List<BookDetailsViewModel>();
+=======
             _donateService = donateService;
+>>>>>>> 920ec7d3f8bbadaf5294df9c04d28741ad900003
         }
         
         public IActionResult Index()
@@ -73,20 +79,31 @@ namespace BookCave.Controllers.HomeController
             return View();
         }
 
+        public IActionResult reviewOrder()
+        {
+            var books = _bookService.getBooksInCart();
+            return View(books);
+        }
+
 /* 
         public IActionResult Edit()
         {
             return View();
         }
 
+<<<<<<< HEAD
+        /*public IActionResult Cart(List<BookDetailsViewModel> booksInCart)
+=======
         */
 
         public IActionResult Cart()
+>>>>>>> 920ec7d3f8bbadaf5294df9c04d28741ad900003
         {
-            var books = _bookService.getBooksInCart();
             
-            return View(books);
-        }
+            Console.WriteLine("Fjöldi bóka þegar ég er í Cart Viewinu: " + booksInCart.Count);
+            
+            return View(booksInCart);
+        }*/
         public IActionResult SendEmail()
         {
             return View();
@@ -98,6 +115,8 @@ namespace BookCave.Controllers.HomeController
         [HttpPost]
         public IActionResult Donate(DonateInputModel donate)
         {
+            
+            _donateService.SendDonateEmail(donate);
             //processContact() imitates a database connection
             //this will fail if ddata is not valid within contactInput
             _donateService.ProcessDonate(donate);

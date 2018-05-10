@@ -12,7 +12,7 @@ namespace BookCave.Models.InputModels
         public string Amount { get; set; }
 
         [Required(ErrorMessage= "Checked is required")]
-        public string Checked { get; set; }
+        public bool Checked { get; set; }
        
     }
 }
