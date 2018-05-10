@@ -10,7 +10,7 @@ using BookCave.Models.ViewModels;
 using BookCave.Models.InputModels;
 using Microsoft.AspNetCore.Identity;
 
-namespace BookCave.HomeController
+namespace BookCave.Controllers.BookController
 {
     public class BookController : Controller
     {

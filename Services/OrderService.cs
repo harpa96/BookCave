@@ -32,6 +32,7 @@ namespace BookCave.Services
                         join o in db.Orders on b.OrderId equals o.Id
                         where o.UserId == userId && b.Id == bookId
                         select b).FirstOrDefault();
+                        
             book.Copies = newcopies;
             db.Update(book);
             db.SaveChanges();

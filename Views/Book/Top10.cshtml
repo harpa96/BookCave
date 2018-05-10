@@ -3,10 +3,10 @@
     <div class="container">
         <h1>Top 10 listinn</h1>
         <div>
-            <ol>
+            <ol id="top10list">
             @foreach(var book in @Model)
             {
-                <li>
+                <li id="topBooks">
                     <div class="books">
                     <span class="thumbnail">
                         <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id"><img src="@book.Image" alt="cover"></a>
@@ -17,7 +17,7 @@
                                 <p class="price">@book.Price kr.</p>
                             </div>
                             <div class="col-md-6 col-sm-6">
-                                <a asp-controller="Home" asp-action="Cart" class="btn btn-success right">Setja í körfu</a>
+                                <a asp-controller="Home" asp-action="Cart" class="btn btn-success right" id="toptenCartBtn">Setja í körfu</a>
                             </div>
                         </div>
                     </span>

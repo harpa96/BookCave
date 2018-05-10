@@ -1,4 +1,4 @@
-@model BookCave.Models.ViewModels.RegisterViewModel;
+@model BookCave.Models.ViewModels.ProfileViewModel;
 
 <div class="container">
     <div class="row">
@@ -15,28 +15,36 @@
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
-                        <td>Notandanafn:</td>
-                        <td>@Model.Email</td>
+                        <td>Netfang:</td>
+                        <td><a href="mailto:info@support.com">@Model.Email</a></td>
+                      </tr>
+                      <tr>
+                        <td>Land:</td>
+                        <td>@Model.Country</td>
+                      </tr>
+                      <tr>
+                        <td>Borg/Bær:</td>
+                        <td>@Model.City</td>
+                      </tr>
+                      <tr>
+                        <td>Póstnúmer:</td>
+                        <td>@Model.ZIP</td>
                       </tr>
                       <tr>
                         <td>Heimilisfang:</td>
                         <td>@Model.Address</td>
-                      </tr>
-                      <tr>
-                        <td>Netfang:</td>
-                        <td><a href="mailto:info@support.com">@Model.Email</a></td>
                       </tr>
                         <td>Símanúmer:</td>
                         <td>@Model.PhoneNumber<br></td>
                       </tr>
                       <tr>
                         <td>Uppáhaldsbók:</td>
-                        <td>SETJA INN</td>
+                        <td>@Model.FavoriteBook</td>
                       </tr>
                     </tbody>
                   </table>
                   
-                  <a href="#" class="btn btn-primary">Mínar pantanir</a>
+                  <a asp-controller="Order" asp-action="OrderHistory" class="btn btn-primary">Mínar pantanir</a>
                   <a asp-controller="Account" asp-action="EditProfile" class="btn btn-primary">Breyta mínum upplýsingum</a>
                 </div>
               </div>

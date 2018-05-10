@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="~/css/login.css">
         <link rel="stylesheet" href="~/css/signup.css">
         <script src="~/js/bookdetails.js" asp-append-version="true"></script>
+        <link rel="stylesheet" href="~/css/top10.css">
 
     </environment>
     <environment exclude="Development">
@@ -139,6 +140,9 @@
             <p>sími: 581-2345</p>
             <p>kennitala: 210196-3079</p>
             <p>Fylgdu okkur!</p>
+            <a href="https://www.instagram.com/kungfucave/" target="_blank">
+                <img id="instagram" src="~/images/insta-logo.png" style="height:20px; width:20px; margin-bottom: 10px;">
+            </a>
             <form class="form-inline">Skráðu þig á póstlistann:
                 <input type="email" class="form-control" size="50" placeholder="Netfang">
                 <button type="button" class="btn btn-danger">Skrá</button>
@@ -154,6 +158,8 @@
         <script src="~/js/bookdetails.js" asp-append-version="true"></script>
         <script src="~/js/frontpage.js" asp-append-version="true"></script>
         <script src="~/js/category.js" asp-append-version="true"></script>
+        <script src="~/js/addbook.js" asp-append-version="true"></script>
+        <!--script src="~/js/imageupload.js" asp-append-version="true"></script-->
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
@@ -178,7 +184,8 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> <!--added this for cart -harpa -->
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> <!--added this for cart -harpa -->
     </environment>
-
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
     @RenderSection("Scripts", required: false)
     
 </body>

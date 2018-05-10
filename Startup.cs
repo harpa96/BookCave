@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BookCave.Models;
 using Microsoft.AspNetCore.Http;
+
 using BookCave.Services;
 
 namespace BookCave
@@ -27,6 +28,7 @@ namespace BookCave
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IDonateService, DonateService>();
             /* 
             var policy = new AuthorizationPolicyBuilder()
                              .RequireAuthenticatedUser()

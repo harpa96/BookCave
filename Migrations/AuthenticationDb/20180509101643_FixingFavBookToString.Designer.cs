@@ -11,9 +11,10 @@ using System;
 namespace BookCave.Migrations.AuthenticationDb
 {
     [DbContext(typeof(AuthenticationDbContext))]
-    partial class AuthenticationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180509101643_FixingFavBookToString")]
+    partial class FixingFavBookToString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,12 +30,8 @@ namespace BookCave.Migrations.AuthenticationDb
 
                     b.Property<string>("Address");
 
-                    b.Property<string>("City");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
-
-                    b.Property<int>("CountryId");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
@@ -71,8 +68,6 @@ namespace BookCave.Migrations.AuthenticationDb
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
-
-                    b.Property<string>("ZIP");
 
                     b.HasKey("Id");
 
