@@ -8,18 +8,23 @@ using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
 using BookCave.Models.ViewModels;
 using BookCave.Models.InputModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace BookCave.Controllers.BookController
 {
     public class BookController : Controller
     {
         private BookService _bookService;
+        private ShoppingCartService _shoppingCart;
+         private readonly UserManager<ApplicationUser> _userManager;
 
         private int currentBook;
         
-        public BookController()
+        public BookController(UserManager<ApplicationUser> userManager)
         {
             _bookService = new BookService();
+             _userManager = userManager;
+            _shoppingCart = new ShoppingCartService();
             currentBook = 0;
         }
         
@@ -37,6 +42,8 @@ namespace BookCave.Controllers.BookController
 
         public IActionResult Category(int? Id, string orderby)
         {
+            Console.WriteLine("Id inní categories: " + Id);
+            
             if (Id == 0)
             {
                 var books = _bookService.GetAllBooks();
@@ -74,18 +81,23 @@ namespace BookCave.Controllers.BookController
                 return View("NotFound");
             }
             
-             System.Diagnostics.Debug.WriteLine("hhihi");
             var book = _bookService.FindBookById(Id);
 
             return View(book);
         }
 
         [HttpPost]
-        public IActionResult Details (BookDetailsViewModel book)
+        public async Task<IActionResult> Details (int? Id, BookDetailsViewModel book)
         {
-            _bookService.addToCart(book);
-            System.Diagnostics.Debug.WriteLine("hhihi");
-            return RedirectToAction("Cart", "Home");
+            var newBook = _bookService.FindBookById(Id);
+            newBook.Copies = book.Copies;
+
+             var user = await _userManager.GetUserAsync(User);
+            var id = user.Id;
+            
+            _shoppingCart.addToCart(newBook, id);
+           
+            return RedirectToAction("Index", "Cart");
         }
 
         [HttpGet]
@@ -119,6 +131,15 @@ namespace BookCave.Controllers.BookController
         {
             var filteredBooks = _bookService.SearchedBooks(filterChoice);
             return View(filteredBooks);
+        }
+
+        public IActionResult Cart()
+        {
+            var books = _bookService.getBooksInCart();
+
+            Console.WriteLine("Fjöldi í körfu inn í Cart viewi: " + books.Count);
+
+            return View(books);
         }
 
     }

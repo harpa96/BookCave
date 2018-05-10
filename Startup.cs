@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BookCave.Models;
+using Microsoft.AspNetCore.Http;
+
 using BookCave.Services;
 
 namespace BookCave
@@ -43,7 +45,6 @@ namespace BookCave
                 .AddEntityFrameworkStores<AuthenticationDbContext>()
                 .AddDefaultTokenProviders();
 
-
             services.Configure<IdentityOptions>(config => 
             {
                 //User settings
@@ -68,6 +69,8 @@ namespace BookCave
             });
 
             services.AddMvc();
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -84,6 +87,7 @@ namespace BookCave
 
             app.UseStaticFiles();
             app.UseAuthentication();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
