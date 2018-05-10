@@ -1,0 +1,26 @@
+ol
+{
+    counter-reset: LIST-ITEMS;
+}
+ol > li {
+    position: relative;
+    display: inline-block;
+}
+
+ol > li:before
+{
+    content: counter( LIST-ITEMS ) ".";
+    counter-increment: LIST-ITEMS;
+    padding-right: 0.25em;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+ol > li > .books > .thumbnail {
+    margin-right: 10px;
+    width: 200px;
+}
+
+#toptenCartBtn {
+    font-size: 10px;
+}
