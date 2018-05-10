@@ -7,20 +7,20 @@ namespace BookCave.Models.ViewModels
 {
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage= "Email is required")]
         [EmailAddress]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage= "First name is required")]
         public string FirstName { get; set; }
-        [Required]
+        [Required(ErrorMessage= "Last name is required")]
         public string LastName { get; set; }
-        [Required]
+        [Required(ErrorMessage= "Password is required")]
         public string Password { get; set; }
-        [Required]
+        [Required(ErrorMessage= "Address is required")]
         public string Address { get; set; }
-        [Required]
+        [Required(ErrorMessage= "City is required")]
         public string City { get; set; }
-        [Required]
+        [Required(ErrorMessage= "Zip is required")]
         public string ZIP { get; set; }
         public int CountryId { get; set; }
         public string PhoneNumber { get; set; }

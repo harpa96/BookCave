@@ -12,6 +12,12 @@ namespace BookCave.Models.InputModels
         public string Amount { get; set; }
 
         [Required(ErrorMessage= "Checked is required")]
+
+        public bool IsTrue => true;
+
+        [Required]
+        [Display(Name = "I agree to the terms and conditions")]
+        [Compare(nameof(IsTrue), ErrorMessage = "Please agree to Terms and Conditions")]
         public bool Checked { get; set; }
        
     }

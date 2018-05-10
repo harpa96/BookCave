@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Authorization;
 using BookCave.Data;
 
 
+
+
 /* 
 using Microsoft.AspNetCore.Http;
 using System.IO;
@@ -26,12 +28,14 @@ public class AccountController : Controller
     private DataContext db;
     private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly UserManager<ApplicationUser> _userManager;
+   // private readonly IUserService _userService; ***FYRIR ERRORHANDLING -HARPA***
 
-    public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
+    public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager /*,IUserService userService ***FYRIR ERRORHANDLING -HARPA*** */)
     {
         _signInManager = signInManager;
         _userManager = userManager;
         db = new DataContext();
+        //_userService = userService; ***FYRIR ERRORHANDLING -HARPA***
     }
 /* 
     [HttpPost]
@@ -145,7 +149,7 @@ public class AccountController : Controller
         
         var country = (from c in db.Countries 
                         where user.CountryId == c.Id
-                        select c.Name).ToString();
+                        select c.Name).FirstOrDefault().ToString();
         
         return View(new ProfileViewModel 
         {
@@ -267,3 +271,16 @@ public class AccountController : Controller
 
 
 }
+/* 
+    ***GERDI THETTA FYRIR ERRORHANDLING - HARPA*** 
+    [HttpPost]
+    public IActionResult Register(RegisterViewModel register)
+    {
+        
+        //processContact() imitates a database connection
+        //this will fail if ddata is not valid within contactInput
+        _userService.ProcessDonate(register);
+        
+        return View();
+    }
+    */
