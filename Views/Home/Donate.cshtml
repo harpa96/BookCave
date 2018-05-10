@@ -1,3 +1,4 @@
+@model BookCave.Models.InputModels.DonateInputModel
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -50,31 +51,39 @@
 <h1 id="title">Þitt framlag skiptir máli!</h1>
 </div>
 
-<form>
+<form asp-action="Donate">
   <div class="form-group">
     <label for="name">Fullt nafn</label>
-    <input type="text" class="form-control" id="nameInput" required/>
+    <input asp-for="Name"type="text" class="form-control" id="nameInput" />
+    <span asp-validation-for="Name" class="text-danger"></span>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Netfang</label>
-    <input type="email" class="form-control" id="emailInput" required/>
+    <input  asp-for="Email" type="email" class="form-control" id="emailInput" />
+    <span asp-validation-for="Email" class="text-danger"></span>
   </div>
-  <label for="ammount">Upphæð:</label>
-  <select class="form-control" id="ammount">
-    <option>0 kr.</option>
-    <option>1.000 kr.</option>
-    <option>2.000 kr.</option>
-    <option>5.000 kr.</option>
-    <option>10.000 kr.</option>
-    <option>15.000 kr.</option>
-    <option>25.000 kr.</option>
-    <option>50.000 kr.</option>
+  <div class="form-group">
+  <label  for="ammount">Upphæð:</label>
+  <select asp-for="Amount" class="form-control" id="ammount">
+    <option value="1000">1.000 kr.</option>
+    <option value="2000">2.000 kr.</option>
+    <option value="5000">5.000 kr.</option>
+    <option value="10000">10.000 kr.</option>
+    <option value="15000">15.000 kr.</option>
+    <option value="25000">25.000 kr.</option>
+    <option value="50000">50.000 kr.</option>
   </select>
-  <div class="form-check">
-    <input type="checkbox" class="terms-check" id="terms-check"/>
-    <label class="form-check-label" for="terms-check">Ég samþykki skilmála</label>
+  <span asp-validation-for="Amount" class="text-danger"></span>
   </div>
-  <button onclick="document.getElementById('id05').style.display='block'">Senda pöntun</button>
+  <div class="form-check">
+    <label class="form-check-label" for="terms-check">Ég samþykki skilmála</label>
+    <input  asp-for="Checked" type="checkbox"  value="yes" class="terms-check" id="terms-check" required/>
+    <span asp-validation-for="Checked" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-ddefault" type="submit">Senda pöntun</button>
+  </div>
+  <!--button onclick="document.getElementById('id05').style.display='block'">Senda pöntun</button>
       <div id="id05" class="modal">
         <form class="modal-content animate" action="/action_page.php">
           <div class="container" style="background-color:#f1f1f1">
@@ -82,9 +91,9 @@
                 <h1>Takk fyrir stuðninginn!</h1>
                 <h3>Framlag þitt hefur verið greitt</h3>
                 <p>Þú hefur fengið staðfestingu á netfangið þitt</p>
-                <a href="/">Aftur á forsíðu</a>
+                <a asp-controller="Home" asp-action="Index">Aftur á forsíðu</a>
             </div>
           </div>
         </form>
-      </div>
+      </div-->
 </form>

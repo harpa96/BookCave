@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using BookCave.Models.ViewModels;
 using BookCave.Models.InputModels;
 
-namespace BookCave.HomeController
+namespace BookCave.Controllers.BookController
 {
     public class BookController : Controller
     {
