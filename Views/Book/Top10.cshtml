@@ -3,10 +3,10 @@
     <div class="container">
         <h1>Top 10 listinn</h1>
         <div>
-            <ol>
+            <ol id="top10list">
             @foreach(var book in @Model)
             {
-                <li>
+                <li id="topBooks">
                     <div class="books">
                     <span class="thumbnail">
                         <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id"><img src="@book.Image" alt="cover"></a>
