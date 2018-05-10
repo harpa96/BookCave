@@ -4,7 +4,7 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Upplýsingar um Viðtakanada</legend>
+<legend>Upplýsingar um Viðtakanda</legend>
 
 <!-- Text input-->
 <div class="form-group">
@@ -14,20 +14,6 @@
     
   </div>
 </div>
-
-
-<!-- Select Basic -->
-<div class="form-group">
-    <label class="control-label col-md-4" for="registration-date">Fæðingardagur:</label>
-    <div class="col-md-4">
-        <div class="input-group registration-date-time">
-        	<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-		    <input class="form-control" name="registration_date" id="registration-date" type="date">
-        </div>
-    </div>    
-</div>
-
-
 
 <!-- Text input-->
 <div class="form-group">
@@ -93,20 +79,6 @@
   </div>
 </div>
 
-
-<!-- Select Basic -->
-<div class="form-group">
-    <label class="control-label col-md-4" for="registration-date">Fæðingardagur:</label>
-    <div class="col-md-4">
-        <div class="input-group registration-date-time">
-        	<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-		    <input class="form-control" name="registration_date" id="registration-date" type="date">
-        </div>
-    </div>    
-</div>
-
-
-
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Símanúmer</label>  
@@ -158,7 +130,8 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="singlebutton"></label>
   <div class="col-md-4">
-    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Greiða</button>
+    <a asp-controller="Home" asp-action="reviewOrder" class="btn btn-primary">Halda áfram í greiðslu</a>
+    <a asp-controller="Home" asp-action="Cart" class="btn btn-primary">Til baka í körfu</a>
   </div>
 </div>
 
