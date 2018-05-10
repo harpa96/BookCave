@@ -40,7 +40,7 @@ namespace BookCave.Services
 
             return cart;
         }
-
+/*
         public int getTotal(string userId)
         {
             var cart = (from c in db.Cart
@@ -48,6 +48,7 @@ namespace BookCave.Services
                         select c);
 
         }
+        */
         public void addToCart(BookDetailsViewModel book, string userId)
         {
             var searchBook = (from c in db.Cart

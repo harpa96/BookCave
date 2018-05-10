@@ -130,31 +130,48 @@ namespace BookCave.Controllers
             return View();
         }
 
-        public async Task<IActionResult> ReviewOrder()
+        public async Task<IActionResult> ReviewOrder(CheckoutViewModel model)
         {
             var user = await _userManager.GetUserAsync(User);
             
             var id = user.Id;
             var cart = new CartViewModel
             {
-                Books = _shoppingService.getCart(id)
+                Books = _shoppingService.GetCart(id)
             };
+
             var country = _orderService.GetCountry(user.CountryId);
 
-            var theUser = new ProfileViewModel
+            var reciever = new CheckoutPersonViewModel
             {
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                PhoneNumber = user.PhoneNumber,
-                Address = user.Address,
-                City = user.City,
-                ZIP = user.ZIP,
-                CountryId = user.CountryId
+                Name = model.Reciever.Name,
+                PhoneNumber = model.Reciever.PhoneNumber,
+                Address = model.Reciever.Address,
+                City = model.Reciever.City,
+                ZIP = model.Reciever.ZIP,
+                Country = model.Reciever.Country
             };
-            
-            return View(new CheckoutViewModel
+
+            var payer = new CheckoutPersonViewModel
             {
-                 User = theUser
+                Name = model.Reciever.Name,
+                PhoneNumber = model.Reciever.PhoneNumber,
+                Address = model.Reciever.Address,
+                City = model.Reciever.City,
+                ZIP = model.Reciever.ZIP,
+                Country = model.Reciever.Country
+            };
+
+            var checkout = new CheckoutViewModel
+            {
+                Reciever = reciever,
+                Payer = payer
+            };
+
+            return View(new ReviewOrderViewModel
+            {
+                 Cart = cart,
+                 Checkout = checkout
             });
         }
 
