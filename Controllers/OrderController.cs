@@ -48,9 +48,22 @@ namespace BookCave.Controllers
                 CountryId = user.CountryId
             };
             
+            Console.WriteLine("FER INN HER");
             return View(new CheckoutViewModel
             {
-                 User = theUser
+                User = theUser
+                //PayerName = theUser.FirstName + " " + theUser.LastName
+               /* ReceiverPhoneNumber = checkout.ReceiverPhoneNumber,
+                ReceiverAddress = checkout.ReceiverAddress,
+                ReceiverCity = checkout.ReceiverCity,
+                ReceiverZIP = checkout.ReceiverZIP,
+                ReceiverCountryId = checkout.ReceiverCountryId,
+                PayerName = checkout.PayerName,
+                PayerPhoneNumber = checkout.PayerPhoneNumber,
+                PayerAddress = checkout.PayerAddress,
+                PayerCity = checkout.PayerCity,
+                PayerZIP = checkout.PayerZIP,
+                PayerCountryId = checkout.PayerCountryId*/
             });
         }
 
@@ -74,7 +87,9 @@ namespace BookCave.Controllers
                 PayerCountryId = checkout.PayerCountryId
             };
 
-            return RedirectToAction("ReviewOrder", "Order",  new {model = checkout});
+            Console.WriteLine("PAYER NAME IN Í POST PAY: " + newModel.PayerName);
+
+            return RedirectToAction("ReviewOrder", new {model = newModel});
         }
 
          public IActionResult Confirmation() 
@@ -85,6 +100,7 @@ namespace BookCave.Controllers
         [Authorize]
         public async Task<IActionResult> ReviewOrder(CheckoutViewModel model)
         {
+            Console.WriteLine("NAFN PAYER: " + model.PayerName);
             var user = await _userManager.GetUserAsync(User);
             
             var id = user.Id;

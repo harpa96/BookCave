@@ -15,11 +15,11 @@
             <div class="row">
                 <div class="col-xs-6">
                     <address>
-                        <strong>Billed To:</strong><br>
-                        Twitter, Inc.<br>
-                        795 Folsom Ave, Suite 600<br>
-                        San Francisco, CA 94107<br>
-                        <abbr title="Phone">P:</abbr> (123) 456-7890
+                        <strong>Greiðandi:</strong><br>
+                        @Model.Checkout.PayerName<br>
+                        @Model.Checkout.PayerCountry, @Model.Checkout.PayerZIP @Model.Checkout.PayerCity<br>
+                        @Model.Checkout.PayerAddress<br>
+                        <abbr title="Phone">S:</abbr> @Model.Checkout.PayerPhoneNumber
                     </address>
                 </div>
                 <div class="col-xs-6 text-right">
