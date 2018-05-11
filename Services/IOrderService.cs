@@ -4,7 +4,7 @@ namespace BookCave.Services
 {
     public interface IOrderService
     {
-        //void ProcessOrder(CheckoutViewModel specialorder);
-        void SendOrderEmail(CheckoutViewModel specialorder);
+        void ProcessOrder(CheckoutViewModel order);
+        void SendOrderEmail(CheckoutViewModel order);
     }
 }
