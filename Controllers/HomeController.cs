@@ -30,7 +30,6 @@ namespace BookCave.Controllers.HomeController
         
         
         [HttpGet]
-        
         //Birtir forsíðu
         public IActionResult Index()
         {
@@ -39,11 +38,10 @@ namespace BookCave.Controllers.HomeController
         }
 
         [HttpGet]
-
         //Birtir leitarniðurstöður úr searchbar
         public IActionResult SearchBar(string searchInput)
         {
-            if(!string.IsNullOrEmpty(searchInput))
+            if (!string.IsNullOrEmpty(searchInput))
             {
                 var searchedBooks = _bookService.SearchedBooks(searchInput);
                 return View(searchedBooks);
@@ -62,97 +60,88 @@ namespace BookCave.Controllers.HomeController
             return View();
         }
 
+
+        [HttpGet]
         public IActionResult SpecialOrd() 
         {
             return View();
         }
 
+
+        [HttpGet]
         public IActionResult About() 
         {
             return View();
         }
 
+
+        [HttpGet]
         public IActionResult OurTeam()
         {
             return View();
         }
 
+
+        [HttpGet]
         public IActionResult Terms()
         {
             return View();
         }
-/*
-         public IActionResult Pay() 
-        {
-            return View();
-        }
 
-         public IActionResult Confirmation() 
-        {
-            return View();
-        }
-        */
+
+        [HttpGet]
         public IActionResult ConfirmationSpecialOrder() 
         {
             return View();
         }
+        
+
+        [HttpGet]
         public IActionResult ConfirmationDonate() 
         {
             return View();
         }
-/* 
-        public IActionResult reviewOrder()
-        {
-
-           var books = _bookService.getBooksInCart();
-            return View(books);
-
-        }
-*/
 
 
-/* 
-        public IActionResult Edit()
-        {
-            return View();
-        }
- */
-
+        [HttpGet]
         public IActionResult SendEmail()
         {
             return View();
         }
-        public IActionResult form()
-        {
-            return View("form.php");
-        }
+        
+
         [HttpPost]
         public IActionResult Donate(DonateInputModel donate)
         {
             ViewData["ErrorMessage"] = "";
             _donateService.SendDonateEmail(donate);
+            
             //processContact() imitates a database connection
             //this will fail if ddata is not valid within contactInput
-            try {
+            try 
+            {
                 _donateService.ProcessDonate(donate);
             }
+            
             catch (Exception)
             {
                 ViewData["ErrorMessage"] = "Checked is missing";
                 return View();
             }
             
-            
             return RedirectToAction("ConfirmationDonate");
         }
 
+
         [HttpPost]
-         public IActionResult SpecialOrd(SpecialOrderInputModel specialorder)
+         public IActionResult SpecialOrd(SpecialOrderInputModel specialOrder)
         {
-            _specialOrderService.SendSpecialOrderEmail(specialorder);
+            _specialOrderService.SendSpecialOrderEmail(specialOrder);
+            
             //processContact() imitates a database connection
-            //this will fail if ddata is not valid within contactInput
-            _specialOrderService.ProcessSpecialOrder(specialorder);
+            //this will fail if data is not valid within contactInput
+            _specialOrderService.ProcessSpecialOrder(specialOrder);
+
             return RedirectToAction("ConfirmationSpecialOrder");
         }        
     }

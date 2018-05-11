@@ -22,7 +22,6 @@ namespace BookCave.Services
            
         }
         
-        [Authorize]
         public List<BookCartViewModel> GetCart(string userId)
         {
             var cart = (from c in db.Cart
@@ -62,7 +61,8 @@ namespace BookCave.Services
                     where book.Id == c.BookId && userId == c.UserId
                     select c).SingleOrDefault();
             
-            if(searchBook == null)
+            //Ef bókin er ekki nú þegar í körfunni
+            if (searchBook == null)
             {
                 var newBook = new Cart
                 {
@@ -70,45 +70,52 @@ namespace BookCave.Services
                     BookId = book.Id,
                     Copies = book.Copies
                 };
+
                 db.Add(newBook);
             }
+
+            //Ef bókin er í körfunni þá bætum við bara við fjölda copies hér frekar en að bæta við nýrri færslu
             else
             {
                 searchBook.Copies += book.Copies;
             }
 
+            //Uppfærum gagnagrunninn
             db.SaveChanges();
         }
 
         public void ClearCart(string userId)
         {
-                var allBooks = (from c in db.Cart
-                    where c.UserId == userId
-                    select c);
+            var allBooks = (from c in db.Cart
+                where c.UserId == userId
+                select c);
 
-                foreach (var b in allBooks)
-                {
-                    db.Remove(b);
-                }
-                db.SaveChanges();
+            foreach (var b in allBooks)
+            {
+                db.Remove(b);
+            }
+            
+            db.SaveChanges();
         }
 
         public void removeFromCart(BookDetailsViewModel book, string userId)
         {
-                var theBook = (from c in db.Cart
-                where userId == c.UserId && book.Id == c.BookId
-                select c).FirstOrDefault();
-            
-                if(theBook.Copies > 1)
-                {
-                    theBook.Copies--;
-                    db.Update(theBook);
-                }
+            var theBook = (from c in db.Cart
+                            where userId == c.UserId && book.Id == c.BookId
+                            select c).FirstOrDefault();
+        
+            //Eyðum einni bók út í einu í staðinn fyrir að eyða þeim öllum.
+            if(theBook.Copies > 1)
+            {
+                theBook.Copies--;
+                db.Update(theBook);
+            }
 
-                else
-                {
-                    db.Cart.Remove(theBook);
-                }
+            //Ef eintakið sem við erum að eyða er eina eintakið sem er eftir 
+            else
+            {
+                db.Cart.Remove(theBook);
+            }
             
             db.SaveChanges();
         }

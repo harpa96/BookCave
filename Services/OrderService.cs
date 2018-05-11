@@ -20,19 +20,26 @@ namespace BookCave.Services
             _shoppingCart = new ShoppingCartService();
         }
 
-        public void addNewOrder(string userId)
+        public void AddNewOrder(string userId)
         {
+            //Sækja þær bækur sem eru í körfu notandands með þette userId
             var cart = (from c in db.Cart
                            where userId == c.UserId
                            select c).ToList();
             
-            if(cart.Count > 0)
+            //Búum bara til nýja pöntununarfærslu ef einhver bók var keypt
+            if (cart.Count > 0)
             {
-                var newOrder = new Order{UserId = userId};
+                var newOrder = new Order
+                {
+                    UserId = userId
+                };
+
                 db.Add(newOrder);
                 db.SaveChanges();
 
-                foreach(var book in cart)
+                //Ítrum í gegnum körfuna og setjum bækurnar þar í pöntunarfærsluna sem við vorum að búa til
+                foreach (var book in cart)
                 {
                     var bookInOrder = new OrderedBooks
                     {
@@ -45,19 +52,64 @@ namespace BookCave.Services
                 db.SaveChanges();
             }  
         }
+        
+        //Serverside validation, skoðar hvort það sé ekki örugglega búið að fylla inn allar nauðsynlegar upplýsingar
         public void ProcessOrder(CheckoutViewModel order)
         {
-            if(string.IsNullOrEmpty(order.ReceiverName)) {throw new Exception("Name is missing");}
-            if(string.IsNullOrEmpty(order.ReceiverPhoneNumber)) {throw new Exception("Phone is missing");}
-            if(string.IsNullOrEmpty(order.ReceiverAddress)) {throw new Exception("Address is missing");}
-            if(string.IsNullOrEmpty(order.ReceiverCity)) {throw new Exception("City is missing");}
-            if(string.IsNullOrEmpty(order.ReceiverZIP)) {throw new Exception("Zip is missing");}
-            if(string.IsNullOrEmpty(order.PayerName)) {throw new Exception("Payer Name is missing");}
-            if(string.IsNullOrEmpty(order.PayerPhoneNumber)) {throw new Exception("Payer Phone is missing");}
-            if(string.IsNullOrEmpty(order.PayerAddress)) {throw new Exception("Payer Address is missing");}
-            if(string.IsNullOrEmpty(order.PayerCity)) {throw new Exception("Payer city is missing");}
-            if(string.IsNullOrEmpty(order.PayerZIP)) {throw new Exception("Payer zip is missing");}
-            if(string.IsNullOrEmpty(order.PayerEmail)) {throw new Exception("Payer email is missing");}
+            if (string.IsNullOrEmpty(order.ReceiverName))
+            {
+                throw new Exception("Name is missing");
+            }
+            
+            if (string.IsNullOrEmpty(order.ReceiverPhoneNumber))
+            {
+                throw new Exception("Phone is missing");
+            }
+            
+            if (string.IsNullOrEmpty(order.ReceiverAddress))
+            {
+                throw new Exception("Address is missing");
+            }
+            
+            if (string.IsNullOrEmpty(order.ReceiverCity))
+            {
+                throw new Exception("City is missing");
+            }
+            
+            if (string.IsNullOrEmpty(order.ReceiverZIP))
+            {
+                throw new Exception("Zip is missing");
+            }
+            
+            if (string.IsNullOrEmpty(order.PayerName))
+            {
+                throw new Exception("Payer Name is missing");
+            }
+            
+            if (string.IsNullOrEmpty(order.PayerPhoneNumber))
+            {
+                throw new Exception("Payer Phone is missing");
+            }
+            
+            if (string.IsNullOrEmpty(order.PayerAddress))
+            {
+                throw new Exception("Payer Address is missing");
+            }
+            
+            if (string.IsNullOrEmpty(order.PayerCity))
+            {
+                throw new Exception("Payer city is missing");
+            }
+            
+            if (string.IsNullOrEmpty(order.PayerZIP))
+            {
+                throw new Exception("Payer zip is missing");
+            }
+            
+            if (string.IsNullOrEmpty(order.PayerEmail))
+            {
+                throw new Exception("Payer email is missing");
+            }
         }
         public void SendOrderEmail(CheckoutViewModel order)
         {
@@ -85,7 +137,7 @@ namespace BookCave.Services
             return country;
         }
         
-        public int getOrderTotalPrice( int orderId)
+        public int GetOrderTotalPrice( int orderId)
         {
             var books = (from bo in db.BooksInOrder
                         join b in db.Books on bo.BookId equals b.Id
@@ -97,7 +149,8 @@ namespace BookCave.Services
                         }).ToList();
 
             var sum = 0;
-            foreach(var book in books)
+            
+            foreach (var book in books)
             {
                 sum += book.Copies*book.Price;
             } 
@@ -117,7 +170,7 @@ namespace BookCave.Services
                           where userId == o.UserId
                           select o.Id).ToList();
             
-            foreach(var orderId in idOrders)
+            foreach (var orderId in idOrders)
             {
                 var order = new OrderViewModel
                 {
@@ -135,9 +188,10 @@ namespace BookCave.Services
                                     PriceSum = b.Price*ob.Copies
 
                                 }).ToList(),
-                    TotalPrice = getOrderTotalPrice(orderId)
+                    TotalPrice = GetOrderTotalPrice(orderId)
                     
                 };
+                
                 OrderList.Orders.Add(order);
             }
             return OrderList;

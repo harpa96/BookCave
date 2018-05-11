@@ -10,10 +10,25 @@ namespace BookCave.Services
     {
         public void ProcessDonate(DonateInputModel donate)
         {
-            if(string.IsNullOrEmpty(donate.Name)) {throw new Exception("Name is missing");}
-            if(string.IsNullOrEmpty(donate.Email)) {throw new Exception("Email is missing");}
-            if(string.IsNullOrEmpty(donate.Amount)) {throw new Exception("Amount is missing");}
-            if(!donate.Checked){throw new Exception("Checked is missing");}
+            if (string.IsNullOrEmpty(donate.Name))
+            {
+                throw new Exception("Name is missing");
+            }
+
+            if (string.IsNullOrEmpty(donate.Email))
+            { 
+                throw new Exception("Email is missing");
+            }
+
+            if (string.IsNullOrEmpty(donate.Amount))
+            {
+                throw new Exception("Amount is missing");
+            }
+
+            if (!donate.Checked)
+            {
+                throw new Exception("Checked is missing");
+            }
         }
 
         public void SendDonateEmail(DonateInputModel donate)

@@ -25,6 +25,7 @@ namespace BookCave.Controllers
 
         }
         
+        
         [Authorize]
         [HttpGet]
         
@@ -38,6 +39,7 @@ namespace BookCave.Controllers
             return View(orderHistory);
         }
 
+        
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> Pay() 
@@ -99,7 +101,7 @@ namespace BookCave.Controllers
             var user = await _userManager.GetUserAsync(User);
             
             //Bætum við nýju pöntunaryfirliti í gagnagrunninn og hreinsum körfuna
-            _orderService.addNewOrder(user.Id);
+            _orderService.AddNewOrder(user.Id);
             _shoppingService.ClearCart(user.Id);
             
             return View();

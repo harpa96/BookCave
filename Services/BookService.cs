@@ -20,6 +20,7 @@ namespace BookCave.Services
         //Rating færibreytan getur verið null ef notandi bætti bara við kommenti ekki einkunn
         public void AddRating(float? rating, int book)
         {
+            //Myndi vera null ef notandi fyllti ekki inn í gildi fyrir Rating 
             if (rating != null)
             {
                 var rate = new Rating()
@@ -110,7 +111,7 @@ namespace BookCave.Services
         //Finnur 10 einkunnahæstu bækurnar í gagnagrunninum
         public List<BookListViewModel> GetTop()
         { 
-            //Búum til þennan millilista til að geta raðað lokalistanum eftir meðaltali á gefum einkunum
+            //Búum til þennan "temp" lista  til að geta raðað lokalistanum eftir meðaltali á gefnum einkunum
             var topBooks = (from b in db.Books
                             join g in db.Genre on b.GenreId equals g.Id
                             select new BookListViewModel
@@ -133,7 +134,7 @@ namespace BookCave.Services
         public List<BookListViewModel> FilterCategories(int? id)
         {
             //Ef reynt er að fara í category viewið án þess að vera með route-id
-            if(id == null)
+            if (id == null)
             {
                 return GetAllBooks();
             }
@@ -159,6 +160,7 @@ namespace BookCave.Services
                             where id == b.Id
                             select b).SingleOrDefault();
             
+            //Sjá hvort það sé bók í gagnagrunninum með þetta tiltekna id
             if (checkId == null)
             {
                 return null;
@@ -202,7 +204,7 @@ namespace BookCave.Services
             var books = (from b in db.Books
                         select b);
             
-            if(genreId != 0)
+            if (genreId != 0)
             {
                 books = (from b in db.Books
                         join g in db.Genre on genreId equals g.Id
@@ -212,7 +214,7 @@ namespace BookCave.Services
 
             //Raðað eftir gildi sem valið var úr dropdowni í category view
             //Hér eftir hæsta verði
-            if(order == "highest")
+            if (order == "highest")
             {
                  var correctBooks = (from b in books
                                     orderby b.Price descending
@@ -228,7 +230,7 @@ namespace BookCave.Services
             }
             
             //Eftir lægsta verði
-            else if(order == "lowest")
+            else if (order == "lowest")
             {
                 var correctBooks = (from b in books
                         orderby b.Price ascending
@@ -262,7 +264,7 @@ namespace BookCave.Services
         public List<BookListViewModel> SearchedBooks(string searchInput)
         {
             //Skilar lista af þeim bókum sem innihalda searchInput annað hvort í nafni bókar eða höfundar
-            if(searchInput != null)
+            if (searchInput != null)
             {
                 var searchedBooks = (from b in db.Books
                                     join g in db.Genre on b.GenreId equals g.Id
@@ -297,7 +299,7 @@ namespace BookCave.Services
         {
             string genre = (from g in db.Genre
                             where id == g.Id
-                            select g.TheGenre).Single();
+                            select g.TheGenre).SingleOrDefault();
             
             return genre;
         }

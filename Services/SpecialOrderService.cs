@@ -8,18 +8,59 @@ namespace BookCave.Services
 {
     public class SpecialOrderService : ISpecialOrderService
     {
+        
+        //Serverside validation
         public void ProcessSpecialOrder(SpecialOrderInputModel specialorder)
         {
-            if(string.IsNullOrEmpty(specialorder.Name)) {throw new Exception("Name is missing");}
-            if(string.IsNullOrEmpty(specialorder.Phone)) {throw new Exception("Phone is missing");}
-            if(string.IsNullOrEmpty(specialorder.Address)) {throw new Exception("Address is missing");}
-            if(string.IsNullOrEmpty(specialorder.Zip)) {throw new Exception("Zip is missing");}
-            if(string.IsNullOrEmpty(specialorder.City)) {throw new Exception("City is missing");}
-            if(string.IsNullOrEmpty(specialorder.Email)) {throw new Exception("Email is missing");}
-            if(string.IsNullOrEmpty(specialorder.Title)) {throw new Exception("Title is missing");}
-            if(string.IsNullOrEmpty(specialorder.Author)) {throw new Exception("Author is missing");}
-            if(string.IsNullOrEmpty(specialorder.PublishDate)) {throw new Exception("PublishDate is missing");}
-            if(specialorder.Amount < 20) {throw new Exception("Amount is missing");}
+            if (string.IsNullOrEmpty(specialorder.Name))
+            {
+                throw new Exception("Name is missing");
+            }
+
+            if (string.IsNullOrEmpty(specialorder.Phone))
+            {
+                throw new Exception("Phone is missing");
+            }
+            
+            if (string.IsNullOrEmpty(specialorder.Address))
+            {
+                throw new Exception("Address is missing");
+            }
+            
+            if (string.IsNullOrEmpty(specialorder.Zip))
+            {
+                throw new Exception("Zip is missing");
+            }
+            
+            if (string.IsNullOrEmpty(specialorder.City))
+            {
+                throw new Exception("City is missing");
+            }
+            
+            if (string.IsNullOrEmpty(specialorder.Email))
+            {
+                throw new Exception("Email is missing");
+            }
+            
+            if (string.IsNullOrEmpty(specialorder.Title))
+            {
+                throw new Exception("Title is missing");
+            }
+            
+            if (string.IsNullOrEmpty(specialorder.Author))
+            {
+                throw new Exception("Author is missing");
+            }
+            
+            if (string.IsNullOrEmpty(specialorder.PublishDate))
+            {
+                throw new Exception("PublishDate is missing");
+            }
+            
+            if (specialorder.Amount < 20)
+            {
+                throw new Exception("Amount is missing");
+            }
         }
 
         public void SendSpecialOrderEmail(SpecialOrderInputModel specialorder)
