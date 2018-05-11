@@ -27,9 +27,9 @@ namespace BookCave.Services
             MailMessage mailMessage = new MailMessage();
             mailMessage.From = new MailAddress("contactus.bookcave@gmail.com");
             mailMessage.To.Add(donate.Email);
-            mailMessage.Body = "Sæl/Sæll, Mikið ert þú með gott hjarta. Nú munu fleiri börn í Afríku hafa tækifæri á að læra að lesa. Greiðslan hefur farið í gegn, kærar þakkir fyrir stuðninginn.";
+            mailMessage.Body = "<p>Sæl/Sæll <b>" + donate.Name + "</b>, Mikið ert þú með gott hjarta. Nú munu fleiri börn í Afríku hafa tækifæri á að læra að lesa. Greiðslan þín: <b>" + donate.Amount + " </b>kr. hefur farið í gegn, kærar þakkir fyrir stuðninginn.</p>";
             mailMessage.Subject = "Greiðslustaðfesting";
-
+            mailMessage.IsBodyHtml = true;
             client.Send(mailMessage);
         } 
     }

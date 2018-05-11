@@ -2,6 +2,10 @@
 {
     counter-reset: LIST-ITEMS;
 }
+#top10list > #topBooks {
+    position: relative;
+    display: inline-block;
+}
 
 #top10list > #topBooks:before
 {
@@ -10,4 +14,13 @@
     padding-right: 0.25em;
     font-weight: bold;
     font-size: 20px;
+}
+
+#top10list > #topBooks > .books > .thumbnail {
+    margin-right: 10px;
+    width: 200px;
+}
+
+#toptenCartBtn {
+    font-size: 10px;
 }

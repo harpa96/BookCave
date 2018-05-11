@@ -23,3 +23,8 @@
     }
   
   .table-responsive{margin-top:25px;}
+
+  #profileImage
+  {
+    border: none;
+  }
