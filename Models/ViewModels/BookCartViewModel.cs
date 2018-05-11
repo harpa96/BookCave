@@ -10,5 +10,7 @@ namespace BookCave.Models.ViewModels
         public int Price { get; set; }
         public int PriceSum { get; set; }
         public int Copies { get; set; }
+
+        public string Author {get; set; }
     }
 }

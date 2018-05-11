@@ -13,18 +13,24 @@ namespace BookCave.Controllers
         private BookService _bookService;
         private OrderService _orderService;
         private ShoppingCartService _shoppingService;
+
         public OrderController(UserManager<ApplicationUser> userManager)
         {
             _bookService = new BookService();
             _orderService = new OrderService();
             _userManager = userManager;
             _shoppingService = new ShoppingCartService();
+
         }
         
-        public IActionResult OrderHistory()
+        public async Task<IActionResult> OrderHistory()
         {
-            var books = _bookService.GetAllBooks();
-            return View(books);
+            var user = await _userManager.GetUserAsync(User);
+            var id = user.Id;
+            
+            var orderHistory = _orderService.GetOrdersForUser(id);
+            
+            return View(orderHistory);
         }
 
         [HttpGet]
@@ -137,7 +143,7 @@ namespace BookCave.Controllers
             var id = user.Id;
             var cart = new CartViewModel
             {
-                Books = _shoppingService.getCart(id)
+                Books = _shoppingService.GetCart(id)
             };
             var country = _orderService.GetCountry(user.CountryId);
 

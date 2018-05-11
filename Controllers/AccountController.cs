@@ -99,6 +99,10 @@ public class AccountController : Controller
                 }
             }
             */
+        if (String.IsNullOrEmpty(model.Image))
+        {
+            model.Image = "https://www.pastepic.xyz/images/2018/05/10/Screen-Shot-2018-05-10-at-23.57.06568dff321a601717.png";
+        }
 
         var user = new ApplicationUser 
         { 

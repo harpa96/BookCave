@@ -42,7 +42,6 @@ namespace BookCave.Controllers.BookController
 
         public IActionResult Category(int? Id, string orderby)
         {
-            Console.WriteLine("Id inní categories: " + Id);
             
             if (Id == 0)
             {
@@ -51,7 +50,7 @@ namespace BookCave.Controllers.BookController
 
                 if(orderby != null)
                 {
-                    books = _bookService.OrderBooks(orderby, books);
+                    books = _bookService.OrderBooks(orderby, 0);
                     return View(books);
                 }
 
@@ -65,7 +64,7 @@ namespace BookCave.Controllers.BookController
                 
                 if(orderby != null)
                 {
-                    books = _bookService.OrderBooks(orderby, books);
+                    books = _bookService.OrderBooks(orderby, (int)Id);
                     return View(books);
                 }
                 
@@ -93,7 +92,7 @@ namespace BookCave.Controllers.BookController
             var newBook = _bookService.FindBookById(Id);
             newBook.Copies = book.Copies;
 
-             var user = await _userManager.GetUserAsync(User);
+            var user = await _userManager.GetUserAsync(User);
             var id = user.Id;
             
             _shoppingCart.addToCart(newBook, id);

@@ -184,50 +184,51 @@ namespace BookCave.Services
             return book;
         }
 
-        public List<BookListViewModel> OrderBooks(string order, List<BookListViewModel> books)
+        public List<BookListViewModel> OrderBooks(string order, int genreId)
         {
-            var genre = books[0].Genre;
+            var books = (from b in db.Books
+                        select b);
             
-            if(order == "highest")
+            if(genreId != 0)
             {
                 books = (from b in db.Books
-                                    join g in db.Genre on b.GenreId equals g.Id
-                                    where g.TheGenre == genre
-                                    orderby b.Price descending
-                                    select new BookListViewModel
+                            join g in db.Genre on genreId equals g.Id
+                            where genreId == b.GenreId
+                            select b);
+            }
+
+            if(order == "highest")
+            {
+                 var correctBooks = (from b in books
+                                orderby b.Price descending
+                                select new BookListViewModel
                                     {
                                         Id = b.Id,
                                         Name = b.Name,
                                         Image = b.Image,
                                         Price = b.Price,
-                                        Genre = g.TheGenre,
                                         //AuthorId = b.AuthorId,
                                     }).ToList();
-                return books;
+                return correctBooks;
             }
             
             else if( order == "lowest")
             {
-                books = (from b in db.Books
-                                    join g in db.Genre on b.GenreId equals g.Id
-                                    where g.TheGenre == genre
-                                    orderby b.Price ascending
-                                    select new BookListViewModel
-                                    {
-                                        Id = b.Id,
-                                        Name = b.Name,
-                                        Image = b.Image,
-                                        Price = b.Price,
-                                        Genre = g.TheGenre,
-                                        //AuthorId = b.AuthorId,
-                                    }).ToList();
-                return books;
+                var correctBooks = (from b in books
+                        orderby b.Price ascending
+                        select new BookListViewModel
+                        {
+                            Id = b.Id,
+                            Name = b.Name,
+                            Image = b.Image,
+                            Price = b.Price,
+                            //AuthorId = b.AuthorId,
+                        }).ToList();
+                return correctBooks;
             }
             else
             {
-                books = (from b in db.Books
-                                    join g in db.Genre on b.GenreId equals g.Id
-                                    where g.TheGenre == genre
+                var correctBooks = (from b in books
                                     orderby b.Name
                                     select new BookListViewModel
                                     {
@@ -235,10 +236,9 @@ namespace BookCave.Services
                                         Name = b.Name,
                                         Image = b.Image,
                                         Price = b.Price,
-                                        Genre = g.TheGenre,
                                         AuthorId = b.AuthorId
                                     }).ToList();
-                return books;
+                return correctBooks;
             }            
         }
 

@@ -25,16 +25,16 @@ namespace BookCave.Services
             return country;
         }
         
-        public void AddOrder(int order, int user, int book, int copies)
+        /*public void AddOrder(int order, int user, int book, int copies)
         {
-            var neworder = new Order(){ Id = order, UserId = user };
+            var neworder = new Order(){ Id = order, UserId = user. };
             var newBook = new OrderedBooks(){OrderId=order, BookId = book, Copies = copies};
             db.Add(neworder);
             db.Add(newBook);
             db.SaveChanges();
-        }
+        }*/
 
-        public void UpdateOrder(int userId, int newcopies, int bookId) 
+        public void UpdateOrder(string userId, int newcopies, int bookId) 
         {
             var order = db.Orders.FirstOrDefault(o => o.UserId == userId);
             var book = (from b in db.BooksInOrder
@@ -47,13 +47,48 @@ namespace BookCave.Services
             db.SaveChanges();
         }
 
-        public List<OrderListViewModel> GetOrderByUser(int? Id)
+        public OrderListViewModel GetOrdersForUser(string userId)
+        {
+            var OrderList = new OrderListViewModel
+            {
+                userId = userId
+            };
+
+            OrderList.Orders = new List<OrderViewModel>();
+            
+            var idOrders = (from o in db.Orders
+                          where userId == o.UserId
+                          select o.Id).ToList();
+            
+            foreach(var orderId in idOrders)
+            {
+                var order = new OrderViewModel
+                {
+                    Books = (from ob in db.BooksInOrder
+                                join b in db.Books on ob.BookId equals b.Id
+                                where ob.OrderId == orderId
+                                select new BookCartViewModel
+                                {
+                                    Id = b.Id,
+                                    Name = b.Name,
+                                    Image = b.Image,
+                                    Price = b.Price,
+                                    Copies = ob.Copies
+
+                                }).ToList()
+                };
+                OrderList.Orders.Add(order);
+            }
+            return OrderList;;
+        }
+
+        /*public List<OrderListViewModel> GetOrderByUser(string userId)
         {
             var order = (from b in db.BooksInOrder
                         join o in db.Orders on b.OrderId equals o.Id
                         join bo in db.Books on b.BookId  equals bo.Id
                         join a in db.Authors on bo.AuthorId equals a.Id
-                        where o.UserId == Id
+                        where o.UserId == userId
                         select new OrderListViewModel
                         { 
                             BookName = bo.Name,
@@ -63,7 +98,7 @@ namespace BookCave.Services
                             Copies = b.Copies,
                         }).ToList();
             return order;
-        }
+        }*/
     }
   
 

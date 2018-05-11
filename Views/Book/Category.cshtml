@@ -64,16 +64,20 @@
     <div class="container">
             <h1>@ViewBag.Genre</h1>
             <div>
-                <form asp-controller="Book" asp-action="Category">
-                    <label>Raða eftir: 
-                        <select class="custom-select" name="orderby">
-                            <option value="lowest">Ódýrasta verði</option>
-                            <option value="highest">Dýrasta verði</option>
-                            <option value="name">Nafni bókar</option>
-                        </select>
-                    </label>
+                <form  asp-controller="Book" asp-action="Category">
+                    <div>
+                        <label>Raða eftir: 
+                            <select class="custom-select" name="orderby">
+                                <option hidden>Veldu hér</option>
+                                <option value="lowest">Ódýrasta verði</option>
+                                <option value="highest">Dýrasta verði</option>
+                                <option value="name">Nafni bókar</option>
+                            </select>
+                        </label>
+                        <input type="submit" value="Raða" class="btn btn-info"/>
+                    </div>
                     <!--<a asp-controller="Book" asp-action="Category" class="btn btn-info">Raða</a>-->
-                    <input type="submit" value="Submit" class="btn btn-info"/>
+                    
                 </form>
             </div>
             <br/>

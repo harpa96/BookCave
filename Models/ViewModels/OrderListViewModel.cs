@@ -1,12 +1,11 @@
-namespace BookCave.Models.EntityModels
+using System.Collections.Generic;
+using BookCave.Models.EntityModels;
+
+namespace BookCave.Models.ViewModels
 {
     public class OrderListViewModel
     {
-        public string BookName {get; set; }
-        public string AutorName {get; set;}
-        public int Copies {get; set;}
-        public int Price {get; set;}
-        public string Image {get; set;}
-        public int totalPrice { get; set; }
+        public string userId { get; set; }
+        public List<OrderViewModel> Orders { get; set; }
     }
 }
