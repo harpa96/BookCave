@@ -75,6 +75,7 @@ namespace BookCave.Controllers
             var book = _bookService.FindBookById(model.BookToDelete);
                 _shoppingCart.removeFromCart(book, id);
         
+
             return RedirectToAction("Index");
         }
         
