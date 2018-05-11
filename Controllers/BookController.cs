@@ -37,7 +37,6 @@ namespace BookCave.Controllers.BookController
         
         public IActionResult Category(int? Id, string orderBy)
         {
-            Console.WriteLine("ORDERBY: " + orderBy);
             
             //Ef id == 0 þá er notandi að reyn að fara í flokkinn allir flokkar
             //Fer líka í allir flokkar ef slóðin er skrifuð með engu route-id
