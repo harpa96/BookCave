@@ -35,7 +35,7 @@ namespace BookCave.Services
 
             MailMessage mailMessage = new MailMessage();
             mailMessage.From = new MailAddress("contactus.bookcave@gmail.com");
-            mailMessage.To.Add(order.PayerName);
+            mailMessage.To.Add(order.PayerEmail);
             mailMessage.Body = "<p>Kæri/Kæra <b>" + order.PayerName + "</b>, greiðslan þín hefur farið í gegn.</p>";
             mailMessage.Subject = "Greiðslustaðfesting";
             mailMessage.IsBodyHtml = true;
