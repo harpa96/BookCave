@@ -8,5 +8,6 @@ namespace BookCave.Models.ViewModels
         public int Total { get; set; }
         public int TotalPlus {get; set;}
         public int BookToDelete { get; set; }
+
     }
 }

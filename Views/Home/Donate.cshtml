@@ -38,14 +38,14 @@
   </div>
 
   <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
 <div class="container-fluid text-center">  
 <h1 id="title">Þitt framlag skiptir máli!</h1>
@@ -53,18 +53,18 @@
 
 <form asp-action="Donate">
   <div class="form-group">
-    <label for="name">Fullt nafn</label>
+    <label for="name">Fullt nafn<span class="text-danger">*</span></label>
     <input asp-for="Name"type="text" class="form-control" id="nameInput" />
     <span asp-validation-for="Name" class="text-danger"></span>
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Netfang</label>
+    <label for="exampleInputPassword1">Netfang<span class="text-danger">*</span></label>
     <input  asp-for="Email" type="email" class="form-control" id="emailInput" />
     <span asp-validation-for="Email" class="text-danger"></span>
   </div>
   <div class="form-group">
-  <label  for="ammount">Upphæð:</label>
-  <select asp-for="Amount" class="form-control" id="ammount">
+  <label  for="Amount">Upphæð:</label>
+  <select asp-for="Amount" class="form-control" id="Amount">
     <option value="1.000">1.000 kr.</option>
     <option value="2.000">2.000 kr.</option>
     <option value="5.000">5.000 kr.</option>
@@ -76,24 +76,12 @@
   <span asp-validation-for="Amount" class="text-danger"></span>
   </div>
   <div class="form-check">
-    <label class="form-check-label" for="terms-check">Ég samþykki skilmála</label>
-    <input  asp-for="Checked" type="checkbox" class="terms-check" id="terms-check"/>
+    <label class="form-check-label" for="terms-check">Ég samþykki skilmála<span class="text-danger">*</span></label>
+    <input asp-for="Checked" type="checkbox" class="terms-check" id="terms-check"/>
     <span asp-validation-for="Checked" class="text-danger"></span>
   </div>
   <div class="form-group">
     <button class="btn btn-default" type="submit">Senda pöntun</button>
   </div>
-  <!--button onclick="document.getElementById('id05').style.display='block'">Senda pöntun</button>
-      <div id="id05" class="modal">
-        <form class="modal-content animate" action="/action_page.php">
-          <div class="container" style="background-color:#f1f1f1">
-            <div class="main-container">
-                <h1>Takk fyrir stuðninginn!</h1>
-                <h3>Framlag þitt hefur verið greitt</h3>
-                <p>Þú hefur fengið staðfestingu á netfangið þitt</p>
-                <a asp-controller="Home" asp-action="Index">Aftur á forsíðu</a>
-            </div>
-          </div>
-        </form>
-      </div-->
+  <span class="text-danger">@ViewData["ErrorMessage"]</span>
 </form>

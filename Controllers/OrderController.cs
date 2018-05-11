@@ -51,7 +51,8 @@ namespace BookCave.Controllers
                 Address = user.Address,
                 City = user.City,
                 ZIP = user.ZIP,
-                CountryId = user.CountryId
+                CountryId = user.CountryId,
+                Email = user.Email
             };
             
             
@@ -78,13 +79,14 @@ namespace BookCave.Controllers
                 PayerAddress = checkout.PayerAddress,
                 PayerCity = checkout.PayerCity,
                 PayerZIP = checkout.PayerZIP,
-                PayerCountryId = checkout.PayerCountryId
+                PayerCountryId = checkout.PayerCountryId,
+                PayerEmail = checkout.PayerEmail
             };
 
             return RedirectToAction("ReviewOrder", newModel);
         }
-
          public async Task<IActionResult> Confirmation() 
+
         {
             var user = await _userManager.GetUserAsync(User);
             
@@ -93,6 +95,15 @@ namespace BookCave.Controllers
             return View();
         }
 
+ 
+        public IActionResult Review(CheckoutViewModel order)
+        {
+            _orderService.SendOrderEmail(order);
+            
+            return RedirectToAction("Confirmation");
+        }
+
+       
         [Authorize]
         public async Task<IActionResult> ReviewOrder(CheckoutViewModel model)
         {
@@ -102,11 +113,26 @@ namespace BookCave.Controllers
 
             var cart = new CartViewModel
             {
-                Books = _shoppingService.GetCart(id),
-                Total = 0,
-                TotalPlus = 0,
-                BookToDelete = 0
+                Books = _shoppingService.GetCart(id)
             };
+
+            var total = 0;
+
+            foreach(var book in cart.Books)
+            {
+                total += book.Price*book.Copies;
+            }
+
+            cart.Total = total;
+            
+            if(total > 0)
+            {
+                cart.TotalPlus = total+500;
+            }
+            else
+            {
+                cart.TotalPlus = 0;
+            }
 
             var country = _orderService.GetCountry(user.CountryId);
 
@@ -123,7 +149,8 @@ namespace BookCave.Controllers
                 PayerAddress = model.PayerAddress,
                 PayerCity = model.PayerCity,
                 PayerZIP = model.PayerZIP,
-                PayerCountry = model.PayerCountry                
+                PayerCountry = model.PayerCountry,
+                PayerEmail = model.PayerEmail                
             };
 
             return View(new ReviewOrderViewModel

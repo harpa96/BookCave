@@ -13,7 +13,7 @@ namespace BookCave.Services
             if(string.IsNullOrEmpty(donate.Name)) {throw new Exception("Name is missing");}
             if(string.IsNullOrEmpty(donate.Email)) {throw new Exception("Email is missing");}
             if(string.IsNullOrEmpty(donate.Amount)) {throw new Exception("Amount is missing");}
-            if(donate.Checked == false){throw new Exception("Amount is missing");}
+            if(!donate.Checked){throw new Exception("Checked is missing");}
         }
 
         public void SendDonateEmail(DonateInputModel donate)
@@ -27,7 +27,7 @@ namespace BookCave.Services
             MailMessage mailMessage = new MailMessage();
             mailMessage.From = new MailAddress("contactus.bookcave@gmail.com");
             mailMessage.To.Add(donate.Email);
-            mailMessage.Body = "<p>Sæl/Sæll <b>" + donate.Name + "</b>, Mikið ert þú með gott hjarta. Nú munu fleiri börn í Afríku hafa tækifæri á að læra að lesa. Greiðslan þín: <b>" + donate.Amount + " </b>kr. hefur farið í gegn, kærar þakkir fyrir stuðninginn.</p>";
+            mailMessage.Body = "<p>Sæl/Sæll <b>" + donate.Name + "</b>, Mikið ert þú með gott hjarta. Nú munu fleiri börn í Afríku hafa tækifæri á að læra að lesa. Greiðslan þín: <b>" + donate.Amount + "kr.</b> hefur farið í gegn, kærar þakkir fyrir stuðninginn.</p>";
             mailMessage.Subject = "Greiðslustaðfesting";
             mailMessage.IsBodyHtml = true;
             client.Send(mailMessage);

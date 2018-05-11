@@ -43,6 +43,7 @@ namespace BookCave.Controllers
             {
                 total += book.Price*book.Copies;
             }
+           
 
             cart.Total = total;
             
@@ -55,6 +56,7 @@ namespace BookCave.Controllers
                 cart.TotalPlus = 0;
             }
             
+
             return View(cart);
         }
 
@@ -64,16 +66,26 @@ namespace BookCave.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
             var id = user.Id;
-            if(model.BookToDelete == 0)
+            
+             
+            if(model.Discount.Equals("BOOKCAVE"))
             {
-                _shoppingCart.clearCart(id);
-                return RedirectToAction("Index");
+                model.Total = 5000;
             }
-    
-            var book = _bookService.FindBookById(model.BookToDelete);
-           _shoppingCart.removeFromCart(book, id);
 
+            else 
+            {
+                if(model.BookToDelete == 0)
+                {
+                    _shoppingCart.clearCart(id);
+                    return RedirectToAction("Index");
+                }
+                var book = _bookService.FindBookById(model.BookToDelete);
+                 _shoppingCart.removeFromCart(book, id);
+            }
+           
             return RedirectToAction("Index");
         }
+        
     }
 }
