@@ -48,7 +48,6 @@ namespace BookCave.Services
             var cart = (from c in db.Cart
                         where c.UserId == userId
                         select c);
-
         }
         */
         public void addToCart(BookDetailsViewModel book, string userId)

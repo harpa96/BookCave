@@ -24,6 +24,7 @@
                         <form method = "POST">
                             <input id="copies" type="number" asp-for="Copies" min="1" value="1">
                             <br/>
+                            <br/>
                             <input class="btn btn-success" type="submit" value="Setja í körfu">
                         </form>
                         <!--<div class="btn-minus" onclick="increment()"><span class="glyphicon glyphicon-minus"></span></div>
@@ -33,8 +34,6 @@
             </div>                
                     
             <div class="section" style="padding-bottom:20px;">
-                <!--<a class="btn btn-success" asp-controller="Home" asp-action="Cart"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Setja í körfu</a>-->
-                <h6><a><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span> Gera að uppáhaldsbók</a></h6>
                 <h6><a asp-controller="Book" asp-action="AddRating" asp-route-id="@Model.Id">Bæta við athugasemd og/eða einkunn</a></h6>
             </div>                                        
         </div>                              
@@ -63,7 +62,7 @@
                         {
                             <div class="media">
                                 <div class="media-body">
-                                    <h4 class="media-heading user_name">Ónafngreindur aðili</h4>
+                                    <h4 class="media-heading user_name">@comment.UserName</h4>
                                     <p>@comment.Text</p>
                                 </div>
                             </div>

@@ -85,9 +85,13 @@ namespace BookCave.Controllers
 
             return RedirectToAction("ReviewOrder", newModel);
         }
+         public async Task<IActionResult> Confirmation() 
 
-        public IActionResult Confirmation() 
         {
+            var user = await _userManager.GetUserAsync(User);
+            
+            _orderService.addNewOrder(user.Id);
+            _shoppingService.clearCart(user.Id);
             return View();
         }
 

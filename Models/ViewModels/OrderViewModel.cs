@@ -7,6 +7,6 @@ namespace BookCave.Models.EntityModels
     {
         public int Id { get; set; }
         public List<BookCartViewModel> Books { get; set; }
-        public int totalPrice { get; set; }
+        public int TotalPrice { get; set; }
     }
 }
