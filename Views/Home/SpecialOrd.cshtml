@@ -52,36 +52,36 @@
 
         <form asp-action="SpecialOrd">
         <div class="form-group col-md-8">
-            <label for="inputName">Nafn</label>
+            <label for="inputName">Nafn<span class="text-danger">*</span></label>
             <input asp-for="Name" type="text" class="form-control" id="inputName"/>
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
 
         <div class="form-group col-md-4">
-            <label for="inputPhone">Símanúmer</label>
+            <label for="inputPhone">Símanúmer<span class="text-danger">*</span></label>
             <input asp-for="Phone" type="text" class="form-control" id="inputPhone"/>
             <span asp-validation-for="Phone" class="text-danger"></span>
         </div>
         <div class="form-row">
             <div class="form-group col-md-5">
-            <label for="inputAddress">Heimilisfang</label>
+            <label for="inputAddress">Heimilisfang<span class="text-danger">*</span></label>
             <input asp-for="Address"type="text" class="form-control" id="Address"/>
             <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group col-md-2">
-            <label for="inputZip">Póstnúmer</label>
+            <label for="inputZip">Póstnúmer<span class="text-danger">*</span></label>
             <input asp-for="Zip" type="text" class="form-control" id="inputZip"/>
             <span asp-validation-for="Zip" class="text-danger"></span>
             </div>
             <div class="form-group col-md-5">
-            <label for="inputCity">Borg</label>
+            <label for="inputCity">Borg<span class="text-danger">*</span></label>
             <input asp-for="City"type="text" class="form-control" id="inputCity"/>
             <span asp-validation-for="City" class="text-danger"></span>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="inputEmail">Netfang</label>
+            <label for="inputEmail">Netfang<span class="text-danger">*</span></label>
             <input asp-for="Email" type="email" class="form-control" id="inputEmail"/>
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
@@ -89,27 +89,31 @@
         <h3>Upplýsingar um bók</h3> 
         <div id="orderInput">
             <div class="form-group col-md-6">
-            <label for="title"><b>Titill</b></label>
-            <input type="text" name="title"/>
+            <label for="title"><b>Titill<span class="text-danger">*</span></b></label>
+            <input asp-for="Title" type="text" class="form-control" id="inputTitle"/>
+            <span asp-validation-for="Title" class="text-danger"></span>
             </div>
 
             <div class="form-group col-md-6"> 
-            <label for="author"><b>Höfundur</b></label>
-            <input type="text" name="author"/>
+            <label for="author"><b>Höfundur<span class="text-danger">*</span></b></label>
+            <input asp-for="Author" type="text" class="form-control" id="inputAuthors"/>
+            <span asp-validation-for="Author" class="text-danger"></span>
             </div>
                 
             <div class="form-group col-md-6">  
-            <label for="publishDate"><b>Útgáfuár</b></label>
-            <input type="text" name="publishDate"/>
+            <label for="publishDate"><b>Útgáfuár<span class="text-danger">*</span></b></label>
+            <input asp-for="PublishDate" type="text" class="form-control" id="inputPublishDate"/>
+            <span asp-validation-for="PublishDate" class="text-danger"></span>
             </div>
 
             <div class="form-group col-md-6">
-            <label for="amount"><b>Magn</b></label>
-            <input type="text" name="amount"/>
+            <label for="amount"><b>Magn (ath. minnst 20 bækur til að geta gert sérpöntun)<span class="text-danger">*</span></b></label>
+            <input asp-for="Amount" type="number" class="form-control" id="inputAmount" min="20">
+            <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
         </div>  
 
-        <button type="button" class="btn btn-primary" id="addBook-btn">Bæta við bók</button>
+        <!--button type="button" class="btn btn-primary" id="addBook-btn">Bæta við bók</button>
 
         <table class="table table-striped">
             <thead>
@@ -125,7 +129,7 @@
             </tbody>
         </table>
         <br>
-        <br>
+        <br-->
 
         <div class="form-group">
         <label for="exampleFormControlTextarea1">Athugasemdir</label>
@@ -133,13 +137,12 @@
         </div>
 
         <div class="form-group">
-            <div class="form-check">
-      <!--      <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck"> Ég samþykki skilmála</label>-->
-            </div>
+            <div class="col-xs-offset-3 col-md-8 col-sm-9"><span class="text-muted"><span class="label label-danger">Athugasemd:-</span> Með því að smella á "Senda sérpöntun", ert þú að samþykkja <a asp-area="" asp-controller="Home" asp-action="Terms">skilmála og skilyrði</a> Book Cave.</span> </div>
         </div>
-        
-        <button type="submit" class="btn btn-success">Senda pöntun</button>
+        <div class="form-group">
+            <button class="btn btn-default" type="submit">Senda sérpöntun</button>
+        </div>
+        <!--button asp-controller="Home" asp-action="ConfirmationSpecialOrder" type="submit" class="btn btn-success">Senda pöntun</button-->
 
         </form>
     </div>

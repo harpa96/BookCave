@@ -5,5 +5,6 @@ namespace BookCave.Services
     public interface ISpecialOrderService
     {
         void ProcessSpecialOrder(SpecialOrderInputModel specialorder);
+        void SendSpecialOrderEmail(SpecialOrderInputModel specialorder);
     }
 }

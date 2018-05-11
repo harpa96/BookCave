@@ -53,18 +53,18 @@
 
 <form asp-action="Donate">
   <div class="form-group">
-    <label for="name">Fullt nafn</label>
+    <label for="name">Fullt nafn<span class="text-danger">*</span></label>
     <input asp-for="Name"type="text" class="form-control" id="nameInput" />
     <span asp-validation-for="Name" class="text-danger"></span>
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Netfang</label>
+    <label for="exampleInputPassword1">Netfang<span class="text-danger">*</span></label>
     <input  asp-for="Email" type="email" class="form-control" id="emailInput" />
     <span asp-validation-for="Email" class="text-danger"></span>
   </div>
   <div class="form-group">
-  <label  for="ammount">Upphæð:</label>
-  <select asp-for="Amount" class="form-control" id="ammount">
+  <label  for="Amount">Upphæð:</label>
+  <select asp-for="Amount" class="form-control" id="Amount">
     <option value="1.000">1.000 kr.</option>
     <option value="2.000">2.000 kr.</option>
     <option value="5.000">5.000 kr.</option>
@@ -76,13 +76,14 @@
   <span asp-validation-for="Amount" class="text-danger"></span>
   </div>
   <div class="form-check">
-    <label class="form-check-label" for="terms-check">Ég samþykki skilmála</label>
-    <input  asp-for="Checked" type="checkbox" class="terms-check" id="terms-check"/>
+    <label class="form-check-label" for="terms-check">Ég samþykki skilmála<span class="text-danger">*</span></label>
+    <input asp-for="Checked" type="checkbox" class="terms-check" id="terms-check"/>
     <span asp-validation-for="Checked" class="text-danger"></span>
   </div>
   <div class="form-group">
     <button class="btn btn-default" type="submit">Senda pöntun</button>
   </div>
+  <span class="text-danger">@ViewData["ErrorMessage"]</span>
   <!--button onclick="document.getElementById('id05').style.display='block'">Senda pöntun</button>
       <div id="id05" class="modal">
         <form class="modal-content animate" action="/action_page.php">

@@ -20,6 +20,16 @@ namespace BookCave.Models.InputModels
         public string Email { get; set; }
         //[Required(ErrorMessage= "Terms is required")]
         //public bool Terms { get; set; }
-       
+        [Required(ErrorMessage= "Title is required")]
+        public string Title { get; set; }
+
+        [Required(ErrorMessage= "Author is required")]
+        public string Author { get; set; }
+
+        [Required(ErrorMessage= "PublishDate is required")]
+        public string PublishDate { get; set; }
+
+        [Required(ErrorMessage= "Amount is required")]
+        public int Amount { get; set; }
     }
 }

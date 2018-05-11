@@ -9,7 +9,8 @@ using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
 using BookCave.Models.ViewModels;
 using BookCave.Models.InputModels;
-
+using System.Net.Mail;
+using System.Net;
 
 namespace BookCave.Controllers.HomeController
 {    
@@ -80,6 +81,14 @@ namespace BookCave.Controllers.HomeController
         {
             return View();
         }
+        public IActionResult ConfirmationSpecialOrder() 
+        {
+            return View();
+        }
+        public IActionResult ConfirmationDonate() 
+        {
+            return View();
+        }
 
         public IActionResult reviewOrder()
         {
@@ -106,23 +115,31 @@ namespace BookCave.Controllers.HomeController
         [HttpPost]
         public IActionResult Donate(DonateInputModel donate)
         {
-            
+            ViewData["ErrorMessage"] = "";
             _donateService.SendDonateEmail(donate);
             //processContact() imitates a database connection
             //this will fail if ddata is not valid within contactInput
-            _donateService.ProcessDonate(donate);
+            try {
+                _donateService.ProcessDonate(donate);
+            }
+            catch (Exception)
+            {
+                ViewData["ErrorMessage"] = "Checked is missing";
+                return View();
+            }
             
-            return View();
+            
+            return RedirectToAction("ConfirmationDonate");
         }
 
         [HttpPost]
          public IActionResult SpecialOrd(SpecialOrderInputModel specialorder)
         {
+            _specialOrderService.SendSpecialOrderEmail(specialorder);
             //processContact() imitates a database connection
             //this will fail if ddata is not valid within contactInput
             _specialOrderService.ProcessSpecialOrder(specialorder);
-            
-            return View();
+            return RedirectToAction("ConfirmationSpecialOrder");
         }
 
         
