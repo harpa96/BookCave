@@ -13,53 +13,18 @@ using BookCave.Models.EntityModels;
 using Microsoft.AspNetCore.Authorization;
 using BookCave.Data;
 
-
-
-
-/* 
-using Microsoft.AspNetCore.Http;
-using System.IO;
-*/
-
-
 public class AccountController : Controller
 {
-    //private readonly IHostingEnvironment _env;
     private DataContext db;
     private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly UserManager<ApplicationUser> _userManager;
-   // private readonly IUserService _userService; ***FYRIR ERRORHANDLING -HARPA***
 
-    public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager /*,IUserService userService ***FYRIR ERRORHANDLING -HARPA*** */)
+    public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
     {
         _signInManager = signInManager;
         _userManager = userManager;
         db = new DataContext();
-        //_userService = userService; ***FYRIR ERRORHANDLING -HARPA***
     }
-/* 
-    [HttpPost]
-    public async Task<IActionResult> Upload(FileUploadViewModel model)
-    {
-        var file = model.File;
-        
-
-        if (file.Length > 0)
-        {
-            string path = Path.Combine(_env.WebRootPath, "images");
-
-            using (var fs = new FileStream(Path.Combine(path, file.FileName), FileMode.Create))
-            {
-                file.CopyToAsync(fs);
-            }
-
-            model.Source = $"/images{file.FileName}";
-            return Ok(model);
-        }
-        return BadRequest();
-    }
-
-    */
 
     [HttpGet]
     public IActionResult Register()
@@ -70,40 +35,20 @@ public class AccountController : Controller
     [HttpPost]
     [AllowAnonymous]
     [ValidateAntiForgeryToken]
-
     public async Task<IActionResult> Register(RegisterViewModel model)
     {
         if (!ModelState.IsValid)
         {
             return View();
         }
-/* 
-        var files = HttpContext.Request.Form.Files;
-            foreach (var Image in files)
-            {
-                if (Image != null && Image.Length > 0)
-                {
-                    var file = Image;
-                    //There is an error here
-                    var uploads = Path.Combine(_appEnvironment.WebRootPath, "uploads\\img");
-                    if (file.Length > 0)
-                    {
-                        var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
-                        using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
-                        {
-                            await file.CopyToAsync(fileStream);
-                            model.BookPic = fileName;
-                        }
 
-                    }
-                }
-            }
-            */
+        //Default image if user doesn't choose image when registering
         if (String.IsNullOrEmpty(model.Image))
         {
             model.Image = "https://www.pastepic.xyz/images/2018/05/10/Screen-Shot-2018-05-10-at-23.57.06568dff321a601717.png";
         }
 
+        //Implementing the new user when he registers
         var user = new ApplicationUser 
         { 
             UserName = model.Email, 
@@ -117,20 +62,13 @@ public class AccountController : Controller
             CountryId = model.CountryId, 
             City = model.City
         };
-/* 
-        using (var memoryStream = new MemoryStream())
-        {
-            await model.AvatarImage.CopyToAsync(memoryStream);
-            user.AvatarImage = memoryStream.ToArray();
-        }
-*/
 
         var result = await _userManager.CreateAsync(user, model.Password);
 
         if (result.Succeeded)
         {
             //The user is successfully registered
-            //Add the concatenated first and last name as fullName in claims
+            //Add the concatenated first name in claims to show in navbar
             await _userManager.AddClaimAsync(user, new Claim("FirstName", model.FirstName));
             await _signInManager.SignInAsync(user, false);
 
@@ -155,6 +93,7 @@ public class AccountController : Controller
                         where user.CountryId == c.Id
                         select c.Name).FirstOrDefault().ToString();
         
+        //The profile displays all the input from the user registration
         return View(new ProfileViewModel 
         {
             FirstName = user.FirstName,
@@ -200,6 +139,7 @@ public class AccountController : Controller
                         where user.CountryId == c.Id
                         select c.Name).ToString();
 
+        //The form will default display all the input from the user registration
         return View(new ProfileViewModel 
         {
             FirstName = user.FirstName,
@@ -217,7 +157,6 @@ public class AccountController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-
     public async Task<IActionResult> Login(LoginViewModel model)
     {
         ViewData["ErrorMessage"] = "";
@@ -227,66 +166,23 @@ public class AccountController : Controller
                 ViewData["ErrorMessage"] = "Notandi finnst ekki í kerfinu";
                 return View();      
         }
+
         var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+        
         if (result.Succeeded)
         {
             return RedirectToAction("Index", "Home");
         }
+        
         return View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-
     public async Task<IActionResult> LogOut()
     {
         await _signInManager.SignOutAsync();
         return RedirectToAction("Login", "Account");
     }
 
-    /* 
-    [HttpPost("UploadFiles")]
-    public async Task<IActionResult> Post(List<IFormFile> files)
-    {
-        long size = files.Sum(f => f.Length);
-
-        // full path to file in temp location
-        var filePath = Path.GetTempFileName();
-
-        foreach (var formFile in files)
-        {
-            if (formFile.Length > 0)
-            {
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await formFile.CopyToAsync(stream);
-                }
-            }
-        }
-
-        // process uploaded files
-        // Don't rely on or trust the FileName property without validation.
-
-        return Ok(new { count = files.Count, size, filePath});
-    }
-*/
-    public IActionResult AccessDenied()
-    {
-        return View();
-    }
-
-
 }
-/* 
-    ***GERDI THETTA FYRIR ERRORHANDLING - HARPA*** 
-    [HttpPost]
-    public IActionResult Register(RegisterViewModel register)
-    {
-        
-        //processContact() imitates a database connection
-        //this will fail if ddata is not valid within contactInput
-        _userService.ProcessDonate(register);
-        
-        return View();
-    }
-    */

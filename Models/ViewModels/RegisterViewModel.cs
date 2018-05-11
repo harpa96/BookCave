@@ -7,8 +7,10 @@ namespace BookCave.Models.ViewModels
 {
     public class RegisterViewModel
     {
-        [Required(ErrorMessage= "Netfang vantar")]
+        
         [EmailAddress]
+        [RegularExpression( "^[a-z0-9_\\+-]+(\\.[a-z0-9_\\+-]+)*@[a-z0-9-]+(\\.[a-z0-9]+)*\\.([a-z]{2,4})$" , ErrorMessage = "netfang ekki rétt slegið inn, passaðu að það sé á forminu someone@example.com" )]
+        [Required(ErrorMessage= "Netfang vantar")]
         public string Email { get; set; }
         [Required(ErrorMessage= "Fornafn vantar")]
         public string FirstName { get; set; }

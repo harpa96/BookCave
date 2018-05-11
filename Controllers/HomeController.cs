@@ -49,7 +49,6 @@ namespace BookCave.Controllers.HomeController
                 var searchedBooks = _bookService.SearchedBooks(searchInput);
                 return View(searchedBooks);
             }
-
                     
             return RedirectToAction("Category", "Book");
         }

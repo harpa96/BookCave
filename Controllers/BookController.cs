@@ -35,13 +35,13 @@ namespace BookCave.Controllers.BookController
             return View(books);
         }
         
-        [HttpGet]
-        public IActionResult Category(int? id, string orderBy)
+        public IActionResult Category(int? Id, string orderBy)
         {
+            Console.WriteLine("ORDERBY: " + orderBy);
             
             //Ef id == 0 þá er notandi að reyn að fara í flokkinn allir flokkar
             //Fer líka í allir flokkar ef slóðin er skrifuð með engu route-id
-            if (id == 0 || id == null)
+            if (Id == 0 || Id == null)
             {
                 var books = _bookService.GetAllBooks();
                 ViewBag.Genre = "Allar bækur";
@@ -60,16 +60,16 @@ namespace BookCave.Controllers.BookController
             else 
             {
                 //Sía út ákveðinn flokk
-                var books = _bookService.FilterCategories(id);
+                var books = _bookService.FilterCategories(Id);
                 
                 if (orderBy != null)
                 {
-                    books = _bookService.OrderBooks(orderBy, (int)id);
+                    books = _bookService.OrderBooks(orderBy, (int)Id);
                     return View(books);
                 }
                 
                 //Sækja flokkheiti til að birta sem heading á síðunni
-                ViewBag.Genre = _bookService.GetGenre(id);
+                ViewBag.Genre = _bookService.GetGenre(Id);
 
                 return View(books);
             }
