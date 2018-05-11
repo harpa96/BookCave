@@ -33,7 +33,6 @@ namespace BookCave.Models.ViewModels
         public string PayerZIP { get; set; }
         [Required(ErrorMessage="Þarft að fylla inn netfang greiðanda")]
         public string PayerEmail { get; set; }
-        
         public ProfileViewModel User { get; set; }
 
     }

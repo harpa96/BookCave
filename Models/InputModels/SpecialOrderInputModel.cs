@@ -18,8 +18,7 @@ namespace BookCave.Models.InputModels
 
         [Required(ErrorMessage= "Email is required")]
         public string Email { get; set; }
-        //[Required(ErrorMessage= "Terms is required")]
-        //public bool Terms { get; set; }
+       
         [Required(ErrorMessage= "Title is required")]
         public string Title { get; set; }
 
