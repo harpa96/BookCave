@@ -6,7 +6,7 @@ namespace BookCave.Models.ViewModels
     {
         public List<BookCartViewModel> Books { get; set; }
         public int Total { get; set; }
-        public int TotalPlus {get; set;}
+        public int TotalPlus { get; set; }
         public int BookToDelete { get; set; }
 
     }

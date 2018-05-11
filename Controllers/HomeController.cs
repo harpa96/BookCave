@@ -42,8 +42,17 @@ namespace BookCave.Controllers.HomeController
 
         public IActionResult SearchBar(string searchInput)
         {
-            var searchedBooks = _bookService.SearchedBooks(searchInput);
-            return View(searchedBooks);
+            if(!string.IsNullOrEmpty(searchInput))
+            {
+                var searchedBooks = _bookService.SearchedBooks(searchInput);
+                return View(searchedBooks);
+            }
+            
+            else
+            {
+                return View("Category", "Book");
+            }
+
         }
 
         public IActionResult Donate()
@@ -143,10 +152,6 @@ namespace BookCave.Controllers.HomeController
             //this will fail if ddata is not valid within contactInput
             _specialOrderService.ProcessSpecialOrder(specialorder);
             return RedirectToAction("ConfirmationSpecialOrder");
-        }
-
-        
-
-        
+        }        
     }
 }
