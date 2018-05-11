@@ -42,15 +42,21 @@ namespace BookCave.Services
 
             return cart;
         }
-        /*
-        public int getTotal(string userId)
+        
+        public int GetTotal(string userId)
         {
-            var cart = (from c in db.Cart
-                        where c.UserId == userId
-                        select c);
+            var cart = GetCart(userId);
+            var totalPrice = 0;
+
+            foreach (var cartItem in cart)
+            {
+                totalPrice += cartItem.PriceSum;
+            }
+            
+            return totalPrice;
         }
-        */
-        public void addToCart(BookDetailsViewModel book, string userId)
+        
+        public void AddToCart(BookDetailsViewModel book, string userId)
         {
             var searchBook = (from c in db.Cart
                     where book.Id == c.BookId && userId == c.UserId
@@ -74,7 +80,7 @@ namespace BookCave.Services
             db.SaveChanges();
         }
 
-        public void clearCart(string userId)
+        public void ClearCart(string userId)
         {
                 var allBooks = (from c in db.Cart
                     where c.UserId == userId

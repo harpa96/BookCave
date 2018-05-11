@@ -34,48 +34,44 @@ namespace BookCave.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
-            var id = user.Id;
-            var cart = new CartViewModel{Books = _shoppingCart.GetCart(id)};
-            
-            var total = 0;
-
-            foreach(var book in cart.Books)
-            {
-                total += book.Price*book.Copies;
-            }
+            var userId = user.Id;
+            var cart = new CartViewModel{Books = _shoppingCart.GetCart(userId)};
            
-
-            cart.Total = total;
+            cart.Total = _shoppingCart.GetTotal(userId);
             
-            if(total > 0)
+            //Ef það eru einhverjar vörur í körfunni þá bætist sendingarkostnaður við gjaldið, annars ekki
+            if (cart.Total > 0)
             {
-                cart.TotalPlus = total+500;
+                cart.TotalPlus = cart.Total + 500;
             }
+
             else
             {
                 cart.TotalPlus = 0;
             }
-            
 
             return View(cart);
         }
+
 
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Index(CartViewModel model)
         {
             var user = await _userManager.GetUserAsync(User);
-            var id = user.Id;
+            var userId = user.Id;
                       
-            if(model.BookToDelete == 0)
+            //Ef notandi vill hreinsa körfuna þá er er ekkert bookId (BookToDelete == 0)
+            if (model.BookToDelete == 0)
             {
-                _shoppingCart.clearCart(id);
+                _shoppingCart.ClearCart(userId);
                 return RedirectToAction("Index");
             }
-            var book = _bookService.FindBookById(model.BookToDelete);
-                _shoppingCart.removeFromCart(book, id);
-        
 
+            //Eyði einu eintaki af ákveðinni tegund
+            var book = _bookService.FindBookById(model.BookToDelete);
+            _shoppingCart.removeFromCart(book, userId);
+        
             return RedirectToAction("Index");
         }
         

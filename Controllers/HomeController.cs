@@ -17,29 +17,30 @@ namespace BookCave.Controllers.HomeController
     public class HomeController : Controller
     {
         private BookService _bookService;
-        List<BookDetailsViewModel> myCart;
         private readonly IDonateService _donateService;
-
         private readonly ISpecialOrderService _specialOrderService;
 
 
         public HomeController(IDonateService donateService, ISpecialOrderService specialOrderService)
         {
             _bookService = new BookService();
-
-            myCart = new List<BookDetailsViewModel>();
-
             _donateService = donateService;
-
             _specialOrderService = specialOrderService;
         }
         
+        
+        [HttpGet]
+        
+        //Birtir forsíðu
         public IActionResult Index()
         {
             var books = _bookService.GetAllFrontPageBooks();
             return View(books);
         }
 
+        [HttpGet]
+
+        //Birtir leitarniðurstöður úr searchbar
         public IActionResult SearchBar(string searchInput)
         {
             if(!string.IsNullOrEmpty(searchInput))
@@ -52,9 +53,10 @@ namespace BookCave.Controllers.HomeController
             {
                 return View("Category", "Book");
             }
-
         }
 
+        
+        [HttpGet]
         public IActionResult Donate()
         {
             return View();

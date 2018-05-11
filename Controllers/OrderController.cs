@@ -25,12 +25,15 @@ namespace BookCave.Controllers
 
         }
         
+        [Authorize]
+        [HttpGet]
+        
+        //Skilar yfirliti yfir eldri pantanir notanda
         public async Task<IActionResult> OrderHistory()
         {
             var user = await _userManager.GetUserAsync(User);
-            var id = user.Id;
-            
-            var orderHistory = _orderService.GetOrdersForUser(id);
+            var userId = user.Id;
+            var orderHistory = _orderService.GetOrdersForUser(userId);
             
             return View(orderHistory);
         }
@@ -39,8 +42,7 @@ namespace BookCave.Controllers
         [HttpGet]
         public async Task<IActionResult> Pay() 
         {
-            var user = await _userManager.GetUserAsync(User);
-            
+            var user = await _userManager.GetUserAsync(User);            
             var country = _orderService.GetCountry(user.CountryId);
 
             var theUser = new ProfileViewModel
@@ -61,6 +63,7 @@ namespace BookCave.Controllers
                 User = theUser
             });
         }
+
 
         [Authorize]
         [HttpPost]
@@ -85,17 +88,27 @@ namespace BookCave.Controllers
 
             return RedirectToAction("ReviewOrder", newModel);
         }
-         public async Task<IActionResult> Confirmation() 
+        
+        
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Confirmation() 
 
         {
             var user = await _userManager.GetUserAsync(User);
             
+            //Bætum við nýju pöntunaryfirliti í gagnagrunninn og hreinsum körfuna
             _orderService.addNewOrder(user.Id);
-            _shoppingService.clearCart(user.Id);
+            _shoppingService.ClearCart(user.Id);
+            
             return View();
         }
 
+
+        [Authorize]
         [HttpPost]
+        
+        //Þegar notandi staðfestir pöntun
         public IActionResult Review(ReviewOrderViewModel order)
         {
             _orderService.SendOrderEmail(order.Checkout);
@@ -103,32 +116,29 @@ namespace BookCave.Controllers
             return RedirectToAction("Confirmation");
         }
 
-       
+        
         [Authorize]
+        [HttpGet]
+        
+        //Birtir yfirlit yfir pöntunina
         public async Task<IActionResult> ReviewOrder(CheckoutViewModel model)
         {
             var user = await _userManager.GetUserAsync(User);
-            
-            var id = user.Id;
+            var userId = user.Id;
 
             var cart = new CartViewModel
             {
-                Books = _shoppingService.GetCart(id)
+                Books = _shoppingService.GetCart(userId)
             };
 
-            var total = 0;
-
-            foreach(var book in cart.Books)
-            {
-                total += book.Price*book.Copies;
-            }
-
-            cart.Total = total;
+            //Sækja heildarverð pöntunar
+            cart.Total = _shoppingService.GetTotal(userId);
             
-            if(total > 0)
+            if (cart.Total > 0)
             {
-                cart.TotalPlus = total+500;
+                cart.TotalPlus = cart.Total + 500;
             }
+            
             else
             {
                 cart.TotalPlus = 0;

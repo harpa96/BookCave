@@ -27,23 +27,30 @@ namespace BookCave.Controllers.BookController
             _userManager = userManager;
         }
         
+        [HttpGet]
         public IActionResult Top10()
         {
             var books = _bookService.GetTop();
             
             return View(books);
         }
-        public IActionResult Category(int? Id, string orderby)
+        
+        [HttpGet]
+        public IActionResult Category(int? id, string orderBy)
         {
             
-            if (Id == 0 || Id == null)
+            //Ef id == 0 þá er notandi að reyn að fara í flokkinn allir flokkar
+            //Fer líka í allir flokkar ef slóðin er skrifuð með engu route-id
+            if (id == 0 || id == null)
             {
                 var books = _bookService.GetAllBooks();
                 ViewBag.Genre = "Allar bækur";
 
-                if(orderby != null)
+                //Ef notandi vill raða listanum í ákveðinni röð
+                if (orderBy != null)
                 {
-                    books = _bookService.OrderBooks(orderby, 0);
+                    //Seinni parameter er 0 því við viljum raða öllum bókum
+                    books = _bookService.OrderBooks(orderBy, 0);
                     return View(books);
                 }
 
@@ -52,50 +59,55 @@ namespace BookCave.Controllers.BookController
             
             else 
             {
-                var books = _bookService.FilterCategories(Id);
+                //Sía út ákveðinn flokk
+                var books = _bookService.FilterCategories(id);
                 
-                if(orderby != null)
+                if (orderBy != null)
                 {
-                    books = _bookService.OrderBooks(orderby, (int)Id);
+                    books = _bookService.OrderBooks(orderBy, (int)id);
                     return View(books);
                 }
                 
-                ViewBag.Genre = _bookService.getGenre(Id);
+                //Sækja flokkheiti til að birta sem heading á síðunni
+                ViewBag.Genre = _bookService.GetGenre(id);
+
                 return View(books);
             }
         }
         
         [HttpGet]
-        public IActionResult Details(int? Id)
+        public IActionResult Details(int? id)
         {
-            if(Id == null)
+            var book = _bookService.FindBookById(id);
+            
+            if (book == null)
             {
                 return View("NotFound");
             }
-            
-            var book = _bookService.FindBookById(Id);
 
             return View(book);
         }
+
+
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Details (int? Id, BookDetailsViewModel book)
+        public async Task<IActionResult> Details (int? id, BookDetailsViewModel book)
         {
-            var newBook = _bookService.FindBookById(Id);
+            var newBook = _bookService.FindBookById(id);
             newBook.Copies = book.Copies;
 
             var user = await _userManager.GetUserAsync(User);
-            var id = user.Id;
+            var newId = user.Id;
             
-            _shoppingCart.addToCart(newBook, id);
+            _shoppingCart.AddToCart(newBook, newId);
            
             return RedirectToAction("Index", "Cart");
         }
 
         [HttpGet]
-        public IActionResult AddRating(int Id)
+        public IActionResult AddRating(int id)
         {
-            var book = _bookService.FindBookById(Id);
+            var book = _bookService.FindBookById(id);
             ViewBag.Title = book.Name;
 
             return View();
@@ -103,27 +115,26 @@ namespace BookCave.Controllers.BookController
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> AddRating(int? Id, CommentViewModel newComment)
+        public async Task<IActionResult> AddRating(int? id, CommentViewModel newComment)
         {
             var user = await _userManager.GetUserAsync(User);
             var userName = user.FirstName;
             
-            if(Id == null)
+            if (id == null)
             {
                 return RedirectToAction("NotFound");
             }
             
-            var currentBook = (int)Id;
-            ViewBag.NameOfBook = _bookService.getNameOfBook(currentBook);
-        
+            var currentBook = (int)id;
+            ViewBag.NameOfBook = _bookService.GetNameOfBook(currentBook);
             _bookService.AddRating(newComment.Rating, currentBook);
             
-            if(newComment.Text != String.Empty)
+            if (newComment.Text != String.Empty)
             {
                 _bookService.AddComment(userName, newComment.Text, currentBook);
             }
             
-            return RedirectToAction("Details", new {Id = currentBook});
+            return RedirectToAction("Details", new {id = currentBook});
         }
         
     }
