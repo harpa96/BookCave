@@ -5,6 +5,7 @@ using BookCave.Models.ViewModels;
 using BookCave.Models.EntityModels;
 using System.Net.Mail;
 using System.Net;
+using System;
 
 namespace BookCave.Services
 {
@@ -39,23 +40,25 @@ namespace BookCave.Services
                         BookId = book.BookId,
                         Copies = book.Copies
                     };
-
                     db.Add(bookInOrder);
                 }
                 db.SaveChanges();
-            }
-
-            
+            }  
         }
-       /* 
         public void ProcessOrder(CheckoutViewModel order)
         {
-            if(string.IsNullOrEmpty(order.Name)) {throw new Exception("Name is missing");}
-            if(string.IsNullOrEmpty(order.Email)) {throw new Exception("Email is missing");}
-            if(string.IsNullOrEmpty(order.Amount)) {throw new Exception("Amount is missing");}
-            if(!donate.Checked){throw new Exception("Checked is missing");}
+            if(string.IsNullOrEmpty(order.ReceiverName)) {throw new Exception("Name is missing");}
+            if(string.IsNullOrEmpty(order.ReceiverPhoneNumber)) {throw new Exception("Phone is missing");}
+            if(string.IsNullOrEmpty(order.ReceiverAddress)) {throw new Exception("Address is missing");}
+            if(string.IsNullOrEmpty(order.ReceiverCity)) {throw new Exception("City is missing");}
+            if(string.IsNullOrEmpty(order.ReceiverZIP)) {throw new Exception("Zip is missing");}
+            if(string.IsNullOrEmpty(order.PayerName)) {throw new Exception("Payer Name is missing");}
+            if(string.IsNullOrEmpty(order.PayerPhoneNumber)) {throw new Exception("Payer Phone is missing");}
+            if(string.IsNullOrEmpty(order.PayerAddress)) {throw new Exception("Payer Address is missing");}
+            if(string.IsNullOrEmpty(order.PayerCity)) {throw new Exception("Payer city is missing");}
+            if(string.IsNullOrEmpty(order.PayerZIP)) {throw new Exception("Payer zip is missing");}
+            if(string.IsNullOrEmpty(order.PayerEmail)) {throw new Exception("Payer email is missing");}
         }
-*/
         public void SendOrderEmail(CheckoutViewModel order)
         {
             SmtpClient client = new SmtpClient("smtp.gmail.com");
