@@ -5,19 +5,18 @@
 		<div class="table-responsive">
             <h1 class="entry-title"><span>Mínar pantanir</span> </h1>
             <hr/>
-            
-            @foreach(var order in @Model.Orders)
+            @foreach (var order in @Model.Orders)
             {
                 <div>
                     <table class="table table-bordered">
                         <thead>
-                        <tr>
-                            <th>@order.Id</th>
-                            <th>Titill bókar</th>
-                            <th>Magn</th>
-                            <th>Einingarverð</th>
-                            <th>Samanlagt verð</th>
-                        </tr>
+                            <tr>
+                                <th>@order.Id</th>
+                                <th>Titill bókar</th>
+                                <th>Magn</th>
+                                <th>Einingarverð</th>
+                                <th>Samanlagt verð</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach (var book in order.Books)
@@ -35,7 +34,6 @@
                     <p>Heildarverð pöntunar: @order.TotalPrice</p>
                 </div>
             }
-           
             <a asp-controller="Account" asp-action="Profile" class="btn btn-primary">Til baka í mínar síður</a>
         </div>
 	</div>
