@@ -18,6 +18,8 @@ namespace BookCave.Services
             cart = new List<BookDetailsViewModel>();
         }
 
+        //bætir við einkunn við eftirfarandi bók hafi notandi
+        //Rating færibreytan getur verið null ef notandi bætti bara við kommenti ekki einkunn
         public void AddRating(float? rating, int book)
         {
             if(rating != null)
@@ -28,6 +30,7 @@ namespace BookCave.Services
             }
         }
 
+        //Bætir við athugasemd við eftirfarandi bók hafi notandinn skrifað eitthvað.
         public void AddComment(string text, int book)
         {
             if(!string.IsNullOrEmpty(text))
@@ -38,6 +41,7 @@ namespace BookCave.Services
             }
         }
 
+        //Uppfærir meðaleinkunn bókarinnar eftir að nýrri einkunn hefur verið bætt við
         public void UpdateRating(int ratingId, float newRating) 
         {
             var rate = db.Ratings.FirstOrDefault(r => r.Id == ratingId);
@@ -46,6 +50,7 @@ namespace BookCave.Services
             db.SaveChanges();
         }
 
+        //Skilar öllum bókum sem til eru í gagnagrunninum
         public List<BookListViewModel> GetAllBooks()
         {
             var books = (from b in db.Books
@@ -64,10 +69,12 @@ namespace BookCave.Services
             return books;
         }
 
+        
         public FrontPageListsViewModel GetAllFrontPageBooks()
         {
             var model = new FrontPageListsViewModel();
 
+            //12 nýjustu bækurnar í gagnagrunninum útfrá útgáfudegi
             var newBooks = (from b in db.Books
                             join g in db.Genre on b.GenreId equals g.Id
                             orderby b.Date descending
@@ -80,6 +87,7 @@ namespace BookCave.Services
                                 Date = b.Date
                             }).Take(12).ToList();
 
+            //12 einkunnarhæstu bækurnar
             var popBooks = (from b in db.Books
                             join g in db.Genre on b.GenreId equals g.Id
                             join r in db.Ratings on b.Id equals r.BookId
@@ -117,7 +125,6 @@ namespace BookCave.Services
                             Id = b.Id,
                             Name = b.Name,
                             Price = b.Price,
-                            //AuthorId = b.AuthorId,
                             Genre = g.TheGenre,
                             Image = b.Image,
                             Rating = (from r in db.Ratings where r.BookId == b.Id select r.Rate).ToList()
@@ -143,7 +150,6 @@ namespace BookCave.Services
                 Id = b.Id,
                 Name = b.Name,
                 Price = b.Price,
-                //AuthorId = b.AuthorId,
                 Genre = g.TheGenre,
                 Image = b.Image
             }).ToList();
@@ -168,13 +174,14 @@ namespace BookCave.Services
             
             var book = (from b in db.Books
                         join g in db.Genre on b.GenreId equals g.Id
+                        join a in db.Authors on b.AuthorId equals a.Id
                         where b.Id == Id
                         select new BookDetailsViewModel
                         {
                             Id = b.Id, 
                             Name = b.Name,
                             Price = b.Price, 
-                            AuthorId = b.AuthorId, 
+                            Author = a.Name, 
                             Image = b.Image,
                             Genre = g.TheGenre,
                             Comments = comments,
@@ -207,7 +214,6 @@ namespace BookCave.Services
                                         Name = b.Name,
                                         Image = b.Image,
                                         Price = b.Price,
-                                        //AuthorId = b.AuthorId,
                                     }).ToList();
                 return correctBooks;
             }
@@ -222,7 +228,6 @@ namespace BookCave.Services
                             Name = b.Name,
                             Image = b.Image,
                             Price = b.Price,
-                            //AuthorId = b.AuthorId,
                         }).ToList();
                 return correctBooks;
             }
@@ -236,7 +241,6 @@ namespace BookCave.Services
                                         Name = b.Name,
                                         Image = b.Image,
                                         Price = b.Price,
-                                        AuthorId = b.AuthorId
                                     }).ToList();
                 return correctBooks;
             }            
@@ -258,7 +262,6 @@ namespace BookCave.Services
                                     Image = b.Image,
                                     Price = b.Price,
                                     Genre = g.TheGenre,
-                                    AuthorId = b.AuthorId
                                 }).ToList();
                 return searchedBooks;
             }
@@ -276,7 +279,7 @@ namespace BookCave.Services
             return books;
         }
 
-        public List<BookListViewModel> FilterBooks(string filterChoice)
+        /*public List<BookListViewModel> FilterBooks(string filterChoice)
         {
                 var filteredBooks = (from b in db.Books
                                 join a in db.Authors on b.AuthorId equals a.Id
@@ -292,7 +295,7 @@ namespace BookCave.Services
                                 }).ToList();
                 return filteredBooks;
 
-        }
+        }*/
         public string getGenre(int? Id)
         {
             string genre = (from g in db.Genre
@@ -309,8 +312,5 @@ namespace BookCave.Services
 
             return name;
         }
-
-
-
     }
 }

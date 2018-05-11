@@ -75,9 +75,7 @@
                             </select>
                         </label>
                         <input type="submit" value="Raða" class="btn btn-info"/>
-                    </div>
-                    <!--<a asp-controller="Book" asp-action="Category" class="btn btn-info">Raða</a>-->
-                    
+                    </div>                    
                 </form>
             </div>
             <br/>
@@ -102,7 +100,7 @@
                                     <p class="price">@book.Price kr.</p>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
-                                    <a asp-controller="Home" asp-action="Cart" class="btn btn-success right">Setja í körfu</a>
+                                    <a asp-controller="Book" asp-action="Details" aps-route-id="@book.Id" class="btn btn-success right">Skoða bók</a>
                                 </div>
                             </div>
                         </span>
