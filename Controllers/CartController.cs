@@ -66,24 +66,16 @@ namespace BookCave.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
             var id = user.Id;
-            
-             
-            /*if(model.Discount.Equals("BOOKCAVE"))
+                      
+            if(model.BookToDelete == 0)
             {
-                model.Total = 5000;
-            }*/
+                _shoppingCart.clearCart(id);
+                return RedirectToAction("Index");
+            }
+            var book = _bookService.FindBookById(model.BookToDelete);
+                _shoppingCart.removeFromCart(book, id);
+        
 
-            //else 
-            //{
-                if(model.BookToDelete == 0)
-                {
-                    _shoppingCart.clearCart(id);
-                    return RedirectToAction("Index");
-                }
-                var book = _bookService.FindBookById(model.BookToDelete);
-                 _shoppingCart.removeFromCart(book, id);
-            //}
-           
             return RedirectToAction("Index");
         }
         

@@ -95,10 +95,10 @@ namespace BookCave.Controllers
             return View();
         }
 
- 
-        public IActionResult Review(CheckoutViewModel order)
+        [HttpPost]
+        public IActionResult Review(ReviewOrderViewModel order)
         {
-            _orderService.SendOrderEmail(order);
+            _orderService.SendOrderEmail(order.Checkout);
             
             return RedirectToAction("Confirmation");
         }
