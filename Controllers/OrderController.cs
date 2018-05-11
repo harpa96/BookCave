@@ -1,7 +1,9 @@
+using System;
 using System.Threading.Tasks;
 using BookCave.Models;
 using BookCave.Models.ViewModels;
 using BookCave.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,6 +29,7 @@ namespace BookCave.Controllers
             return View(books);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> Pay() 
         {
@@ -52,29 +55,31 @@ namespace BookCave.Controllers
         }
 
         [HttpPost]
-        public IActionResult Pay(CheckoutViewModel model)
+        public IActionResult Pay(CheckoutViewModel checkout)
         {
+            Console.WriteLine("FÖRUM INN Í POST");
+            
             var reciever = new CheckoutPersonViewModel
             {
-                Name = model.Reciever.Name,
-                PhoneNumber = model.Reciever.PhoneNumber,
-                Address = model.Reciever.Address,
-                City = model.Reciever.City,
-                ZIP = model.Reciever.ZIP,
-                CountryId = model.Reciever.CountryId
+                Name = checkout.Reciever.Name,
+                PhoneNumber = checkout.Reciever.PhoneNumber,
+                Address = checkout.Reciever.Address,
+                City = checkout.Reciever.City,
+                ZIP = checkout.Reciever.ZIP,
+                CountryId = checkout.Reciever.CountryId
             };
 
             var payer = new CheckoutPersonViewModel
             {
-                Name = model.Payer.Name,
-                PhoneNumber = model.Payer.PhoneNumber,
-                Address = model.Payer.Address,
-                City = model.Payer.City,
-                ZIP = model.Payer.ZIP,
-                CountryId = model.Payer.CountryId
+                Name = checkout.Payer.Name,
+                PhoneNumber = checkout.Payer.PhoneNumber,
+                Address = checkout.Payer.Address,
+                City = checkout.Payer.City,
+                ZIP = checkout.Payer.ZIP,
+                CountryId = checkout.Payer.CountryId
             };
             
-            return RedirectToAction("ReviewOrder");
+            return RedirectToAction("ReviewOrder", "Order",  new {model = checkout});
         }
 
 /*
@@ -130,14 +135,19 @@ namespace BookCave.Controllers
             return View();
         }
 
+        [Authorize]
         public async Task<IActionResult> ReviewOrder(CheckoutViewModel model)
         {
             var user = await _userManager.GetUserAsync(User);
             
             var id = user.Id;
+
             var cart = new CartViewModel
             {
-                Books = _shoppingService.GetCart(id)
+                Books = _shoppingService.GetCart(id),
+                Total = 0,
+                TotalPlus = 0,
+                BookToDelete = 0
             };
 
             var country = _orderService.GetCountry(user.CountryId);
