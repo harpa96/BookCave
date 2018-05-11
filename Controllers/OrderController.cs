@@ -89,6 +89,15 @@ namespace BookCave.Controllers
             return View();
         }
 
+ 
+        public IActionResult Review(CheckoutViewModel order)
+        {
+            _orderService.SendOrderEmail(order);
+            
+            return RedirectToAction("Confirmation");
+        }
+
+       
         [Authorize]
         public async Task<IActionResult> ReviewOrder(CheckoutViewModel model)
         {
