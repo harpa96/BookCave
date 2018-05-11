@@ -24,11 +24,11 @@
                 </div>
                 <div class="col-xs-6 text-right">
                     <address>
-                        <strong>Shipped To:</strong><br>
-                        Elaine Hernandez<br>
-                        P. Sherman 42,<br>
-                        Wallaby Way, Sidney<br>
-                        <abbr title="Phone">P:</abbr> (123) 345-6789
+                        <strong>Viðtakandi:</strong><br>
+                        @Model.Checkout.ReceiverName<br>
+                        @Model.Checkout.ReceiverCountry, @Model.Checkout.ReceiverZIP @Model.Checkout.ReceiverCity<br>
+                        @Model.Checkout.ReceiverAddress<br>
+                        <abbr title="Phone">S:</abbr> @Model.Checkout.ReceiverPhoneNumber
                     </address>
                 </div>
             </div>

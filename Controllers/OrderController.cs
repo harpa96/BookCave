@@ -54,22 +54,10 @@ namespace BookCave.Controllers
                 CountryId = user.CountryId
             };
             
-            Console.WriteLine("FER INN HER");
+            
             return View(new CheckoutViewModel
             {
                 User = theUser
-                //PayerName = theUser.FirstName + " " + theUser.LastName
-               /* ReceiverPhoneNumber = checkout.ReceiverPhoneNumber,
-                ReceiverAddress = checkout.ReceiverAddress,
-                ReceiverCity = checkout.ReceiverCity,
-                ReceiverZIP = checkout.ReceiverZIP,
-                ReceiverCountryId = checkout.ReceiverCountryId,
-                PayerName = checkout.PayerName,
-                PayerPhoneNumber = checkout.PayerPhoneNumber,
-                PayerAddress = checkout.PayerAddress,
-                PayerCity = checkout.PayerCity,
-                PayerZIP = checkout.PayerZIP,
-                PayerCountryId = checkout.PayerCountryId*/
             });
         }
 
@@ -93,9 +81,7 @@ namespace BookCave.Controllers
                 PayerCountryId = checkout.PayerCountryId
             };
 
-            Console.WriteLine("PAYER NAME IN Í POST PAY: " + newModel.PayerName);
-
-            return RedirectToAction("ReviewOrder", new {model = newModel});
+            return RedirectToAction("ReviewOrder", newModel);
         }
 
          public IActionResult Confirmation() 
