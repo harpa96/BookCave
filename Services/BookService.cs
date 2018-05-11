@@ -106,7 +106,7 @@ namespace BookCave.Services
 
             return model;
         }
-         public List<AuthorListViewModel> GetAllAuthors()
+        /*public List<AuthorListViewModel> GetAllAuthors()
         {
             var authors = (from a in db.Authors
                         select new AuthorListViewModel
@@ -115,7 +115,7 @@ namespace BookCave.Services
                             Name = a.Name,
                         }).ToList();
             return authors;
-        }
+        }*/
         public List<BookListViewModel> GetTop()
         { 
             var topBooks = (from b in db.Books
