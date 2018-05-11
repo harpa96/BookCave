@@ -1,18 +1,21 @@
-
-.img-responsive {
+.img-responsive
+{
     width: 7cm;
     height: 7cm;
 }
 
-.frontpage-heading{
+.frontpage-heading
+{
     text-align: center;
 }
 
-.frontpage-caption{
+.frontpage-caption
+{
     color: black;
 }
 
-.carousel-control.left, .carousel-control.right {
-    background-image:none !important;
-    filter:none !important;
- }
+.carousel-control.left, .carousel-control.right
+{
+    background-image: none !important;
+    filter: none !important;
+}
