@@ -23,29 +23,6 @@
                     @foreach(var book in @Model.Books)
                     {
                         <tr>
-<<<<<<< HEAD
-                            <td class="col-sm-8 col-md-6">
-                                <div>
-                                    <a class="thumbnail pull-left"> <img class="media-object" src="@book.Image" style="width: 72px; height: 72px;"></a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">@book.Name</h4>
-                                        <h5 class="media-heading">@book.Author</h5>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="col-sm-1 col-md-1" style="text-align: center">
-                                <input type="email" class="form-control" id="exampleInputEmail1" value="@book.Copies" disabled/>
-                            </td>
-                            <td class="col-sm-1 col-md-1 text-center"><strong>@book.Price</strong></td>
-                            <td class="col-sm-1 col-md-1 text-center"><strong>@book.PriceSum</strong></td>
-                            <td class="col-sm-1 col-md-1">
-                                <form method="POST">
-                                    <input type="hidden" asp-for="@Model.BookToDelete" value="@book.Id"/>
-                                    <input class="btn btn-danger" type="submit" value="Fjarlægja"/>
-                                </form>
-                            </td>
-                        </tr>
-=======
                         <td class="col-sm-8 col-md-6">
                         <div>
                             <img class="thumbnail pull-left" src="@book.Image" style="width: 100px; height: 100px;">
@@ -65,7 +42,6 @@
                             <input class="btn btn-danger" type="submit" value="Fjarlægja"/>
                         </form>
                     </tr>
->>>>>>> bbf464d9bf9dd7d92b4bc307e320baddff5257ab
                     }
                     <tr>
                         <td>   </td>
