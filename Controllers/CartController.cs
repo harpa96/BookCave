@@ -63,7 +63,6 @@ namespace BookCave.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(CartViewModel model)
         {
-        
             var user = await _userManager.GetUserAsync(User);
             var id = user.Id;
             if(model.BookToDelete == 0)

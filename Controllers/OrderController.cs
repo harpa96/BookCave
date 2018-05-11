@@ -1,7 +1,9 @@
+using System;
 using System.Threading.Tasks;
 using BookCave.Models;
 using BookCave.Models.ViewModels;
 using BookCave.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,6 +35,7 @@ namespace BookCave.Controllers
             return View(orderHistory);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> Pay() 
         {
@@ -51,116 +54,93 @@ namespace BookCave.Controllers
                 CountryId = user.CountryId
             };
             
+            Console.WriteLine("FER INN HER");
             return View(new CheckoutViewModel
             {
-                 User = theUser
+                User = theUser
+                //PayerName = theUser.FirstName + " " + theUser.LastName
+               /* ReceiverPhoneNumber = checkout.ReceiverPhoneNumber,
+                ReceiverAddress = checkout.ReceiverAddress,
+                ReceiverCity = checkout.ReceiverCity,
+                ReceiverZIP = checkout.ReceiverZIP,
+                ReceiverCountryId = checkout.ReceiverCountryId,
+                PayerName = checkout.PayerName,
+                PayerPhoneNumber = checkout.PayerPhoneNumber,
+                PayerAddress = checkout.PayerAddress,
+                PayerCity = checkout.PayerCity,
+                PayerZIP = checkout.PayerZIP,
+                PayerCountryId = checkout.PayerCountryId*/
             });
         }
 
+        [Authorize]
         [HttpPost]
-        public IActionResult Pay(CheckoutViewModel model)
-        {
-            var reciever = new CheckoutPersonViewModel
+        public IActionResult Pay(CheckoutViewModel checkout)
+        {         
+            var newModel = new CheckoutViewModel
             {
-                Name = model.Reciever.Name,
-                PhoneNumber = model.Reciever.PhoneNumber,
-                Address = model.Reciever.Address,
-                City = model.Reciever.City,
-                ZIP = model.Reciever.ZIP,
-                CountryId = model.Reciever.CountryId
+                ReceiverName = checkout.ReceiverName,
+                ReceiverPhoneNumber = checkout.ReceiverPhoneNumber,
+                ReceiverAddress = checkout.ReceiverAddress,
+                ReceiverCity = checkout.ReceiverCity,
+                ReceiverZIP = checkout.ReceiverZIP,
+                ReceiverCountryId = checkout.ReceiverCountryId,
+                PayerName = checkout.PayerName,
+                PayerPhoneNumber = checkout.PayerPhoneNumber,
+                PayerAddress = checkout.PayerAddress,
+                PayerCity = checkout.PayerCity,
+                PayerZIP = checkout.PayerZIP,
+                PayerCountryId = checkout.PayerCountryId
             };
 
-            var payer = new CheckoutPersonViewModel
-            {
-                Name = model.Payer.Name,
-                PhoneNumber = model.Payer.PhoneNumber,
-                Address = model.Payer.Address,
-                City = model.Payer.City,
-                ZIP = model.Payer.ZIP,
-                CountryId = model.Payer.CountryId
-            };
-            
-            return RedirectToAction("ReviewOrder");
+            Console.WriteLine("PAYER NAME IN Í POST PAY: " + newModel.PayerName);
+
+            return RedirectToAction("ReviewOrder", new {model = newModel});
         }
-
-/*
-        [HttpPost]
-    public async Task<IActionResult> EditProfile(ProfileViewModel profile)
-    {
-        var user = await _userManager.GetUserAsync(User);
-
-        // Update all properties
-        user.FirstName = profile.FirstName;
-        user.LastName = profile.LastName;
-        user.Address = profile.Address;
-        user.ZIP = profile.ZIP;
-        user.City = profile.City;
-        user.CountryId = profile.CountryId;
-        user.PhoneNumber = profile.PhoneNumber;
-        user.Image = profile.Image;
-        user.FavoriteBook = profile.FavoriteBook;
-
-        await _userManager.UpdateAsync(user);
-
-        return RedirectToAction("Profile");
-    }
-    */
-
-    /* 
-    public async Task<IActionResult> EditProfile()
-    {
-        var user = await _userManager.GetUserAsync(User);
-
-        var country = (from c in db.Countries 
-                        where user.CountryId == c.Id
-                        select c.Name).ToString();
-
-        return View(new ProfileViewModel 
-        {
-            FirstName = user.FirstName,
-            LastName = user.LastName,
-            Email = user.Email,
-            Address = user.Address,
-            City = user.City,
-            ZIP = user.ZIP,
-            Country = country,
-            Image = user.Image,
-            PhoneNumber = user.PhoneNumber,
-            FavoriteBook = user.FavoriteBook
-        });
-    }
-    */
 
          public IActionResult Confirmation() 
         {
             return View();
         }
 
-        public async Task<IActionResult> ReviewOrder()
+        [Authorize]
+        public async Task<IActionResult> ReviewOrder(CheckoutViewModel model)
         {
+            Console.WriteLine("NAFN PAYER: " + model.PayerName);
             var user = await _userManager.GetUserAsync(User);
             
             var id = user.Id;
+
             var cart = new CartViewModel
             {
-                Books = _shoppingService.GetCart(id)
+                Books = _shoppingService.GetCart(id),
+                Total = 0,
+                TotalPlus = 0,
+                BookToDelete = 0
             };
+
             var country = _orderService.GetCountry(user.CountryId);
 
-            var theUser = new ProfileViewModel
+            var checkout = new CheckoutViewModel
             {
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                PhoneNumber = user.PhoneNumber,
-                Address = user.Address,
-                City = user.City,
-                ZIP = user.ZIP,
-                CountryId = user.CountryId
+                ReceiverName = model.ReceiverName,
+                ReceiverPhoneNumber = model.ReceiverPhoneNumber,
+                ReceiverAddress = model.ReceiverAddress,
+                ReceiverCity = model.ReceiverCity,
+                ReceiverZIP = model.ReceiverZIP,
+                ReceiverCountry = model.ReceiverCountry,        
+                PayerName = model.PayerName,
+                PayerPhoneNumber = model.PayerPhoneNumber,
+                PayerAddress = model.PayerAddress,
+                PayerCity = model.PayerCity,
+                PayerZIP = model.PayerZIP,
+                PayerCountry = model.PayerCountry                
             };
-            
-            return View(new CheckoutViewModel
+
+            return View(new ReviewOrderViewModel
             {
-                 User = theUser
+                 Cart = cart,
+                 Checkout = checkout
             });
         }
 
