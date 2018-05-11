@@ -92,7 +92,6 @@ namespace BookCave.Controllers
         [Authorize]
         public async Task<IActionResult> ReviewOrder(CheckoutViewModel model)
         {
-            Console.WriteLine("NAFN PAYER: " + model.PayerName);
             var user = await _userManager.GetUserAsync(User);
             
             var id = user.Id;
@@ -100,10 +99,25 @@ namespace BookCave.Controllers
             var cart = new CartViewModel
             {
                 Books = _shoppingService.GetCart(id),
-                Total = 0,
-                TotalPlus = 0,
-                BookToDelete = 0
             };
+
+            var total = 0;
+
+            foreach(var book in cart.Books)
+            {
+                total += book.Price*book.Copies;
+            }
+
+            cart.Total = total;
+            
+            if(total > 0)
+            {
+                cart.TotalPlus = total+500;
+            }
+            else
+            {
+                cart.TotalPlus = 0;
+            }
 
             var country = _orderService.GetCountry(user.CountryId);
 
