@@ -66,22 +66,15 @@
                     {
                         <div class="col-xs-4">
                         <span class="thumbnail">
-                            <img src="@book.Image" alt="cover">
+                            <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id"><img src="@book.Image" alt="cover"></a>
                             <h4>@book.Name</h4>
-                            <div class="ratings">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                            </div>
                             <hr class="line">
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <p class="price">@book.Price kr.</p>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
-                                    <button class="btn btn-success right">Setja í körfu</button>
+                                    <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id"><button class="btn btn-success right">Skoða nánar</button></a>
                                 </div>
                             </div>
                         </span>

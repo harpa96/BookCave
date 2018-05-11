@@ -68,13 +68,13 @@ namespace BookCave.Controllers
             var id = user.Id;
             
              
-            if(model.Discount.Equals("BOOKCAVE"))
+            /*if(model.Discount.Equals("BOOKCAVE"))
             {
                 model.Total = 5000;
-            }
+            }*/
 
-            else 
-            {
+            //else 
+            //{
                 if(model.BookToDelete == 0)
                 {
                     _shoppingCart.clearCart(id);
@@ -82,7 +82,7 @@ namespace BookCave.Controllers
                 }
                 var book = _bookService.FindBookById(model.BookToDelete);
                  _shoppingCart.removeFromCart(book, id);
-            }
+            //}
            
             return RedirectToAction("Index");
         }
