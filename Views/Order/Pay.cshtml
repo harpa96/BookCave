@@ -134,6 +134,15 @@
       </div>
     </div>
 
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">Netfang</label>  
+      <div class="col-md-4">
+          <input type="text" asp-for="PayerEmail" class="form-control input-md" value="@Model.User.Email"/>
+          <span id="textinput" asp-validation-for="PayerEmail"></span><br>
+      </div>
+    </div>
+
     <!-- Button -->
     <div class="form-group">
       <label class="col-md-4 control-label" for="singlebutton"></label>
