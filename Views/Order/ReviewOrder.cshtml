@@ -88,8 +88,13 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <a asp-controller="Order" asp-action="Confirmation" class="btn btn-primary">Greiða fyrir pöntun</a>
-                            <a asp-controller="Cart" asp-action="Index" class="btn btn-primary">Til baka í körfu</a>
+                            <form>
+                                <input type="text" asp-for="PayerEmail" class="form-control input-md"/>
+                                <input type="submit" name="Submit" value="Greiða fyrir pöntun" class="btn btn-primary"/>
+                                <a asp-controller="Cart" asp-action="Index" class="btn btn-primary">Til baka í körfu</a> 
+                            </form>
+                            <!--a asp-controller="Order" asp-action="Confirmation" class="btn btn-primary">Greiða fyrir pöntun</a>
+                            <a asp-controller="Cart" asp-action="Index" class="btn btn-primary">Til baka í körfu</a-->
                         </div>
                     </div>
                 </div>
