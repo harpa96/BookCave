@@ -1,36 +1,42 @@
-.row > .col-sm-3 {
+.row > .col-sm-3
+{
     float: left;
 }
 
-.thumbnail {
+.thumbnail
+{
     display: inline-block;
     width: 260px;
     height: 330px;
     vertical-align: top;
 }
 
-.thumbnail h4 {
+.thumbnail h4
+{
     position: absolute;
     top: 235px;
     left: 20px;
     right: 20px;
 }
 
-.thumbnail .ratings {
+.thumbnail .ratings
+{
     position: absolute;
     top: 280px;
     left: 20px;
     right: 20px;
 }
 
-.thumbnail .row {
+.thumbnail .row
+{
     position: absolute;
     bottom: 25px;
     left: 20px;
     right: 20px;
 }
 
-.thumbnail .row p {
+.thumbnail .row p
+{
     position: absolute;
     top: 10px;
     left: 20px;
