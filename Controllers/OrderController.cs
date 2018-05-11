@@ -51,7 +51,8 @@ namespace BookCave.Controllers
                 Address = user.Address,
                 City = user.City,
                 ZIP = user.ZIP,
-                CountryId = user.CountryId
+                CountryId = user.CountryId,
+                Email = user.Email
             };
             
             
@@ -78,13 +79,14 @@ namespace BookCave.Controllers
                 PayerAddress = checkout.PayerAddress,
                 PayerCity = checkout.PayerCity,
                 PayerZIP = checkout.PayerZIP,
-                PayerCountryId = checkout.PayerCountryId
+                PayerCountryId = checkout.PayerCountryId,
+                PayerEmail = checkout.PayerEmail
             };
 
             return RedirectToAction("ReviewOrder", newModel);
         }
 
-         public IActionResult Confirmation() 
+        public IActionResult Confirmation() 
         {
             return View();
         }
@@ -98,7 +100,7 @@ namespace BookCave.Controllers
 
             var cart = new CartViewModel
             {
-                Books = _shoppingService.GetCart(id),
+                Books = _shoppingService.GetCart(id)
             };
 
             var total = 0;
@@ -134,7 +136,8 @@ namespace BookCave.Controllers
                 PayerAddress = model.PayerAddress,
                 PayerCity = model.PayerCity,
                 PayerZIP = model.PayerZIP,
-                PayerCountry = model.PayerCountry                
+                PayerCountry = model.PayerCountry,
+                PayerEmail = model.PayerEmail                
             };
 
             return View(new ReviewOrderViewModel
