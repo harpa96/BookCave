@@ -37,20 +37,21 @@ namespace BookCave.Controllers.HomeController
             return View(books);
         }
 
-        [HttpGet]
+        //[HttpGet]
         //Birtir leitarniðurstöður úr searchbar
         public IActionResult SearchBar(string searchInput)
         {
+            
+
             if (!string.IsNullOrEmpty(searchInput))
             {
+                ViewBag.SearchInput = searchInput;
                 var searchedBooks = _bookService.SearchedBooks(searchInput);
                 return View(searchedBooks);
             }
-            
-            else
-            {
-                return View("Category", "Book");
-            }
+
+                    
+            return RedirectToAction("Category", "Book");
         }
 
         
