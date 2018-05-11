@@ -4,34 +4,34 @@ namespace BookCave.Models.ViewModels
 {
     public class CheckoutViewModel
     {
-        [Required(ErrorMessage="Þarft að fylla inn nafn")]
+        [Required(ErrorMessage="Nafn vantar")]
         public string ReceiverName { get; set; }
-        [Required(ErrorMessage="Þarft að fylla inn símanúmer")]
+        [Required(ErrorMessage="Símanúmer vantar")]
         public string ReceiverPhoneNumber { get; set; }
-        [Required(ErrorMessage="Þarft að fylla inn heimilisfang")]
+        [Required(ErrorMessage="Heimilisfang vantar")]
         public string ReceiverAddress { get; set; }
-        [Required(ErrorMessage="Þarft að fylla inn Borg/bæ")]
+        [Required(ErrorMessage="Borg/bæ vantar")]
         public string ReceiverCity { get; set; }
         
         public string ReceiverCountry { get; set; }
         
         public int ReceiverCountryId { get; set; }
-        [Required(ErrorMessage="Þarft að fylla inn póstnúmer")]
+        [Required(ErrorMessage="Póstnúmer vantar")]
         public string ReceiverZIP { get; set; }
-        [Required(ErrorMessage="Þarft að fylla inn nafn greiðanda")]
+        [Required(ErrorMessage="Nafn greiðanda vantar")]
         public string PayerName { get; set; }
-        [Required(ErrorMessage="Þarft að fylla inn símanúmer greiðanda")]
+        [Required(ErrorMessage="Símanúmer greiðanda vantar")]
         public string PayerPhoneNumber { get; set; }
-        [Required(ErrorMessage="Þarft að fylla inn heimilisfang greiðanda")]
+        [Required(ErrorMessage="Heimilisfang greiðanda vantar")]
         public string PayerAddress { get; set; }
-        [Required(ErrorMessage="Þarft að fylla borg/bæ greiðanda")]
+        [Required(ErrorMessage="Borg/bær greiðanda vantar")]
         public string PayerCity { get; set; }
         
         public string PayerCountry { get; set; }
         public int PayerCountryId { get; set; }
-        [Required(ErrorMessage="Þarft að fylla inn póstnúmer greiðanda")]
+        [Required(ErrorMessage="Póstnúmer greiðanda vantar")]
         public string PayerZIP { get; set; }
-        [Required(ErrorMessage="Þarft að fylla inn netfang greiðanda")]
+        [Required(ErrorMessage="Netfang greiðanda vantar")]
         public string PayerEmail { get; set; }
         public ProfileViewModel User { get; set; }
 

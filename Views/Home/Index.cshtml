@@ -1,20 +1,16 @@
 ﻿@model BookCave.Models.ViewModels.FrontPageListsViewModel
 <h1 class="carousel-heading frontpage-heading">Nýjar bækur</h1>
-    <div class="container1">
-        <div class="row">
-            <div class="col-xs-12">
-
-                <div id="imageCarousel1" class="carousel slide" data-interval="10000"
-                     data-ride="carousel" data-pause="hover" data-wrap="true">
-
-                    <ol class="carousel-indicators">
-                        <li data-target="#imageCarousel1" data-slide-to="0" class="active"></li>
-                        <li data-target="#imageCarousel1" data-slide-to="1"></li>
-                        <li data-target="#imageCarousel1" data-slide-to="2"></li>
-                    </ol>
-
+<div class="container1">
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="imageCarousel1" class="carousel slide" data-interval="10000" data-ride="carousel" data-pause="hover" data-wrap="true">
+                <ol class="carousel-indicators">
+                    <li data-target="#imageCarousel1" data-slide-to="0" class="active"></li>
+                    <li data-target="#imageCarousel1" data-slide-to="1"></li>
+                    <li data-target="#imageCarousel1" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
                     <div class="carousel-inner">
-                        <div class="carousel-inner">
                         <div class="item active">
                             <div class="row">
                                 @for (var i = 0; i < 6; i++)
@@ -27,69 +23,58 @@
                                         </div>
                                     </div>
                                 }
-                            </div>
                         </div>
-                        <div class="item">
-                            <div class="row">
-                                @for (var i = 6; i < 12; i++)
-                                {
-                                    <div class="col-xs-2">
-                                    <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.NewBooks[i].Id"><img src=@Model.NewBooks[i].Image class="img-responsive"></a>
-                                    <div class="frontpage-caption">
-                                        <h4>@Model.NewBooks[i].Name</h4>
-                                        <p>@Model.NewBooks[i].Date</p>
-                                    </div>
-                                    </div>
-                                }
-                            </div>
-                        </div>
-                            
                     </div>
-                </div>
+                    <div class="item">
+                        <div class="row">
+                            @for (var i = 6; i < 12; i++)
+                            {
+                                <div class="col-xs-2">
+                                <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.NewBooks[i].Id"><img src=@Model.NewBooks[i].Image class="img-responsive"></a>
+                                <div class="frontpage-caption">
+                                    <h4>@Model.NewBooks[i].Name</h4>
+                                    <p>@Model.NewBooks[i].Date</p>
+                                </div>
+                                </div>
+                            }
+                    </div>
+                </div>    
             </div>
-
-                    <a href="#imageCarousel1" class="carousel-control left" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a href="#imageCarousel1" class="carousel-control right" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
-                </div>
-
-            </div>
-    <br/>
-    <br/>
-    <br/>
-    <h1 class="carousel-heading frontpage-heading">Vinsælar bækur</h1>
+        </div>
+    </div>
+    <a href="#imageCarousel1" class="carousel-control left" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a href="#imageCarousel1" class="carousel-control right" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
+</div>
+<br/>
+<br/>
+<br/>
+<h1 class="carousel-heading frontpage-heading">Vinsælar bækur</h1>
     <div class="container2" id="popularBooks">
         <div class="row">
             <div class="col-xs-12">
-
-                <div id="imageCarousel2" class="carousel slide" data-interval="10000"
-                     data-ride="carousel" data-pause="hover" data-wrap="true">
-
+                <div id="imageCarousel2" class="carousel slide" data-interval="10000" data-ride="carousel" data-pause="hover" data-wrap="true">
                     <ol class="carousel-indicators">
                         <li data-target="#imageCarousel2" data-slide-to="0" class="active"></li>
                         <li data-target="#imageCarousel2" data-slide-to="1"></li>
                         <li data-target="#imageCarousel2" data-slide-to="2"></li>
                     </ol>
-
                     <div class="carousel-inner">
                         <div class="carousel-inner">
-                        <div class="item active">
-                            <div class="row">
-                                @for (var i = 0; i < 6; i++)
-                                {
-                                    <div class="col-xs-2">
-                                        <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.PopularBooks[i].Id"><img src=@Model.PopularBooks[i].Image class="img-responsive"></a>
-                                        <div class="frontpage-caption">
-                                            <h4>@Model.PopularBooks[i].Name</h4>
-                                            <p>Einkunn: @Model.PopularBooks[i].Rating af 5</p>
+                            <div class="item active">
+                                <div class="row">
+                                    @for (var i = 0; i < 6; i++)
+                                    {
+                                        <div class="col-xs-2">
+                                            <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.PopularBooks[i].Id"><img src=@Model.PopularBooks[i].Image class="img-responsive"></a>
+                                            <div class="frontpage-caption">
+                                                <h4>@Model.PopularBooks[i].Name</h4>
+                                                <p>Einkunn: @Model.PopularBooks[i].Rating af 5</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                }
+                                    }
+                                </div>
                             </div>
-                        </div>
                         <div class="item">
                             <div class="row">
                                 @for (var i = 6; i < 12; i++)
@@ -103,24 +88,16 @@
                                     </div>
                                 }
                             </div>
-                        </div>
-                            
+                        </div>      
                     </div>
                 </div>
             </div>
-
-                    <a href="#imageCarousel2" class="carousel-control left" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a href="#imageCarousel2" class="carousel-control right" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
+            <a href="#imageCarousel2" class="carousel-control left" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a href="#imageCarousel2" class="carousel-control right" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>
-
             </div>
         </div>
     </div>
-    
 </div>
 
 

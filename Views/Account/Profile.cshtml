@@ -3,60 +3,60 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title">@Model.FirstName @Model.LastName</h3>
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <div id = "profileImage"class="col-md-3 col-lg-3 " align="center" style="border:none;"> <img alt="User Pic" src="@Model.Image" class="img-circle img-responsive"> </div>
-                
-                <div class=" col-md-9 col-lg-9 "> 
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td>Netfang:</td>
-                        <td><a href="mailto:info@support.com">@Model.Email</a></td>
-                      </tr>
-                      <tr>
-                        <td>Land:</td>
-                        <td>@Model.Country</td>
-                      </tr>
-                      <tr>
-                        <td>Borg/Bær:</td>
-                        <td>@Model.City</td>
-                      </tr>
-                      <tr>
-                        <td>Póstnúmer:</td>
-                        <td>@Model.ZIP</td>
-                      </tr>
-                      <tr>
-                        <td>Heimilisfang:</td>
-                        <td>@Model.Address</td>
-                      </tr>
-                        <td>Símanúmer:</td>
-                        <td>@Model.PhoneNumber<br></td>
-                      </tr>
-                      <tr>
-                        <td>Uppáhaldsbók:</td>
-                        <td>@Model.FavoriteBook</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  
-                  <a asp-controller="Order" asp-action="OrderHistory" class="btn btn-primary">Mínar pantanir</a>
-                  <a asp-controller="Account" asp-action="EditProfile" class="btn btn-primary">Breyta mínum upplýsingum</a>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                  <h3 class="panel-title">@Model.FirstName @Model.LastName</h3>
                 </div>
-              </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div id = "profileImage"class="col-md-3 col-lg-3 " align="center" style="border:none;"> <img alt="User Pic" src="@Model.Image" class="img-circle img-responsive"> 
+                        </div>
+                        <div class=" col-md-9 col-lg-9 "> 
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>Netfang:</td>
+                                        <td><a href="mailto:info@support.com">@Model.Email</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Land:</td>
+                                        <td>@Model.Country</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Borg/Bær:</td>
+                                        <td>@Model.City</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Póstnúmer:</td>
+                                        <td>@Model.ZIP</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Heimilisfang:</td>
+                                        <td>@Model.Address</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Símanúmer:</td>
+                                        <td>@Model.PhoneNumber<br></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Uppáhaldsbók:</td>
+                                        <td>@Model.FavoriteBook</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a asp-controller="Order" asp-action="OrderHistory" class="btn btn-primary">Mínar pantanir</a>
+                            <a asp-controller="Account" asp-action="EditProfile" class="btn btn-primary">Breyta mínum upplýsingum</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                    <span class="pull-right">
+                        <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                    </span>
+                </div>           
             </div>
-            <div class="panel-footer">
-                <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                <span class="pull-right">
-                    <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                    <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                </span>
-            </div>           
-          </div>
         </div>
-      </div>
     </div>
+</div>

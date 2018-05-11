@@ -5,11 +5,10 @@
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">    
             <form method="POST">
-                <input type="hidden" asp-for="@Model.BookToDelete" value="0">
+                <input type="hidden" asp-for="@Model.BookToDelete" value="0"/>
                 <input class="btn btn-danger" type="submit" value="Hreinsa úr körfu"/> 
             </form>
-            </br>
-
+            <br/>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -24,6 +23,29 @@
                     @foreach(var book in @Model.Books)
                     {
                         <tr>
+<<<<<<< HEAD
+                            <td class="col-sm-8 col-md-6">
+                                <div>
+                                    <a class="thumbnail pull-left"> <img class="media-object" src="@book.Image" style="width: 72px; height: 72px;"></a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">@book.Name</h4>
+                                        <h5 class="media-heading">@book.Author</h5>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-sm-1 col-md-1" style="text-align: center">
+                                <input type="email" class="form-control" id="exampleInputEmail1" value="@book.Copies" disabled/>
+                            </td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong>@book.Price</strong></td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong>@book.PriceSum</strong></td>
+                            <td class="col-sm-1 col-md-1">
+                                <form method="POST">
+                                    <input type="hidden" asp-for="@Model.BookToDelete" value="@book.Id"/>
+                                    <input class="btn btn-danger" type="submit" value="Fjarlægja"/>
+                                </form>
+                            </td>
+                        </tr>
+=======
                         <td class="col-sm-8 col-md-6">
                         <div>
                             <img class="thumbnail pull-left" src="@book.Image" style="width: 100px; height: 100px;">
@@ -43,8 +65,8 @@
                             <input class="btn btn-danger" type="submit" value="Fjarlægja"/>
                         </form>
                     </tr>
+>>>>>>> bbf464d9bf9dd7d92b4bc307e320baddff5257ab
                     }
-                
                     <tr>
                         <td>   </td>
                         <td>   </td>
@@ -70,14 +92,8 @@
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
-                        <td>
-                        
-                        <a class="btn btn-default" asp-controller="Home" asp-action="Index"><span class="glyphicon glyphicon-shopping-cart"></span> halda áfram að versla</a>
-                        
-                        <td>
-                        <a asp-controller="Order" asp-action="Pay" class="btn btn-success">
-                            Greiða <span class="glyphicon glyphicon-menu-right"></span>
-                        </a></td>
+                        <td><a class="btn btn-default" asp-controller="Home" asp-action="Index"><span class="glyphicon glyphicon-shopping-cart"></span> halda áfram að versla</a></td>
+                        <td><a asp-controller="Order" asp-action="Pay" class="btn btn-success">Greiða <span class="glyphicon glyphicon-menu-right"></span></a></td>
                     </tr>
                 </tbody>
             </table>

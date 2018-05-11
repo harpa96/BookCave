@@ -11,13 +11,11 @@
         <link rel="stylesheet" href="~/css/site.css"/>
         <link rel="stylesheet" href="~/css/styles.css">
         <link rel="stylesheet" href="~/css/frontpage.css">
-        <link rel="stylesheet" href="~/css/addbook.css">
         <link rel="stylesheet" href="~/css/donate.css">
         <link rel="stylesheet" href="~/css/bookdetails.css">
         <link rel="stylesheet" href="~/css/category.css">
         <link rel="stylesheet" href="~/css/login.css">
         <link rel="stylesheet" href="~/css/signup.css">
-        <script src="~/js/bookdetails.js" asp-append-version="true"></script>
         <link rel="stylesheet" href="~/css/top10.css">
         <link rel="stylesheet" href="~/css/filter.css">
 
@@ -33,139 +31,88 @@
     </environment>
 </head>
 
-    <body>
-        <div class="jumbotron">
-    <div class="container text-center">
-        <h1>Book Cave</h1>      
-        <p>Vefverslun</p>
-    </div>
-    </div>
-
-    <nav class="navbar navbar-inverse nav-pills nav-justified">
-    <div class="container-fluid">
-        <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-        </button>
-        <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a>
+<body>
+    <div class="jumbotron">
+        <div class="container text-center">
+            <h1>Book Cave</h1>      
+            <p>Vefverslun</p>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            
-            <ul class="nav navbar-nav">
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Efnisflokkar <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a asp-controller="Book" asp-action="Top10">Topp 10 listinn</a></li>
-                                <hr/>
-                                <li><a asp-controller="Book" asp-action="Category" asp-route-id="0">Allir flokkar</a></li>
-                                <li><a asp-controller="Book" asp-action="Category" asp-route-id="1">Spenna</a></li>
-                                <li><a asp-controller="Book" asp-action="Category" asp-route-id="2">Gaman</a></li>
-                                <li><a asp-controller="Book" asp-action="Category" asp-route-id="3">Ævintýri</a></li>
-                                <hr/>                                
-                                <li><a asp-controller="Book" asp-action="Category" asp-route-id="4">Barna og unglingabækur</a></li>
-                                <li><a asp-controller="Book" asp-action="Category" asp-route-id="5">Námsbækur</a></li>
-                                <li><a asp-controller="Book" asp-action="Category" asp-route-id="6">Ljóð</a></li>
-                            </ul>
-                </li>
-                <li><a asp-controller="Home" asp-action="SpecialOrd">Sérpöntun</a></li>
-                <li><a asp-controller="Home" asp-action="Donate">Ég vil styrkja!</a></li>
-                <li><a asp-controller="Home" asp-action="About">Um Okkur</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <form class="navbar-form navbar-left" asp-controller="Home" asp-action="SearchBar">
+    </div>
+    <nav class="navbar navbar-inverse nav-pills nav-justified">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">  
+                <ul class="nav navbar-nav">
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Efnisflokkar <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="Book" asp-action="Top10">Topp 10 listinn</a></li>
+                            <hr/>
+                            <li><a asp-controller="Book" asp-action="Category" asp-route-id="0">Allir flokkar</a></li>
+                            <li><a asp-controller="Book" asp-action="Category" asp-route-id="1">Spenna</a></li>
+                            <li><a asp-controller="Book" asp-action="Category" asp-route-id="2">Gaman</a></li>
+                            <li><a asp-controller="Book" asp-action="Category" asp-route-id="3">Ævintýri</a></li>
+                            <hr/>                                
+                            <li><a asp-controller="Book" asp-action="Category" asp-route-id="4">Barna og unglingabækur</a></li>
+                            <li><a asp-controller="Book" asp-action="Category" asp-route-id="5">Námsbækur</a></li>
+                            <li><a asp-controller="Book" asp-action="Category" asp-route-id="6">Ljóð</a></li>
+                        </ul>
+                    </li>
+                    <li><a asp-controller="Home" asp-action="SpecialOrd">Sérpöntun</a></li>
+                    <li><a asp-controller="Home" asp-action="Donate">Ég vil styrkja!</a></li>
+                    <li><a asp-controller="Home" asp-action="About">Um Okkur</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <form class="navbar-form navbar-left" asp-controller="Home" asp-action="SearchBar">
                         <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Leita" name="searchInput"/>
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"/>
-                                <i class="glyphicon glyphicon-search"></i>
-                            </button>
-                        </div>
+                            <input type="text" class="form-control" placeholder="Leita" name="searchInput"/>
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"/>
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </div>
                         </div>
                     </form>
-                
-                <li><a asp-area="" asp-controller="Cart" asp-action="Index"><span class="glyphicon glyphicon-shopping-cart">Karfa</a></li>
-                <li> @await Html.PartialAsync("_LoginPartial")</li>
-                <!--li class="dropdown"> 
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
-                        <ul id="login-dp" class="dropdown-menu">
-                            <li>
-                                <div class="row">
-                                        <div class="col-md-12">
-                                            Skrá inn með
-                                            <div class="social-buttons">
-                                                <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                                                <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
-                                            </div>
-                                            eða
-                                            <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="exampleInputEmail2">Netfang</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Netfang" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="exampleInputPassword2">Lykilorð</label>
-                                                        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Lykilorð" required>
-                                                        <div class="help-block text-right"><a href="">Gleymt lykilorð?</a></div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <button type="submit" asp-controller="Home" asp-action="LoggedUser" class="btn btn-primary btn-block">Skrá inn</button>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                        <input type="checkbox"> Halda mér innskráðum
-                                                        </label>
-                                                    </div>
-                                            </form>
-                                        </div>
-                                        <div class="bottom text-center">
-                                            Nýr hér ? <a asp-controller="Home" asp-action="SignUp"><b>búðu til aðgang hér!</b></a>
-                                        </div>
-                                </div>
-                            </li>
-                        </ul>
-                </li-->
-            </ul>
+                    <li><a asp-area="" asp-controller="Cart" asp-action="Index"><span class="glyphicon glyphicon-shopping-cart">Karfa</a></li>
+                    <li> @await Html.PartialAsync("_LoginPartial")</li>
+                </ul>
+            </div>
         </div>
-    </div>
-    </nav>
-   
-          
- 
+    </nav> 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-    
-            <footer class="container-fluid text-center">
+        <hr/>
+        <footer class="container-fluid text-center">
             <p>Vantar þig smá <b>tónlist</b> í líf þitt? Við björgum þér!</p>
             <audio loop="true" src="~/Music/bookcavelag.mp3" controls>
                 <p>If you are reading this, it is because your browser does not support the audio element.</p>
             </audio>
-            <!--<p>Online Store Copyright</p> -->
             <p>contactus.bookcave&commat;gmail.com</p>
             <p>sími: 581-2345</p>
             <p>kennitala: 210196-3079</p>
             <p>Fylgdu okkur!</p>
             <a href="https://www.instagram.com/kungfucave/" target="_blank">
-                <img id="instagram" src="~/images/insta-logo.png" style="height:20px; width:20px; margin-bottom: 10px;">
+                <img id="instagram" src="~/images/insta-logo.png" style="height:20px; width:20px; margin-bottom: 10px;"/>
             </a>
             <form class="form-inline">Skráðu þig á póstlistann:
-                <input type="email" class="form-control" size="50" placeholder="Netfang">
+                <input type="email" class="form-control" size="50" placeholder="Netfang"/>
                 <button type="button" class="btn btn-danger">Skrá</button>
             </form>
-            </footer>
-        
+        </footer>
     </div>
-
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="~/js/bookdetails.js" asp-append-version="true"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
         <script src="~/js/frontpage.js" asp-append-version="true"></script>
-        <script src="~/js/category.js" asp-append-version="true"></script>
-        <script src="~/js/addbook.js" asp-append-version="true"></script>
-        <!--script src="~/js/imageupload.js" asp-append-version="true"></script-->
+        <script src="~/js/donate.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
@@ -180,19 +127,14 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> <!--added this for testing, harpa-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="~/js/addbook.js" asp-append-version="true"></script>
-        <script src="~/js/donate.js" asp-append-version="true"></script>
-        <script src="~/js/bookdetails.js" asp-append-version="true"></script>
-        
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> <!--added this for cart -harpa -->
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> <!--added this for cart -harpa -->
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
     </environment>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
     @RenderSection("Scripts", required: false)
-    
 </body>
 </html>
