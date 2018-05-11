@@ -80,6 +80,7 @@ namespace BookCave.Controllers.HomeController
         {
             return View();
         }
+        */
         public IActionResult ConfirmationSpecialOrder() 
         {
             return View();
@@ -88,7 +89,7 @@ namespace BookCave.Controllers.HomeController
         {
             return View();
         }
-
+/* 
         public IActionResult reviewOrder()
         {
 
