@@ -12,8 +12,8 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">Fullt nafn</label>  
       <div class="col-md-4">
-        <input type="text" asp-for="Reciever.Name" class="form-control input-md" value="@Model.User.FirstName @Model.User.LastName"/>
-        <span id="textinput" asp-validation-for="Reciever.Name"></span><br>
+        <input type="text" asp-for="ReceiverName" class="form-control input-md" value="@Model.User.FirstName @Model.User.LastName"/>
+        <span id="textinput" asp-validation-for="ReceiverName"></span><br>
       </div>
     </div>
 
@@ -21,8 +21,8 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">Símanúmer</label>  
       <div class="col-md-4">
-          <input type="text" asp-for="Reciever.PhoneNumber" class="form-control input-md" value="@Model.User.PhoneNumber"/>
-          <span id="textinput" asp-validation-for="Reciever.PhoneNumber"></span><br>
+          <input type="text" asp-for="ReceiverPhoneNumber" class="form-control input-md" value="@Model.User.PhoneNumber"/>
+          <span id="textinput" asp-validation-for="ReceiverPhoneNumber"></span><br>
       </div>
     </div>
 
@@ -30,8 +30,8 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">Heimilisfang</label>  
       <div class="col-md-4">
-          <input type="text" asp-for="Reciever.Address" class="form-control input-md" value="@Model.User.Address"/>
-          <span id="textinput" asp-validation-for="Reciever.Address"></span><br>
+          <input type="text" asp-for="ReceiverAddress" class="form-control input-md" value="@Model.User.Address"/>
+          <span id="textinput" asp-validation-for="ReceiverAddress"></span><br>
       </div>
     </div>
 
@@ -39,16 +39,16 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">Bær/Borg</label>  
       <div class="col-md-4">
-          <input type="text" asp-for="Reciever.City" class="form-control input-md" value="@Model.User.City"/>
-          <span id="textinput" asp-validation-for="Reciever.City"></span><br>
+          <input type="text" asp-for="ReceiverCity" class="form-control input-md" value="@Model.User.City"/>
+          <span id="textinput" asp-validation-for="ReceiverCity"></span><br>
       </div>
     </div>
     <!-- Text input-->
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">Póstnúmer</label>  
       <div class="col-md-4">
-          <input type="text" asp-for="Reciever.ZIP" class="form-control input-md" value="@Model.User.ZIP"/>
-          <span id="textinput" asp-validation-for="Reciever.ZIP"></span><br>
+          <input type="text" asp-for="ReceiverZIP" class="form-control input-md" value="@Model.User.ZIP"/>
+          <span id="textinput" asp-validation-for="ReceiverZIP"></span><br>
       </div>
     </div>
 
@@ -56,7 +56,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="selectbasic">Land</label>
       <div class="col-md-4">
-        <select asp-for"Reciever.CountryId" id="selectbasic" name="selectbasic" class="form-control" value="@Model.User.CountryId">
+        <select asp-for"ReceiverCountryId" id="selectbasic" name="selectbasic" class="form-control" value="@Model.User.CountryId">
             <option value="1">Ísland</option>
             <option value="2">Danmörk</option>
             <option value="3">Noregur</option>
@@ -65,7 +65,7 @@
             <option value="6">England</option>
             <option value="7">Bandaríkin</option>
           </select>
-        <span asp-validation-for="Reciever.CountryId"></span><br/>
+        <span asp-validation-for="ReceiverCountryId"></span><br/>
       </div>
     </div>
 
@@ -76,8 +76,8 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">Fullt nafn</label>  
       <div class="col-md-4">
-          <input type="text" asp-for="Payer.Name" class="form-control input-md" value="@Model.User.FirstName @Model.User.LastName"/>
-          <span id="textinput" asp-validation-for="Payer.Name"></span><br>
+          <input type="text" asp-for="PayerName" class="form-control input-md" value="@Model.User.FirstName @Model.User.LastName"/>
+          <span id="textinput" asp-validation-for="PayerName"></span><br>
       </div>
     </div>
 
@@ -85,8 +85,8 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">Símanúmer</label>  
       <div class="col-md-4">
-          <input type="text" asp-for="Payer.PhoneNumber" class="form-control input-md" value="@Model.User.PhoneNumber"/>
-          <span id="textinput" asp-validation-for="Payer.PhoneNumber"></span><br>
+          <input type="text" asp-for="PayerPhoneNumber" class="form-control input-md" value="@Model.User.PhoneNumber"/>
+          <span id="textinput" asp-validation-for="PayerPhoneNumber"></span><br>
       </div>
     </div>
 
@@ -94,8 +94,8 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">Heimilisfang</label>  
       <div class="col-md-4">
-          <input type="text" asp-for="Payer.Address" class="form-control input-md" value="@Model.User.Address"/>
-          <span id="textinput" asp-validation-for="Payer.Address"></span><br>
+          <input type="text" asp-for="PayerAddress" class="form-control input-md" value="@Model.User.Address"/>
+          <span id="textinput" asp-validation-for="PayerAddress"></span><br>
       </div>
     </div>
 
@@ -103,8 +103,8 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">Bær/Borg</label>  
       <div class="col-md-4">
-          <input type="text" asp-for="Payer.City" class="form-control input-md" value="@Model.User.City"/>
-          <span id="textinput" asp-validation-for="Payer.City"></span><br>
+          <input type="text" asp-for="PayerCity" class="form-control input-md" value="@Model.User.City"/>
+          <span id="textinput" asp-validation-for="PayerCity"></span><br>
       </div>
     </div>
 
@@ -112,8 +112,8 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">Póstnúmer</label>  
       <div class="col-md-4">
-          <input type="text" asp-for="Payer.ZIP" class="form-control input-md" value="@Model.User.ZIP"/>
-          <span id="textinput" asp-validation-for="Payer.ZIP"></span><br>
+          <input type="text" asp-for="PayerZIP" class="form-control input-md" value="@Model.User.ZIP"/>
+          <span id="textinput" asp-validation-for="PayerZIP"></span><br>
       </div>
     </div>
 
@@ -121,7 +121,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="selectbasic">Land</label>
       <div class="col-md-4">
-        <select asp-for"Payer.CountryId" id="selectbasic" name="selectbasic" class="form-control" value="@Model.User.CountryId">
+        <select asp-for"PayerCountryId" id="selectbasic" name="selectbasic" class="form-control" value="@Model.User.CountryId">
             <option value="1">Ísland</option>
             <option value="2">Danmörk</option>
             <option value="3">Noregur</option>
@@ -130,7 +130,7 @@
             <option value="6">England</option>
             <option value="7">Bandaríkin</option>
           </select>
-        <span asp-validation-for="Payer.CountryId"></span><br/>
+        <span asp-validation-for="PayerCountryId"></span><br/>
       </div>
     </div>
 
