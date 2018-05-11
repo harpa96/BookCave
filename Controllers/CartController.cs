@@ -35,7 +35,7 @@ namespace BookCave.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
             var id = user.Id;
-            var cart = new CartViewModel{Books = _shoppingCart.getCart(id)};
+            var cart = new CartViewModel{Books = _shoppingCart.GetCart(id)};
             
             var total = 0;
 
@@ -64,7 +64,6 @@ namespace BookCave.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(CartViewModel model)
         {
-        
             var user = await _userManager.GetUserAsync(User);
             var id = user.Id;
             

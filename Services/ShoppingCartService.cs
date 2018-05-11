@@ -23,7 +23,7 @@ namespace BookCave.Services
         }
         
         [Authorize]
-        public List<BookCartViewModel> getCart(string userId)
+        public List<BookCartViewModel> GetCart(string userId)
         {
             var cart = (from c in db.Cart
                         join b in db.Books on c.BookId equals b.Id
@@ -42,7 +42,15 @@ namespace BookCave.Services
 
             return cart;
         }
+        /*
+        public int getTotal(string userId)
+        {
+            var cart = (from c in db.Cart
+                        where c.UserId == userId
+                        select c);
 
+        }
+        */
         public void addToCart(BookDetailsViewModel book, string userId)
         {
             var searchBook = (from c in db.Cart

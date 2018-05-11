@@ -16,16 +16,15 @@ namespace BookCave.Controllers.BookController
     {
         private BookService _bookService;
         private ShoppingCartService _shoppingCart;
-         private readonly UserManager<ApplicationUser> _userManager;
 
-        private int currentBook;
-        
+        //Notum til að fá info um current user
+        private readonly UserManager<ApplicationUser> _userManager;
+
         public BookController(UserManager<ApplicationUser> userManager)
         {
             _bookService = new BookService();
-             _userManager = userManager;
             _shoppingCart = new ShoppingCartService();
-            currentBook = 0;
+            _userManager = userManager;
         }
         
         public IActionResult Top10()
@@ -34,16 +33,10 @@ namespace BookCave.Controllers.BookController
             
             return View(books);
         }
-
-       /* public IActionResult getJsonData()
-        {
-            return Json("Hello world");
-         } IF WE NEED AJAX - HARPA*/
-
         public IActionResult Category(int? Id, string orderby)
         {
             
-            if (Id == 0)
+            if (Id == 0 || Id == null)
             {
                 var books = _bookService.GetAllBooks();
                 ViewBag.Genre = "Allar bækur";
@@ -60,7 +53,6 @@ namespace BookCave.Controllers.BookController
             else 
             {
                 var books = _bookService.FilterCategories(Id);
-                
                 
                 if(orderby != null)
                 {
@@ -85,7 +77,7 @@ namespace BookCave.Controllers.BookController
 
             return View(book);
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Details (int? Id, BookDetailsViewModel book)
         {
@@ -115,7 +107,7 @@ namespace BookCave.Controllers.BookController
                 return RedirectToAction("NotFound");
             }
             
-            currentBook = (int)Id;
+            var currentBook = (int)Id;
             ViewBag.NameOfBook = _bookService.getNameOfBook(currentBook);
         
             _bookService.AddRating(newComment.Rating, currentBook);
@@ -127,10 +119,11 @@ namespace BookCave.Controllers.BookController
             
             return RedirectToAction("Details", new {Id = currentBook});
         }
-        public IActionResult Filter(string filterChoice = "", string searchTerm = "")
+        
+        /*public IActionResult Filter(string filterChoice = "", string searchTerm = "")
         {
             var filteredBooks = _bookService.SearchedBooks(filterChoice);
             return View(filteredBooks);
-        }
+        }*/
     }
 }

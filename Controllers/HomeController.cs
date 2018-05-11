@@ -32,7 +32,6 @@ namespace BookCave.Controllers.HomeController
             _donateService = donateService;
 
             _specialOrderService = specialOrderService;
-
         }
         
         public IActionResult Index()
@@ -71,7 +70,7 @@ namespace BookCave.Controllers.HomeController
         {
             return View();
         }
-
+/*
          public IActionResult Pay() 
         {
             return View();
@@ -92,17 +91,20 @@ namespace BookCave.Controllers.HomeController
 
         public IActionResult reviewOrder()
         {
-           //var books = _bookService.getBooksInCart();
-            return View();
+
+           var books = _bookService.getBooksInCart();
+            return View(books);
+
         }
+*/
+
 
 /* 
         public IActionResult Edit()
         {
             return View();
         }
-*/
-
+ */
 
         public IActionResult SendEmail()
         {

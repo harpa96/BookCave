@@ -1,0 +1,99 @@
+@model BookCave.Models.ViewModels.ReviewOrderViewModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="grid invoice">
+                <div class="grid-body">
+                    <div class="invoice-title">
+                        <br>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2>Yfirlit<br>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <address>
+                                <strong>Greiðandi:</strong><br>
+                                @Model.Checkout.PayerName<br>
+                                @Model.Checkout.PayerCountry @Model.Checkout.PayerZIP @Model.Checkout.PayerCity<br>
+                                @Model.Checkout.PayerAddress<br>
+                                <abbr title="Phone">S:</abbr> @Model.Checkout.PayerPhoneNumber
+                            </address>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <address>
+                                <strong>Viðtakandi:</strong><br>
+                                @Model.Checkout.ReceiverName<br>
+                                @Model.Checkout.ReceiverCountry @Model.Checkout.ReceiverZIP @Model.Checkout.ReceiverCity<br>
+                                @Model.Checkout.ReceiverAddress<br>
+                                <abbr title="Phone">S:</abbr> @Model.Checkout.ReceiverPhoneNumber
+                            </address>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="table-responsive">
+                            <h1 class="entry-title"><span>Pöntunin mín</span></h1>
+                            <hr/>
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th></th>
+                                    <th>Titill bókar</th>
+                                    <th>Magn</th>
+                                    <th>Einingarverð</th>
+                                    <th>Heildarverð</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var book in @Model.Cart.Books)
+                                    {
+                                        <tr>
+                                            <td><a class="thumbnail pull-left"> <img class="media-object" src="@book.Image" style="width: 72px; height: 72px;"></td>
+                                            <td>@book.Name</td>
+                                            <td>@book.Copies</td>
+                                            <td>@book.Author</td>
+                                            <td>@book.Price</td>
+                                            <td>@book.PriceSum</td>
+                                        </tr>
+                                    }
+
+                                    <tr>
+                                        <td>   </td>
+                                        <td>   </td>
+                                        <td>   </td>
+                                        <td>   </td>
+                                        <td><h5>Heildarverð</h5></td>
+                                        <td class="text-right"><h5><strong>@Model.Cart.Total</strong></h5></td>
+                                    </tr>
+                                    <tr>
+                                        <td>   </td>
+                                        <td>   </td>
+                                        <td>   </td>
+                                        <td>   </td>
+                                        <td><h5>Sendingarkostnaður</h5></td>
+                                        <td class="text-right"><h5><strong>500 kr.</strong></h5></td>
+                                    </tr>
+                                    <tr>
+                                        <td>   </td>
+                                        <td>   </td>
+                                        <td>   </td>
+                                        <td>   </td>
+                                        <td><h3>Lokaupphæð</h3></td>
+                                        <td class="text-right"><h3><strong>@Model.Cart.TotalPlus</strong></h3></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a asp-controller="Order" asp-action="Confirmation" class="btn btn-primary">Greiða fyrir pöntun</a>
+                            <a asp-controller="Cart" asp-action="Index" class="btn btn-primary">Til baka í körfu</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

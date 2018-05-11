@@ -15,29 +15,16 @@ namespace BookCave.Services
         {
             db = new DataContext();
         }
-        
-        /*public void AddOrder(int order, int user, int book, int copies)
-        {
-            var neworder = new Order(){ Id = order, UserId = user. };
-            var newBook = new OrderedBooks(){OrderId=order, BookId = book, Copies = copies};
-            db.Add(neworder);
-            db.Add(newBook);
-            db.SaveChanges();
-        }*/
 
-        public void UpdateOrder(string userId, int newcopies, int bookId) 
+        public string GetCountry(int cId)
         {
-            var order = db.Orders.FirstOrDefault(o => o.UserId == userId);
-            var book = (from b in db.BooksInOrder
-                        join o in db.Orders on b.OrderId equals o.Id
-                        where o.UserId == userId && b.Id == bookId
-                        select b).FirstOrDefault();
-                        
-            book.Copies = newcopies;
-            db.Update(book);
-            db.SaveChanges();
+            var country = (from c in db.Countries 
+                            where cId == c.Id
+                            select c.Name).FirstOrDefault().ToString();
+
+            return country;
         }
-
+        
         public OrderListViewModel GetOrdersForUser(string userId)
         {
             var OrderList = new OrderListViewModel
@@ -72,25 +59,5 @@ namespace BookCave.Services
             }
             return OrderList;;
         }
-
-        /*public List<OrderListViewModel> GetOrderByUser(string userId)
-        {
-            var order = (from b in db.BooksInOrder
-                        join o in db.Orders on b.OrderId equals o.Id
-                        join bo in db.Books on b.BookId  equals bo.Id
-                        join a in db.Authors on bo.AuthorId equals a.Id
-                        where o.UserId == userId
-                        select new OrderListViewModel
-                        { 
-                            BookName = bo.Name,
-                            Image = bo.Image,
-                            Price = bo.Price,
-                            AutorName = a.Name,
-                            Copies = b.Copies,
-                        }).ToList();
-            return order;
-        }*/
     }
-  
-
 }
