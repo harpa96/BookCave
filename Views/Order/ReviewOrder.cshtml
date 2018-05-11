@@ -42,9 +42,9 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th></th>
                                         <th>Titill bókar</th>
                                         <th>Magn</th>
+                                        <th>Höfundur</th>
                                         <th>Einingarverð</th>
                                         <th>Heildarverð</th>
                                     </tr>
@@ -53,7 +53,7 @@
                                     @foreach (var book in @Model.Cart.Books)
                                     {
                                         <tr>
-                                            <td><a class="thumbnail pull-left"> <img class="media-object" src="@book.Image" style="width: 72px; height: 72px;"></td>
+                                            <td><img class="thumbnail pull-left" src="@book.Image" style="width: 100px; height: 100px;"></td>
                                             <td>@book.Name</td>
                                             <td>@book.Copies</td>
                                             <td>@book.Author</td>
