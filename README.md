@@ -1,5 +1,5 @@
 # BookCave
-## Um verkefnid
+## About the project
 The Book Cave
 A new company has emerged called The Book Cave. The company is in a great need of an online
 book store. That’s where you come in. Your job is to create the world’s greatest book store, please
