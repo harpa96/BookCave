@@ -1,7 +1,11 @@
+/* Festum síurnar á vinstri hlið */
 .row > .col-sm-3
 {
     float: left;
 }
+
+/* Allar .thumbnail mótanir eru til að stilla innihaldið í hverju
+    bókarboxi þannig að það komi alltaf eins út */
 
 .thumbnail
 {

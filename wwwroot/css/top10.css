@@ -1,13 +1,17 @@
+/* Setjum teljarann aftur í 0 */
 #top10list
 {
     counter-reset: LIST-ITEMS;
 }
+
+/* Röðum bókununm upp hlið við hlið */
 #top10list > #topBooks
 {
     position: relative;
     display: inline-block;
 }
 
+/* Sýnum sæti hjá á hverri bók */
 #top10list > #topBooks:before
 {
     content: counter( LIST-ITEMS ) ".";
@@ -16,6 +20,7 @@
     font-weight: bold;
     font-size: 20px;
 }
+
 
 #top10list > #topBooks > .books > .thumbnail
 {

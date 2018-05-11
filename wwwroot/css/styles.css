@@ -4,7 +4,7 @@
     border-radius: 0;
 }
 
-/* Remove the jumbotron's default bottom margin */ 
+/* Fjarlægjum default margin á klasanum */ 
 .jumbotron
 {
     margin-bottom: 0;

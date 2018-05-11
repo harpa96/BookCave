@@ -4,7 +4,7 @@
     padding-bottom: 20px;
 }
 
-/* Padding to keep content from hitting the edges */
+/* Notum padding til að koma í veg fyrir að innihaldið snerti brúnirnar */
 .body-content
 {
     padding-left: 15px;
@@ -21,10 +21,10 @@
     margin: 15px;
 }
 
-/* Hide/rearrange for smaller screens */
+/* Gerum ráð fyrir smærri skjám */
 @media screen and (max-width: 767px)
 {
-    /* Hide captions */
+    /* Felum öll caption */
     .carousel-caption
     {
         display: none;
