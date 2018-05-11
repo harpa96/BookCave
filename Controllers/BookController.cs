@@ -77,7 +77,7 @@ namespace BookCave.Controllers.BookController
 
             return View(book);
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Details (int? Id, BookDetailsViewModel book)
         {
