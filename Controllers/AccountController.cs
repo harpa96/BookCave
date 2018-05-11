@@ -220,11 +220,13 @@ public class AccountController : Controller
 
     public async Task<IActionResult> Login(LoginViewModel model)
     {
+        ViewData["ErrorMessage"] = "";
+
         if (!ModelState.IsValid)
         {
-            return View();
+                ViewData["ErrorMessage"] = "Notandi finnst ekki í kerfinu";
+                return View();      
         }
-
         var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
         if (result.Succeeded)
         {

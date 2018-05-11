@@ -65,7 +65,8 @@ namespace BookCave.Controllers
         [Authorize]
         [HttpPost]
         public IActionResult Pay(CheckoutViewModel checkout)
-        {         
+        {       
+            _orderService.ProcessOrder(checkout);  
             var newModel = new CheckoutViewModel
             {
                 ReceiverName = checkout.ReceiverName,
