@@ -1,38 +1,29 @@
-$(document).ready(function(){
-    // Initialize Tooltip
+$(document).ready(function()
+{
+    /* Initialize Tooltip */
     $('[data-toggle="tooltip"]').tooltip(); 
     
-    // Add smooth scrolling to all links in navbar + footer link
-    $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-  
-      // Make sure this.hash has a value before overriding default behavior
-      if (this.hash !== "") {
-  
-        // Prevent default anchor click behavior
+    /* Smooth scrolling í navbar og footer link */
+    $(".navbar a, footer a[href='#myPage']").on('click', function(event)
+    {
+        if (this.hash !== "")
+        {
+        /* Koma í veg fyrir default anchor click behavior */
         event.preventDefault();
   
-        // Store hash
+        /* Geyma hash */
         var hash = this.hash;
   
-        // Using jQuery's animate() method to add smooth page scroll
-        // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-        $('html, body').animate({
+        /* Smooth page scroll
+        900 segir til um scrolling hraða í millisekúndum */
+        $('html, body').animate(
+        {
           scrollTop: $(hash).offset().top
-        }, 900, function(){
-     
-          // Add hash (#) to URL when done scrolling (default click behavior)
-          window.location.hash = hash;
-        });
-      } // End if
+        }, 900, function()
+            {
+            /* Bætum Add hash (#) við URL þegar búið er að skrolla */
+            window.location.hash = hash;
+            });
+        }
     });
-  })
-
-  // Get the modal
-var modal5 = document.getElementById('id05');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal5) {
-        modal5.style.display = "none";
-    }
-}
+})

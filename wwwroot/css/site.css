@@ -1,28 +1,32 @@
-﻿body {
+﻿body
+{
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
+/* Notum padding til að koma í veg fyrir að innihaldið snerti brúnirnar */
+.body-content
+{
     padding-left: 15px;
     padding-right: 15px;
 }
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
+
+.carousel-inner .item img[src$=".svg"]
+{
     width: 100%;
 }
 
-/* QR code generator */
-#qrCode {
+#qrCode
+{
     margin: 15px;
 }
 
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
+/* Gerum ráð fyrir smærri skjám */
+@media screen and (max-width: 767px)
+{
+    /* Felum öll caption */
+    .carousel-caption
+    {
         display: none;
     }
 }
