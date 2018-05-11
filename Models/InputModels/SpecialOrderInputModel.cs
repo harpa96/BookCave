@@ -5,30 +5,30 @@ namespace BookCave.Models.InputModels
 {
     public class SpecialOrderInputModel
     {
-        [Required(ErrorMessage= "Name is required")]
+        [Required(ErrorMessage= "Nafn vantar")]
         public string Name { get; set; }
-        [Required(ErrorMessage= "Phone is required")]
+        [Required(ErrorMessage= "Símanúmer vantar")]
         public string Phone { get; set; }
-        [Required(ErrorMessage= "Address is required")]
+        [Required(ErrorMessage= "Heimilisfang vantar")]
         public string Address { get; set; }
-        [Required(ErrorMessage= "Zip is required")]
+        [Required(ErrorMessage= "Póstnúmer vantar")]
         public string Zip { get; set; }
-        [Required(ErrorMessage= "City is required")]
+        [Required(ErrorMessage= "Borg/bær vantar")]
         public string City { get; set; }
 
-        [Required(ErrorMessage= "Email is required")]
+        [Required(ErrorMessage= "Netfang vantar")]
         public string Email { get; set; }
        
-        [Required(ErrorMessage= "Title is required")]
+        [Required(ErrorMessage= "Titill vantar")]
         public string Title { get; set; }
 
-        [Required(ErrorMessage= "Author is required")]
+        [Required(ErrorMessage= "Höfund vantar")]
         public string Author { get; set; }
 
-        [Required(ErrorMessage= "PublishDate is required")]
+        [Required(ErrorMessage= "Útgáfuár vantar")]
         public string PublishDate { get; set; }
 
-        [Required(ErrorMessage= "Amount is required")]
+        [Required(ErrorMessage= "Fjölda vantar")]
         public int Amount { get; set; }
     }
 }
