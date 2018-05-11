@@ -12,28 +12,27 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th>#</th>
+                            <th>@order.Id</th>
                             <th>Titill bókar</th>
                             <th>Magn</th>
-                            <th>Höfundur</th>
-                            <th>Dagsetning</th>
-                            <th>Heildarverð</th>
+                            <th>Einingarverð</th>
+                            <th>Samanlagt verð</th>
                         </tr>
                         </thead>
                         <tbody>
                             @foreach (var book in order.Books)
                             {
                                 <tr>
-                                    <td>Virkar</td>
-                                    <td>Virkar</td>
-                                    <td>Virkar</td>
-                                    <td>Virkar</td>
-                                    <td>Virkar</td>
-                                    <td>Virkar</td>
+                                    <td></td>
+                                    <td>@book.Name</td>
+                                    <td>@book.Copies</td>
+                                    <td>@book.Price</td>
+                                    <td>@book.PriceSum</td>
                                 </tr>
                             }
                         </tbody>
                     </table>
+                    <p>Heildarverð pöntunar: @order.TotalPrice</p>
                 </div>
             }
            

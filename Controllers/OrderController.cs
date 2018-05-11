@@ -84,15 +84,18 @@ namespace BookCave.Controllers
             return RedirectToAction("ReviewOrder", newModel);
         }
 
-         public IActionResult Confirmation() 
+         public async Task<IActionResult> Confirmation() 
         {
+            var user = await _userManager.GetUserAsync(User);
+            
+            _orderService.addNewOrder(user.Id);
+            _shoppingService.clearCart(user.Id);
             return View();
         }
 
         [Authorize]
         public async Task<IActionResult> ReviewOrder(CheckoutViewModel model)
         {
-            Console.WriteLine("NAFN PAYER: " + model.PayerName);
             var user = await _userManager.GetUserAsync(User);
             
             var id = user.Id;
