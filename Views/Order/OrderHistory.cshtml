@@ -1,35 +1,42 @@
-@model List<BookCave.Models.ViewModels.BookListViewModel>
+@model BookCave.Models.ViewModels.OrderListViewModel
 
 <div class="container">
 	<div class="row">
 		<div class="table-responsive">
             <h1 class="entry-title"><span>Mínar pantanir</span> </h1>
             <hr/>
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Titill bókar</th>
-                    <th>Magn</th>
-                    <th>Höfundur</th>
-                    <th>Dagsetning</th>
-                    <th>Heildarverð</th>
-                </tr>
-                </thead>
-                <tbody>
-                    @foreach (var book in @Model)
-                    {
+            
+            @foreach(var order in @Model.Orders)
+            {
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
                         <tr>
-                            <td>@book.Id</td>
-                            <td>@book.Name</td>
-                            <td>MAGN</td>
-                            <td>@book.AuthorName</td>
-                            <td>Dagsetning??</td>
-                            <td>@book.Price</td>
+                            <th>#</th>
+                            <th>Titill bókar</th>
+                            <th>Magn</th>
+                            <th>Höfundur</th>
+                            <th>Dagsetning</th>
+                            <th>Heildarverð</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                        </thead>
+                        <tbody>
+                            @foreach (var book in order.Books)
+                            {
+                                <tr>
+                                    <td>Virkar</td>
+                                    <td>Virkar</td>
+                                    <td>Virkar</td>
+                                    <td>Virkar</td>
+                                    <td>Virkar</td>
+                                    <td>Virkar</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+           
             <a asp-controller="Account" asp-action="Profile" class="btn btn-primary">Til baka í mínar síður</a>
         </div>
 	</div>
