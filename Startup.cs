@@ -30,6 +30,7 @@ namespace BookCave
         {
             services.AddTransient<IDonateService, DonateService>();
             services.AddTransient<ISpecialOrderService, SpecialOrderService>();
+            services.AddTransient<ISpecialOrderService, SpecialOrderService>();
             /* 
             var policy = new AuthorizationPolicyBuilder()
                              .RequireAuthenticatedUser()

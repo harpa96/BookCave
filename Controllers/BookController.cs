@@ -93,15 +93,21 @@ namespace BookCave.Controllers.BookController
         }
 
         [HttpGet]
-        public IActionResult AddRating()
+        public IActionResult AddRating(int Id)
         {
+            var book = _bookService.FindBookById(Id);
+            ViewBag.Title = book.Name;
+
             return View();
         }
 
         [Authorize]
         [HttpPost]
-        public IActionResult AddRating(int? Id, CommentViewModel newComment)
+        public async Task<IActionResult> AddRating(int? Id, CommentViewModel newComment)
         {
+            var user = await _userManager.GetUserAsync(User);
+            var userName = user.FirstName;
+            
             if(Id == null)
             {
                 return RedirectToAction("NotFound");
@@ -114,7 +120,7 @@ namespace BookCave.Controllers.BookController
             
             if(newComment.Text != String.Empty)
             {
-                _bookService.AddComment(newComment.Text, currentBook);
+                _bookService.AddComment(userName, newComment.Text, currentBook);
             }
             
             return RedirectToAction("Details", new {Id = currentBook});

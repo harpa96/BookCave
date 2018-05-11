@@ -40,14 +40,14 @@
                             <hr/>
                             <table class="table table-bordered">
                                 <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th></th>
-                                    <th>Titill bókar</th>
-                                    <th>Magn</th>
-                                    <th>Einingarverð</th>
-                                    <th>Heildarverð</th>
-                                </tr>
+                                    <tr>
+                                        <th>#</th>
+                                        <th></th>
+                                        <th>Titill bókar</th>
+                                        <th>Magn</th>
+                                        <th>Einingarverð</th>
+                                        <th>Heildarverð</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var book in @Model.Cart.Books)
@@ -61,7 +61,6 @@
                                             <td>@book.PriceSum</td>
                                         </tr>
                                     }
-
                                     <tr>
                                         <td>   </td>
                                         <td>   </td>
@@ -88,13 +87,12 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <form>
-                                <input type="text" asp-for="PayerEmail" class="form-control input-md"/>
+                            <form asp-controller="Order" asp-action="Review" method="POST">
+                                <input type="hidden" asp-for="Checkout.PayerEmail" class="form-control input-md"/>
+                                <input type="hidden" asp-for="Checkout.PayerName" class="form-control input-md"/>
                                 <input type="submit" name="Submit" value="Greiða fyrir pöntun" class="btn btn-primary"/>
                                 <a asp-controller="Cart" asp-action="Index" class="btn btn-primary">Til baka í körfu</a> 
                             </form>
-                            <!--a asp-controller="Order" asp-action="Confirmation" class="btn btn-primary">Greiða fyrir pöntun</a>
-                            <a asp-controller="Cart" asp-action="Index" class="btn btn-primary">Til baka í körfu</a-->
                         </div>
                     </div>
                 </div>

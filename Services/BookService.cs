@@ -31,11 +31,11 @@ namespace BookCave.Services
         }
 
         //Bætir við athugasemd við eftirfarandi bók hafi notandinn skrifað eitthvað.
-        public void AddComment(string text, int book)
+        public void AddComment(string userName, string text, int book)
         {
             if(!string.IsNullOrEmpty(text))
             {
-                var comment = new Comment(){BookId = book, Text = text};
+                var comment = new Comment(){UserName = userName, BookId = book, Text = text};
                 db.Add(comment);
                 db.SaveChanges();
             }
@@ -112,7 +112,7 @@ namespace BookCave.Services
                         select new AuthorListViewModel
                         {
                             Id = a.Id, 
-                            Name = a.Name
+                            Name = a.Name,
                         }).ToList();
             return authors;
         }
@@ -170,7 +170,12 @@ namespace BookCave.Services
 
             var comments = (from c in db.Comments
                             where c.BookId == Id
-                            select c).ToList();
+                            select new CommentViewModel
+                            {
+                                Id = c.Id,
+                                Text = c.Text,
+                                UserName = c.UserName
+                            }).ToList();
             
             var book = (from b in db.Books
                         join g in db.Genre on b.GenreId equals g.Id

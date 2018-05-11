@@ -85,12 +85,25 @@ namespace BookCave.Controllers
 
             return RedirectToAction("ReviewOrder", newModel);
         }
+         public async Task<IActionResult> Confirmation() 
 
-        public IActionResult Confirmation() 
         {
+            var user = await _userManager.GetUserAsync(User);
+            
+            _orderService.addNewOrder(user.Id);
+            _shoppingService.clearCart(user.Id);
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Review(ReviewOrderViewModel order)
+        {
+            _orderService.SendOrderEmail(order.Checkout);
+            
+            return RedirectToAction("Confirmation");
+        }
+
+       
         [Authorize]
         public async Task<IActionResult> ReviewOrder(CheckoutViewModel model)
         {

@@ -17,6 +17,7 @@ namespace BookCave.Models.ViewModels
         public int PayerCountryId { get; set; }
         public string PayerZIP { get; set; }
         public string PayerEmail { get; set; }
+        
         public ProfileViewModel User { get; set; }
 
     }

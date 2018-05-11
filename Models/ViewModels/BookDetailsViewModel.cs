@@ -12,7 +12,7 @@ namespace BookCave.Models.ViewModels
         public string Author { get; set; }
         public string Genre {get; set;}
         public string Description {get; set;}
-        public List<Comment> Comments {get; set;}
+        public List<CommentViewModel> Comments {get; set;}
         public List<float> Rates {get; set;}
         public float Rating {get; set;}
         public int Copies {get; set;}
